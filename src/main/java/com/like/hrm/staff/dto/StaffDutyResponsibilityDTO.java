@@ -54,8 +54,8 @@ public record StaffDutyResponsibilityDTO(
 		if (entity == null) return null;
 		
 		return StaffDutyResponsibilityDTO.builder()
-				   .companyCode(entity.getStaff().getId().getCompanyCode())
-				   .staffNo(entity.getStaff().getId().getStaffNo())
+				   .companyCode(entity.getStaff().getId().companyCode())
+				   .staffNo(entity.getStaff().getId().staffNo())
 				   .staffName(entity.getStaff().getName().getName())
 				   .seq(entity.getId().getSeq())
 				   .dutyResponsibilityCode(entity.getDutyResponsibilityCode())

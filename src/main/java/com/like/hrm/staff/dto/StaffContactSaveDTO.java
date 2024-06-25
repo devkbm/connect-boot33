@@ -35,8 +35,8 @@ public record StaffContactSaveDTO(
 		Optional<StaffContact> contact = Optional.ofNullable(entity.getContact());
 							
 		return StaffContactSaveDTO.builder()
-						  .companyCode(entity.getId().getCompanyCode())	
-				 		  .staffNo(entity.getId().getStaffNo())
+						  .companyCode(entity.getId().companyCode())	
+				 		  .staffNo(entity.getId().staffNo())
 				 		  .homeAddressType(contact.map(StaffContact::getHome).map(Address::getAddress_type).orElse(null))
 				 		  .homePostNumber(contact.map(StaffContact::getHome).map(Address::getPost_number).orElse(null))
 				 		  .homeMainAddress(contact.map(StaffContact::getHome).map(Address::getMain_address).orElse(null))

@@ -53,8 +53,8 @@ public record StaffFamilySaveDTO(
 		if (entity == null) return null;
 		
 		return StaffFamilySaveDTO.builder()		
-				   .companyCode(entity.getStaff().getId().getCompanyCode())
-				   .staffNo(entity.getStaff().getId().getStaffNo())
+				   .companyCode(entity.getStaff().getId().companyCode())
+				   .staffNo(entity.getStaff().getId().staffNo())
 				   .staffName(entity.getStaff().getName().getName())
 				   .seq(entity.getId().getSeq())
 				   .familyName(entity.getName())

@@ -59,7 +59,7 @@ public record StaffAppointmentRecordDTO(
 		Optional<AppointmentInformation> info = Optional.ofNullable(entity.getInfo());
 		
 		return StaffAppointmentRecordDTO.builder()											 
-										 .staffNo(entity.getStaff().getId().getStaffNo())
+										 .staffNo(entity.getStaff().getId().staffNo())
 										 .staffName(entity.getStaff().getName().getName())
 										 .seq(entity.getId().getSeq())
 										 .appointmentTypeCode(entity.getAppointmentTypeCode())

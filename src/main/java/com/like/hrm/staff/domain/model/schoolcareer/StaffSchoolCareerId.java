@@ -33,8 +33,8 @@ public class StaffSchoolCareerId implements Serializable {
 	Long seq;
 	
 	public StaffSchoolCareerId(Staff staff, Long seq) {
-		this.companyCode = staff.getId().getCompanyCode();
-		this.staffNo = staff.getId().getStaffNo();
+		this.companyCode = staff.getId().companyCode();
+		this.staffNo = staff.getId().staffNo();
 		this.seq = seq;
 	}
 }

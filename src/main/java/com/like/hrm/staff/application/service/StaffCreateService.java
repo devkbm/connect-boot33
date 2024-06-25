@@ -35,7 +35,7 @@ public class StaffCreateService implements StaffCreateUseCase {
 	}
 	
 	private boolean isExistStaff(String companyCode, String staffNo) {
-		return dbPort.select(companyCode, staffNo) == null ? false : true;
+		return dbPort.select(companyCode, staffNo).isPresent();
 	}
 
 }

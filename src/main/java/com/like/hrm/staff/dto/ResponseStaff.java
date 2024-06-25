@@ -22,8 +22,8 @@ public record ResponseStaff(
 		
 		var name = entity.getName();
 		
-		return new ResponseStaff(entity.getId().getCompanyCode()
-								,entity.getId().getStaffNo()
+		return new ResponseStaff(entity.getId().companyCode()
+								,entity.getId().staffNo()
 							   	,name.getName()
 							   	,name.getNameEng()
 							   	,name.getNameChi()

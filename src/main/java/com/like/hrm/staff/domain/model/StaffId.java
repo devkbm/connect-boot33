@@ -5,7 +5,7 @@ import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.EqualsAndHashCode;
-
+/*
 @EqualsAndHashCode(of = {"companyCode", "staffNo"})
 @Embeddable
 public class StaffId implements Serializable {
@@ -32,4 +32,21 @@ public class StaffId implements Serializable {
 	public String getStaffNo() {
 		return staffNo;
 	}		
+}
+*/
+
+@Embeddable
+public record StaffId(
+		@Column(name="ORG_CD") String companyCode,
+		@Column(name="STAFF_NO") String staffNo		
+		) {
+	/*
+	public String getCompanyCode() {
+		return companyCode;
+	}
+	
+	public String getStaffNo() {
+		return staffNo;
+	}
+	*/
 }

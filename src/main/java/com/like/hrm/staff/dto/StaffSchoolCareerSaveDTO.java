@@ -63,8 +63,8 @@ public record StaffSchoolCareerSaveDTO(
 		if (entity == null) return null;			
 								
 		return StaffSchoolCareerSaveDTO.builder()
-				   .companyCode(entity.getStaff().getId().getCompanyCode())
-				   .staffNo(entity.getStaff().getId().getStaffNo())
+				   .companyCode(entity.getStaff().getId().companyCode())
+				   .staffNo(entity.getStaff().getId().staffNo())
 				   .staffName(entity.getStaff().getName().getName())
 				   .seq(entity.getId().getSeq())
 				   .schoolCareerType(entity.getSchoolCareerType())
