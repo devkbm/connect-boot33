@@ -25,10 +25,14 @@ public class SystemUserProfilePicture implements Serializable {
 	String image;
 	
 	@Transient
-	private ProfilePictureRepository repository;
+	private ProfilePictureRepository repository;	
 		
+	public void setImage(String path) {
+		this.image = path;
+	}
+	
 	public SystemUserProfilePicture(ProfilePictureRepository repository) {
-		this.repository = repository;				
+		this.repository = repository;		
 	}	
 		
 	public String changeImage(ProfilePictureRepository repository, MultipartFile sourceFile) {

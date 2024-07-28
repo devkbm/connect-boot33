@@ -10,6 +10,7 @@ import com.like.system.user.application.port.in.SystemUserImageFileUseCase;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
 import com.like.system.user.domain.ProfilePictureRepository;
 import com.like.system.user.domain.SystemUser;
+import com.like.system.user.domain.vo.SystemUserProfileImageUploader;
 
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -20,13 +21,16 @@ public class SystemUserImageService implements SystemUserImageFileUseCase, Syste
 	SystemUserCommandDbPort port;	
 	ProfilePictureRepository profilePictureRepository;
 	FileDownloadUseCase fileDownLoadUseCase;
+	SystemUserProfileImageUploader uploader;
 		
 	SystemUserImageService(SystemUserCommandDbPort port						  
 						  ,ProfilePictureRepository profilePictureRepository
-						  ,FileDownloadUseCase fileDownLoadUseCase) {
+						  ,FileDownloadUseCase fileDownLoadUseCase
+						  ,SystemUserProfileImageUploader uploader) {
 		this.port = port;	
 		this.profilePictureRepository = profilePictureRepository;
 		this.fileDownLoadUseCase = fileDownLoadUseCase;
+		this.uploader = uploader;
 	}
 	
 	@Override
@@ -44,7 +48,10 @@ public class SystemUserImageService implements SystemUserImageFileUseCase, Syste
 		
 		if (user == null) return null;
 		
-		String path = user.changeImage(profilePictureRepository, file);
+		//String path = user.changeImage(profilePictureRepository, file);
+						
+		String path = uploader.uploadImage(file);
+		user.setImage(path);			
 		
 		this.port.save(user);
 		
