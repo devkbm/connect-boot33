@@ -31,7 +31,7 @@ public class SystemUserImageController {
 		this.imageChangeUseCase = imageChangeUseCase;		
 	}
 	
-	@GetMapping("/api/system/user/image")
+	//@GetMapping("/api/system/user/image")
 	public HttpServletResponse downloadUserImage(HttpServletResponse response
 												,@RequestParam String companyCode
 											    ,@RequestParam String userId) throws Exception {									
