@@ -3,48 +3,33 @@ package com.like.system.user.adapter.in.web;
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.like.system.user.application.port.in.SystemUserImageChangeUseCase;
-import com.like.system.user.application.port.in.SystemUserImageFileUseCase;
+import com.like.system.user.application.port.in.SystemUserImageUploadUseCase;
 
 @Controller
-public class SystemUserImageController {
+public class SystemUserImageUploadController {
 			
-	SystemUserImageFileUseCase imageSelectUseCase;
-	SystemUserImageChangeUseCase imageChangeUseCase;	
+	SystemUserImageUploadUseCase useCase;	
 		
-	public SystemUserImageController(SystemUserImageFileUseCase imageSelectUseCase
-									,SystemUserImageChangeUseCase imageChangeUseCase) {
-		this.imageSelectUseCase = imageSelectUseCase;
-		this.imageChangeUseCase = imageChangeUseCase;		
-	}
-	
-	//@GetMapping("/api/system/user/image")
-	public HttpServletResponse downloadUserImage(HttpServletResponse response
-												,@RequestParam String companyCode
-											    ,@RequestParam String userId) throws Exception {									
-		
-		return imageSelectUseCase.downloadImageFile(companyCode, userId, response);
-	}
+	public SystemUserImageUploadController(SystemUserImageUploadUseCase useCase) {		
+		this.useCase = useCase;		
+	}	
 	
 	@PostMapping("/api/system/user/image")
 	public ResponseEntity<?> changeUserImage(@RequestPart MultipartFile file
 											,@RequestParam String companyCode	
 											,String userId) throws Exception {				
 												
-		String fileName = imageChangeUseCase.changeImage(companyCode, userId, file);			
+		String fileName = useCase.upload(companyCode, userId, file);			
 							
 		return new ResponseEntity<Map<String,Object>>(setUploadResponseBody(fileName), setUploadResponseHeader(), HttpStatus.OK);
 	}	

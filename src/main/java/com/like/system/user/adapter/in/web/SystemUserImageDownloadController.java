@@ -16,11 +16,11 @@ import com.like.system.user.dto.SystemUserSaveDTO;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
-public class SystemUserImageDownloader {
+public class SystemUserImageDownloadController {
 
 	SystemUserSelectUseCase useCase;
 	
-	SystemUserImageDownloader(SystemUserSelectUseCase useCase) {
+	SystemUserImageDownloadController(SystemUserSelectUseCase useCase) {
 		this.useCase = useCase;
 	}
 	

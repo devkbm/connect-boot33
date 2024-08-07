@@ -18,7 +18,6 @@ import jakarta.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.like.core.jpa.domain.AbstractAuditEntity;
 import com.like.system.dept.domain.Dept;
@@ -180,15 +179,15 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 		
 		return this.image.getImage();
 	}
-	
+	/*
 	public String changeImage(ProfilePictureRepository profilePictureRepository, MultipartFile sourceFile) {
 		if (this.image == null) this.image = new SystemUserProfilePicture(profilePictureRepository);		
 		
 		return this.image.changeImage(profilePictureRepository, sourceFile);
 	}
-	
+	*/
 	public void setImage(String path) {
-		if (this.image == null) this.image = new SystemUserProfilePicture(null);
+		if (this.image == null) this.image = new SystemUserProfilePicture();
 		
 		this.image.setImage(path);
 	}
