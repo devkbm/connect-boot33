@@ -15,6 +15,7 @@ import com.like.system.user.application.port.out.SystemUserRoleCommandDbPort;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserRole;
 import com.like.system.user.domain.vo.UserPassword;
+import com.like.system.user.dto.SystemUserSaveByExcelDTO;
 import com.like.system.user.dto.SystemUserSaveDTO;
 
 @Transactional
@@ -54,6 +55,29 @@ public class SystemUserSaveService implements SystemUserSaveUseCase {
 		this.userRoleDbPort.delete(user.getRoleList().stream().toList());
 						
 		this.userRoleDbPort.save(this.toSystemUserRole(dto, user));
+	}	
+
+	@Override
+	public void save(List<SystemUserSaveByExcelDTO> dtos) {
+		for(SystemUserSaveByExcelDTO dto : dtos ) {
+		
+			Dept dept = StringUtils.hasText(dto.deptCode()) ? deptDbPort.select(dto.companyCode(), dto.deptCode()).orElse(null) : null;
+			SystemUser user = this.dbPort.select(dto.companyCode(), dto.userId());
+			
+			if (user == null) {
+				user = dto.newUser(dept);
+				user.changePassword(passwordEncoder.encode(UserPassword.getInitPassword()));
+			} else {
+				//dto.modifyUser(user, dept);
+			}							
+					
+			this.dbPort.save(user);
+			
+			//this.userRoleDbPort.delete(user.getRoleList().stream().toList());
+							
+			//this.userRoleDbPort.save(this.toSystemUserRole(dto, user));
+		}
+				
 	}
 	
 	private List<SystemUserRole> toSystemUserRole(SystemUserSaveDTO dto, SystemUser user) {
