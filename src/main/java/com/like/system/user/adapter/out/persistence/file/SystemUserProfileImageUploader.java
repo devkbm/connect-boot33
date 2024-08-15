@@ -22,31 +22,26 @@ public class SystemUserProfileImageUploader {
 		this.properties = properties;
 	}
 	
-	public String uploadImage(String companyCode, String userId, MultipartFile sourceFile) {
+	public String uploadImage(String companyCode, String userId, MultipartFile sourceFile) throws FileNotFoundException, IOException {
 				
 		String extension = StringUtils.getFilenameExtension(sourceFile.getOriginalFilename());	
 		String filePath = userId + "." + extension;			
-		
-		try {		
-			File file = new File(properties.uploadPath(), filePath);
-			copy(sourceFile, file);
-		} catch (IOException e) {			
-			e.printStackTrace();
-		}
-					
+				
+		File file = new File(properties.uploadPath(), filePath);
+		copy(sourceFile, file);
+							
 		return Paths.get(properties.uploadPath(), filePath).toString();
 	}
 	
 	private void copy(MultipartFile sourceFile, File file) throws FileNotFoundException, IOException {
-		if(sourceFile == null || sourceFile.isEmpty()) throw new FileNotFoundException();
-				
+		if(sourceFile == null || sourceFile.isEmpty()) throw new FileNotFoundException();				
 								
 		try (ReadableByteChannel	cin = Channels.newChannel(sourceFile.getInputStream());	
 			 FileOutputStream 		fos = new FileOutputStream(file);
 			 FileChannel 			cout = fos.getChannel();) {			
 						
 			 cout.transferFrom(cin, 0, sourceFile.getInputStream().available());						 				
-		}	
-		
+		}			
 	}
+		
 }

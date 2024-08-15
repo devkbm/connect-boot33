@@ -1,5 +1,8 @@
 package com.like.system.user.application.service;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +25,7 @@ public class SystemUserImageUploadService implements SystemUserImageUploadUseCas
 	}
 	
 	@Override
-	public String upload(String companyCode, String userId, MultipartFile file) {
+	public String upload(String companyCode, String userId, MultipartFile file) throws FileNotFoundException, IOException {
 		SystemUser user = this.port.select(companyCode, userId);
 		
 		if (user == null) return null;
