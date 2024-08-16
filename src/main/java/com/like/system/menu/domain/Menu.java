@@ -98,8 +98,8 @@ public class Menu extends AbstractAuditEntity implements Serializable {
 		//this.companyCode = companyCode;
 		//this.code = menuCode;
 		this.id = new MenuId(companyCode, menuGroup.getId().getMenuGroupCode(), menuCode);
-		this.parent = parent;
-		this.parentMenuCode = parent.getId().getMenuCode();
+		this.parent = parent == null ? null : parent;
+		this.parentMenuCode = parent == null ? null : parent.getId().getMenuCode();
 		
 		this.name = menuName;			
 		this.type = menuType;
