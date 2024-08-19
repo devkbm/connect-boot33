@@ -1,5 +1,6 @@
 package com.like.hrm.staff.adapter.in.web;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,15 +13,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.like.hrm.staff.adapter.out.file.StaffImageUploader;
 import com.like.hrm.staff.application.port.in.StaffImageUploadUseCase;
 
 @Controller
 public class StaffImageUploadController {
 	
-	private StaffImageUploadUseCase useCase;
-				
-	public StaffImageUploadController(StaffImageUploadUseCase useCase) {
+	StaffImageUploadUseCase useCase;
+	StaffImageUploader uploader;	
+			
+	public StaffImageUploadController(StaffImageUploadUseCase useCase, StaffImageUploader uploader) {
 		this.useCase = useCase;
+		this.uploader = uploader;
 	}
 
 	@PostMapping("/api/hrm/staff/changeimage")
@@ -28,7 +32,9 @@ public class StaffImageUploadController {
 											 ,String companyCode
 											 ,String staffNo) throws Exception {				
 		
-		String fileName = useCase.upload(companyCode, staffNo, file);
+		File uploadedFile = uploader.uploadFile(companyCode, staffNo, file);
+		
+		String fileName = useCase.saveUploadImagePath(companyCode, staffNo, uploadedFile);
 							
 		return new ResponseEntity<Map<String,Object>>(setUploadResponseBody(fileName), setUploadResponseHeader(), HttpStatus.OK);
 	}

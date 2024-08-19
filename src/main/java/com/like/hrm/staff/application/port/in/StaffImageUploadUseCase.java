@@ -1,7 +1,8 @@
 package com.like.hrm.staff.application.port.in;
 
-import org.springframework.web.multipart.MultipartFile;
+import java.io.File;
+import java.io.IOException;
 
-public interface StaffImageUploadUseCase {
-	String upload(String companyCode, String staffNo, MultipartFile file);
+public interface StaffImageUploadUseCase {		
+	String saveUploadImagePath(String companyCode, String staffNo, File file)  throws IOException;
 }

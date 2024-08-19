@@ -40,17 +40,6 @@ public class SystemUserImageUploadController {
 		String fileName = useCase.saveUploadImagePath(companyCode, userId, uploadedFile);			
 							
 		return new ResponseEntity<Map<String,Object>>(setUploadResponseBody(fileName), setUploadResponseHeader(), HttpStatus.OK);
-	}
-	
-	
-	@PostMapping("/api/system/user/image-2")
-	public ResponseEntity<?> changeUserImage(@RequestPart MultipartFile file
-											,@RequestParam String companyCode	
-											,String userId) throws Exception {				
-												
-		String fileName = useCase.upload(companyCode, userId, file);			
-							
-		return new ResponseEntity<Map<String,Object>>(setUploadResponseBody(fileName), setUploadResponseHeader(), HttpStatus.OK);
 	}	
 	
 	private Map<String, Object> setUploadResponseBody(String fileName) {		

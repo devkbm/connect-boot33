@@ -1,4 +1,4 @@
-package com.like.system.user.adapter.out.persistence.file;
+package com.like.hrm.staff.adapter.out.file;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,24 +12,27 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.like.system.file.config.FileServerProperties;
+
 @Repository
-public class SystemUserProfileImageUploader {
+public class StaffImageUploader  {
 	
-	UserImagePathProperties properties;
+	FileServerProperties properties;
 	
-	SystemUserProfileImageUploader(UserImagePathProperties properties) {		
+	StaffImageUploader(FileServerProperties properties) {		
 		this.properties = properties;
 	}
 	
-	public File upload(String companyCode, String userId, MultipartFile sourceFile) throws FileNotFoundException, IOException {
+	public File uploadFile(String companyCode, String staffNo, MultipartFile sourceFile) throws FileNotFoundException, IOException {
+		String fileServerPath = this.properties.getLocation();		
 		String extension = StringUtils.getFilenameExtension(sourceFile.getOriginalFilename());	
-		String fileName = userId + "." + extension;			
-				
-		File file = new File(properties.uploadPath(), fileName);
+		String fileName = staffNo + "." + extension;
+		
+		File file = new File(fileServerPath, fileName);
 		copy(sourceFile, file);
-							
+		
 		return file;
-	}
+	}	
 	
 	private void copy(MultipartFile sourceFile, File file) throws FileNotFoundException, IOException {
 		if(sourceFile == null || sourceFile.isEmpty()) throw new FileNotFoundException();				
@@ -41,5 +44,4 @@ public class SystemUserProfileImageUploader {
 			 cout.transferFrom(cin, 0, sourceFile.getInputStream().available());						 				
 		}			
 	}
-		
 }

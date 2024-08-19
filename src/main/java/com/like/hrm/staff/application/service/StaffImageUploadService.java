@@ -1,39 +1,36 @@
 package com.like.hrm.staff.application.service;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.like.hrm.staff.application.port.in.StaffImageUploadUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
-import com.like.system.file.export.FileUploadUseCase;
 
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class StaffImageUploadService implements StaffImageUploadUseCase {
 	
-	StaffCommandDbPort dbPort;
-	FileUploadUseCase uploadUseCase;
+	StaffCommandDbPort dbPort;	
 	
-	StaffImageUploadService(StaffCommandDbPort dbPort
-						   ,FileUploadUseCase uploadUseCase) {
-		this.dbPort = dbPort;
-		this.uploadUseCase = uploadUseCase;
-	}
-	
+	StaffImageUploadService(StaffCommandDbPort dbPort) {
+		this.dbPort = dbPort;	
+	}	
+
 	@Override
-	public String upload(String companyCode, String staffNo, MultipartFile file) {
-		
+	public String saveUploadImagePath(String companyCode, String staffNo, File file) throws IOException {
 		Staff entity = this.dbPort.select(companyCode, staffNo)
-								  .orElseThrow(() -> new EntityNotFoundException("직원정보가 존재하지 않습니다."));;
-		
+				  .orElseThrow(() -> new EntityNotFoundException("직원정보가 존재하지 않습니다."));;
+
 		if (entity == null) return null;
+
+		String path = file.getCanonicalPath();
 		
-		String path = uploadUseCase.uploadFile(file, "kbm", "SystemUser").fildId().toString();
-		
-		entity.changeImagePath(path);			
-		
+		entity.changeImagePath(path);
+
 		this.dbPort.save(entity);
 		
 		return path;
