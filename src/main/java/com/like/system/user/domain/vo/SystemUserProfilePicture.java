@@ -18,7 +18,7 @@ public class SystemUserProfilePicture implements Serializable {
 	@Column(name="FK_FILE")
 	String image;
 			
-	public void setImage(String path) {
+	public void setImagePath(String path) {
 		this.image = path;
 	}
 		

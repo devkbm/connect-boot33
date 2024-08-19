@@ -1,4 +1,4 @@
-package com.like.system.user.adapter.in.web;
+package com.like.system.user.adapter.in.web.SystemUserImage;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,5 +1,6 @@
 package com.like.system.user.application.service;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -31,6 +32,20 @@ public class SystemUserImageUploadService implements SystemUserImageUploadUseCas
 		if (user == null) return null;
 									
 		String path = uploader.uploadImage(companyCode, userId, file);
+		user.setImage(path);			
+		
+		this.port.save(user);
+		
+		return path;
+	}
+
+	@Override
+	public String saveUploadImagePath(String companyCode, String userId, File file) throws FileNotFoundException, IOException {
+		SystemUser user = this.port.select(companyCode, userId);
+		
+		if (user == null) return null;
+						
+		String path = file.getCanonicalPath();
 		user.setImage(path);			
 		
 		this.port.save(user);

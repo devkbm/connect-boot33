@@ -189,7 +189,7 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	public void setImage(String path) {
 		if (this.image == null) this.image = new SystemUserProfilePicture();
 		
-		this.image.setImage(path);
+		this.image.setImagePath(path);
 	}
 	
 
