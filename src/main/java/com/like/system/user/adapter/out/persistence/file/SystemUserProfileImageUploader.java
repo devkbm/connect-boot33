@@ -22,6 +22,16 @@ public class SystemUserProfileImageUploader {
 		this.properties = properties;
 	}
 	
+	public File upload(String companyCode, String userId, MultipartFile sourceFile) throws FileNotFoundException, IOException {
+		String extension = StringUtils.getFilenameExtension(sourceFile.getOriginalFilename());	
+		String filePath = userId + "." + extension;			
+				
+		File file = new File(properties.uploadPath(), filePath);
+		copy(sourceFile, file);
+							
+		return file;
+	}
+	
 	public String uploadImage(String companyCode, String userId, MultipartFile sourceFile) throws FileNotFoundException, IOException {
 				
 		String extension = StringUtils.getFilenameExtension(sourceFile.getOriginalFilename());	
