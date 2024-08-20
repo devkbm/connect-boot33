@@ -19,6 +19,8 @@ import com.like.system.user.domain.SystemUser;
 
 import lombok.extern.slf4j.Slf4j;
 
+// https://console.cloud.google.com/apis/credentials?hl=ko&pli=1&project=our-ratio-105505
+
 @Slf4j
 @RestController
 public class OauthLoginController {
