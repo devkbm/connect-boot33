@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -48,7 +49,9 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 						.requestMatchers(new AntPathRequestMatcher("/oauth2/authorization/**")).permitAll()				
 						//.requestMatchers(new AntPathRequestMatcher("/login/oauth2/callback/google/**")).permitAll()
 						.requestMatchers(new AntPathRequestMatcher("/ex")).permitAll()
-						.anyRequest().authenticated())			
+						.anyRequest().authenticated())
+			.oauth2Login(Customizer.withDefaults())
+			.oauth2Client(Customizer.withDefaults())			
 			.logout(logout -> logout.logoutUrl("/common/user/logout")
 									.invalidateHttpSession(true)
 									.deleteCookies("JSESSIONID")
