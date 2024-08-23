@@ -8,10 +8,13 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.like.system.authentication.domain.AuthenticationToken;
 import com.like.system.user.application.service.SystemUserSelectService;
@@ -21,6 +24,11 @@ import lombok.extern.slf4j.Slf4j;
 
 // https://console.cloud.google.com/apis/credentials?hl=ko&pli=1&project=our-ratio-105505
 
+
+/***
+ * CLIENT 에서 아래 URL 호출시 OAuth2AuthorizationRequestRedirectFilter 필터에서 처리 
+ *  http://localhost:8090/oauth2/authorization/google?redirect_uri=http://localhost:8090/loginSuccess&mode=login
+ */
 @Slf4j
 @RestController
 public class OauthLoginController {
@@ -41,6 +49,21 @@ public class OauthLoginController {
 
     // TEST URL 
     // https://accounts.google.com/o/oauth2/auth?client_id=497322312042-mstkseqfmr5t8r7nch5bp17r9lh5eoen.apps.googleusercontent.com&redirect_uri=http://localhost:8090/login/oauth2/code/google&response_type=code&scope=https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly
+    
+    // http://localhost:8090/oauth2/authorization/google
+    @PostMapping("/api/system/user/login-oauth")
+    public void oAuthLogin() {
+    	RestTemplate restTemplate = this.restTemplateBuilder.build();
+    	
+    	UriComponents complexUrl = UriComponentsBuilder
+                .fromUriString("http://localhost:8080/good/morning/{requestId}")
+                //.uriVariables(Map.of("requestId", "requestV1"))
+                .queryParam("https://accounts.google.com/o/oauth2/auth", "한글이름")
+                .queryParam("userId", "dailyCode")
+                .encode().build();
+    	
+    }
+    
     
     @GetMapping("/ex")
     public ModelAndView exRedirect1() {
@@ -105,6 +128,18 @@ public class OauthLoginController {
 		redirectAttributes.addFlashAttribute("token", session.getId());	
 		
 		return new ModelAndView("redirect:http://localhost:4200/login/" + session.getId());
+    	
+    }
+    
+    @GetMapping("/login/oauth2/callback/google")
+    public void moveClient(String state, String code, String scope, String authuser, String prompt,
+    							   HttpSession session, RedirectAttributes redirectAttributes) {
+    	    			
+    	log.info("/login/oauth2/callback/google");
+    	
+		//redirectAttributes.addFlashAttribute("token", session.getId());	
+		
+		//return new ModelAndView("redirect:http://localhost:4200/login/" + session.getId());
     	
     }
 }
