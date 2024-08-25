@@ -26,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 
 
 // 참조 blog - https://m42-orion.tistory.com/161
+// https://tonylim.tistory.com/395
 
 /***
  * CLIENT 에서 아래 URL 호출시 OAuth2AuthorizationRequestRedirectFilter 필터에서 처리 
