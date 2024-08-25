@@ -25,6 +25,8 @@ import lombok.extern.slf4j.Slf4j;
 // https://console.cloud.google.com/apis/credentials?hl=ko&pli=1&project=our-ratio-105505
 
 
+// 참조 blog - https://m42-orion.tistory.com/161
+
 /***
  * CLIENT 에서 아래 URL 호출시 OAuth2AuthorizationRequestRedirectFilter 필터에서 처리 
  *  http://localhost:8090/oauth2/authorization/google?redirect_uri=http://localhost:8090/loginSuccess&mode=login

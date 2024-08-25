@@ -1,4 +1,4 @@
-package com.like.core.oauth;
+package com.like.core.security.oauth2;
 
 import java.util.Map;
 

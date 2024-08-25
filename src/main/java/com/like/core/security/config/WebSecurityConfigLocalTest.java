@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,17 +23,18 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.like.core.security.oauth2.CustomOAuth2UserService;
+import com.like.core.security.oauth2.OAuth2AuthenticationSuccessHandler;
+
+
 @Configuration
+@EnableWebSecurity
 @Profile("localtest")
 public class WebSecurityConfigLocalTest<S extends Session> {
 
-	@Autowired
-	private FindByIndexNameSessionRepository<S> sessionRepository;
-		
-	@Bean
-    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
+	@Autowired private CustomOAuth2UserService customOAuth2UserService;
+	@Autowired private OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;	
+	@Autowired private FindByIndexNameSessionRepository<S> sessionRepository;
 	
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -49,9 +50,13 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 						.requestMatchers(new AntPathRequestMatcher("/oauth2/authorization/**")).permitAll()				
 						//.requestMatchers(new AntPathRequestMatcher("/login/oauth2/callback/google/**")).permitAll()
 						.requestMatchers(new AntPathRequestMatcher("/ex")).permitAll()
-						.anyRequest().authenticated())
-			.oauth2Login(Customizer.withDefaults())
-			.oauth2Client(Customizer.withDefaults())			
+						.anyRequest().authenticated())		
+			//.oauth2Login(Customizer.withDefaults())
+			.oauth2Login(customConfigurer -> customConfigurer
+				.successHandler(oAuth2AuthenticationSuccessHandler)
+				.userInfoEndpoint(endPointConfig -> endPointConfig.userService(customOAuth2UserService))														
+			)		
+			//.oauth2Client(Customizer.withDefaults())			
 			.logout(logout -> logout.logoutUrl("/common/user/logout")
 									.invalidateHttpSession(true)
 									.deleteCookies("JSESSIONID")
@@ -91,6 +96,11 @@ public class WebSecurityConfigLocalTest<S extends Session> {
        
        return source;
 	}
+	
+	@Bean
+    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
 	
 	@Bean
 	PasswordEncoder bCryptPasswordEncoder() {

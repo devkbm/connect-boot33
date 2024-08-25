@@ -1,4 +1,4 @@
-package com.like.core.oauth;
+package com.like.core.security.oauth2;
 
 import java.util.Collections;
 
@@ -16,20 +16,25 @@ import org.springframework.stereotype.Service;
 import com.like.system.user.adapter.out.persistence.jpa.repository.SystemUserRepository;
 import com.like.system.user.domain.SystemUser;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RequiredArgsConstructor
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User>{
 
 	private final SystemUserRepository userRepository;
 	private final HttpSession httpSession;
 	   
+	CustomOAuth2UserService(SystemUserRepository userRepository, HttpSession httpSession) {
+		this.userRepository = userRepository;
+		this.httpSession = httpSession;
+	}
+	
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 				
+		
+		log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		OAuth2UserService delegate = new DefaultOAuth2UserService();
 		OAuth2User oAuth2User = delegate.loadUser(userRequest);			
 		
@@ -41,19 +46,20 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		
 		OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-		log.info("----------------------------");
+		log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		log.info(registrationId);
 		log.info(userNameAttributeName);
-		log.info(oAuth2User.getAttributes().toString());		
-		log.info("----------------------------");
+		//log.info(oAuth2User.getAttributes().toString());		
+		log.info("aaaaaaaaaaaaaaaaaaaaaaaa");
 		
 		//User user = saveOrUpdate(attributes);
-		//httpSession.setAttribute("user", user);
-
+		//httpSession.setAttribute("user", user);	
+		
 		return new DefaultOAuth2User(
                Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")),
                attributes.getAttributes(),
                attributes.getNameAttributeKey());
+        
 	}
 	
 	private SystemUser saveOrUpdate(OAuthAttributes attributes) {
