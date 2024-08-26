@@ -32,9 +32,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-				
-		
-		log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+							
 		OAuth2UserService delegate = new DefaultOAuth2UserService();
 		OAuth2User oAuth2User = delegate.loadUser(userRequest);			
 		
@@ -46,11 +44,15 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		
 		OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
+		// {sub=112050878942662954589, name=김병민, given_name=병민, family_name=김, picture=https://lh3.googleusercontent.com/a/ACg8ocIMTjbjyQTYA9qtpQisXrW2rh5DaP4Vh3lQiHL8o14qwrj_oA=s96-c, email=devkbm0417@gmail.com, email_verified=true}
+		
 		log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		log.info(registrationId);
 		log.info(userNameAttributeName);
-		//log.info(oAuth2User.getAttributes().toString());		
-		log.info("aaaaaaaaaaaaaaaaaaaaaaaa");
+		log.info(oAuth2User.getAttributes().get("sub").toString());
+		log.info(oAuth2User.getAttributes().toString());		
+		log.info(attributes.toString());
+		log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		
 		//User user = saveOrUpdate(attributes);
 		//httpSession.setAttribute("user", user);	

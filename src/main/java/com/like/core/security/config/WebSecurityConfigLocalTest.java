@@ -2,7 +2,6 @@ package com.like.core.security.config;
 
 import java.util.Arrays;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -32,30 +31,34 @@ import com.like.core.security.oauth2.OAuth2AuthenticationSuccessHandler;
 @Profile("localtest")
 public class WebSecurityConfigLocalTest<S extends Session> {
 
-	@Autowired private CustomOAuth2UserService customOAuth2UserService;
-	@Autowired private OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;	
-	@Autowired private FindByIndexNameSessionRepository<S> sessionRepository;
+	private final FindByIndexNameSessionRepository<S> sessionRepository;
+	private final CustomOAuth2UserService customOAuth2UserService;
+	private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;		
+	
+	WebSecurityConfigLocalTest(FindByIndexNameSessionRepository<S> sessionRepository
+							  ,CustomOAuth2UserService customOAuth2UserService
+							  ,OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler) {
+		this.sessionRepository = sessionRepository;
+		this.customOAuth2UserService = customOAuth2UserService;
+		this.oAuth2AuthenticationSuccessHandler = oAuth2AuthenticationSuccessHandler;
+	}
 	
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
 			.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 			.headers(headers -> headers.frameOptions(frame -> frame.disable()))	// h2-console 테스트를 위한 설정
-			.sessionManagement((s) -> s.maximumSessions(1).sessionRegistry(sessionRegistry()))
+			.sessionManagement((s) -> s.maximumSessions(1).sessionRegistry(sessionRegistry()))			
 			.authorizeHttpRequests(authorize -> 
 				authorize.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-						.requestMatchers(new AntPathRequestMatcher("/api/system/user/login")).permitAll()			// 로그인 api
-						.requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
-						.requestMatchers(new AntPathRequestMatcher("/oauth/user")).permitAll()								
-						.requestMatchers(new AntPathRequestMatcher("/oauth2/authorization/**")).permitAll()				
-						//.requestMatchers(new AntPathRequestMatcher("/login/oauth2/callback/google/**")).permitAll()
-						.requestMatchers(new AntPathRequestMatcher("/ex")).permitAll()
-						.anyRequest().authenticated())		
-			//.oauth2Login(Customizer.withDefaults())
+						.requestMatchers(new AntPathRequestMatcher("/api/system/user/login")).permitAll()			// 로그인 API
+						.requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()					// h2-console 
+						.anyRequest().authenticated())								
 			.oauth2Login(customConfigurer -> customConfigurer
 				.successHandler(oAuth2AuthenticationSuccessHandler)
 				.userInfoEndpoint(endPointConfig -> endPointConfig.userService(customOAuth2UserService))														
-			)		
+			)
+			//.oauth2Login(Customizer.withDefaults())
 			//.oauth2Client(Customizer.withDefaults())			
 			.logout(logout -> logout.logoutUrl("/common/user/logout")
 									.invalidateHttpSession(true)
@@ -63,7 +66,7 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 									.permitAll());
 			
 		return http.build();
-	}
+	}	
 	
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {

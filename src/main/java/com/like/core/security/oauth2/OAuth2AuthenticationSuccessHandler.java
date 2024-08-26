@@ -30,14 +30,13 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws ServletException, IOException {
 		
-		String i="1";
-		
 		/*
 		SavedRequest savedRequest = this.requestCache.getRequest(request, response);
 		if (savedRequest == null) {
 			super.onAuthenticationSuccess(request, response, authentication);
 			return;
 		}
+		*/
 		String targetUrlParameter = getTargetUrlParameter();
 		if (isAlwaysUseDefaultTargetUrl()
 				|| (targetUrlParameter != null && StringUtils.hasText(request.getParameter(targetUrlParameter)))) {
@@ -49,9 +48,10 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 		
 		
 		// Use the DefaultSavedRequest URL
-		String targetUrl = savedRequest.getRedirectUrl();
-		getRedirectStrategy().sendRedirect(request, response, targetUrl);
-		*/
+		//String targetUrl = savedRequest.getRedirectUrl();
+		
+		//log.info(targetUrl);
+		getRedirectStrategy().sendRedirect(request, response, "http://localhost:4200/home/");					
 	}
 
 	public void setRequestCache(RequestCache requestCache) {

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -29,12 +28,15 @@ import lombok.extern.slf4j.Slf4j;
 // https://tonylim.tistory.com/395
 
 /***
- * CLIENT 에서 아래 URL 호출시 OAuth2AuthorizationRequestRedirectFilter 필터에서 처리 
- *  http://localhost:8090/oauth2/authorization/google?redirect_uri=http://localhost:8090/loginSuccess&mode=login
+ * 1) 클라이언트에서 http://localhost:8090/oauth2/authorization/google 호출 
+ *  - OAuth2AuthorizationRequestRedirectFilter 필터에서 처리
+ * 
+ * 2) CALLBACK URL 호출 http://localhost:8090/login/oauth2/code/   
+ *  - OAuth2LoginAuthenticationFilter 필터에서 처리 
  */
 @Slf4j
 @RestController
-public class OauthLoginController {
+public class OauthLoginController {	
 	
 	private SystemUserSelectService userService;
 	 
@@ -123,26 +125,5 @@ public class OauthLoginController {
 					
 		return token;
     } 
-    
-    @GetMapping("/login/oauth2/code/google")
-    public ModelAndView getLogin1(OAuth2AuthenticationToken authentication, HttpSession session, HttpServletRequest request, RedirectAttributes redirectAttributes) {
-    	log.info("/login/oauth2/code/google");    	    	    	
-		
-		redirectAttributes.addFlashAttribute("token", session.getId());	
-		
-		return new ModelAndView("redirect:http://localhost:4200/login/" + session.getId());
-    	
-    }
-    
-    @GetMapping("/login/oauth2/callback/google")
-    public void moveClient(String state, String code, String scope, String authuser, String prompt,
-    							   HttpSession session, RedirectAttributes redirectAttributes) {
-    	    			
-    	log.info("/login/oauth2/callback/google");
-    	
-		//redirectAttributes.addFlashAttribute("token", session.getId());	
-		
-		//return new ModelAndView("redirect:http://localhost:4200/login/" + session.getId());
-    	
-    }
+        
 }
