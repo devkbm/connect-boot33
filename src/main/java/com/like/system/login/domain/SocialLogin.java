@@ -1,20 +1,34 @@
 package com.like.system.login.domain;
 
-import java.time.LocalDateTime;
+import com.like.core.jpa.domain.AbstractAuditEntity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-public class SocialLogin {
 
-	@Column(name="ORG_CD")
-	String companyCode;
+@NoArgsConstructor(access=AccessLevel.PROTECTED)
+@Getter
+//@Entity
+//@Table(name = "COMLOGINSOCIAL")
+public class SocialLogin extends AbstractAuditEntity {
+
+	@EmbeddedId
+	SocialLoginID id;
+		
+	@Column(name="NAME")
+	String name;
+	
+	@Column(name="EMAIL")
+	String email;	
 	
 	@Column(name="USER_ID")
 	String userId;
 	
-	SocialLoginENUM social;
-	
-	String token;
-	
-	LocalDateTime lastedLoginDate;
+	@Column(name="USE_YN")
+	String useYn;
 }
