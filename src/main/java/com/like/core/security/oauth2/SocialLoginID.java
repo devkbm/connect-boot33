@@ -1,4 +1,4 @@
-package com.like.system.login.domain;
+package com.like.core.security.oauth2;
 
 import java.io.Serializable;
 

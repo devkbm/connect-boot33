@@ -1,4 +1,4 @@
-package com.like.system.login.domain;
+package com.like.core.security.oauth2;
 
 import com.like.core.jpa.domain.AbstractAuditEntity;
 
@@ -13,22 +13,22 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Getter
-//@Entity
-//@Table(name = "COMLOGINSOCIAL")
+@Entity
+@Table(name = "COMLOGINSOCIAL")
 public class SocialLogin extends AbstractAuditEntity {
 
 	@EmbeddedId
 	SocialLoginID id;
 		
-	@Column(name="NAME")
+	@Column(name="USER_NAME")
 	String name;
 	
-	@Column(name="EMAIL")
+	@Column(name="USER_EMAIL")
 	String email;	
 	
 	@Column(name="USER_ID")
 	String userId;
 	
 	@Column(name="USE_YN")
-	String useYn;
+	Boolean useYn;
 }
