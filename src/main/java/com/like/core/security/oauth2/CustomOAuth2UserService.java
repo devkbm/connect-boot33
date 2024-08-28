@@ -64,6 +64,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		log.info(attributes.getAttributes().toString());
 		log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		
+		log.info(userRequest.getAdditionalParameters().toString());
+		
 		//User user = saveOrUpdate(attributes);
 		//httpSession.setAttribute("user", user);	
 		
@@ -71,10 +73,23 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		SocialLogin socialLoginInfo = this.findSocialLoginInfo(new SocialLoginID(registrationId, oAuth2User.getAttributes().get(userNameAttributeName).toString()))
 										  .orElse(null);		
 		
-		// 2. 로그인 정보가 없을 경우 사용자 정보에서 이메일이 동일한 사용자 검색
-		SystemUser user = this.findSystemUserByEmail(oAuth2User.getAttributes().get("email").toString())
-							  .orElse(null);
-		// 3. 소셜 로그인 정보 저장
+		SystemUser systemUser = null;
+		// 2. 로그인 정보가 없을 경우 사용자 정보에서 이메일이 동일한 사용자 검색하여
+		//    소셜 로그인 정보 저장
+		if (socialLoginInfo == null) {
+	
+			systemUser = this.findSystemUserByEmail(oAuth2User.getAttributes().get("email").toString())
+ 			 		         .orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
+			
+			socialLoginInfo = SocialLogin.newSocialLogin(new SocialLoginID(registrationId, oAuth2User.getAttributes().get(userNameAttributeName).toString())
+														,userNameAttributeName
+														,registrationId
+														,userNameAttributeName);
+			
+			saveSocialLoginInfo(socialLoginInfo);
+		} else {
+			// 
+		}
 		
 		// 4. 정보가 있으면 로그인 진행
 		
@@ -91,6 +106,10 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	
 	private Optional<SocialLogin> findSocialLoginInfo(SocialLoginID id) {
 		return this.socialLoginRepository.findById(id);
+	}
+	
+	private void saveSocialLoginInfo(SocialLogin entity) {
+		this.socialLoginRepository.save(entity);
 	}
 	
 	private SystemUser saveOrUpdate(OAuthAttributes attributes) {
