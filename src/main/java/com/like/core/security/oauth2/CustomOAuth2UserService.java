@@ -1,6 +1,7 @@
 package com.like.core.security.oauth2;
 
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.Optional;
 
 import jakarta.servlet.http.HttpSession;
@@ -25,16 +26,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User>{
-
-	private final HttpSession httpSession;
+	
 	private final SystemUserRepository userRepository;
 	private final SocialLoginRepository socialLoginRepository;
 		   
-	CustomOAuth2UserService(HttpSession httpSession
-						   ,SystemUserRepository userRepository
+	CustomOAuth2UserService(SystemUserRepository userRepository
 						   ,SocialLoginRepository socialLoginRepository) {
-		this.userRepository = userRepository;
-		this.httpSession = httpSession;
+		this.userRepository = userRepository;		
 		this.socialLoginRepository = socialLoginRepository;
 	}
 	
@@ -64,7 +62,11 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		log.info(attributes.getAttributes().toString());
 		log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		
-		log.info(userRequest.getAdditionalParameters().toString());
+		log.info("bbbbbbbbbbbbbbbbbbbb");
+		//log.info(userRequest.toString());
+		//log.info(userRequest.getAdditionalParameters().toString());			
+		
+		log.info("bbbbbbbbbbbbbbbbbbbb");
 		
 		//User user = saveOrUpdate(attributes);
 		//httpSession.setAttribute("user", user);	
@@ -82,8 +84,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
  			 		         .orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
 			
 			socialLoginInfo = SocialLogin.newSocialLogin(new SocialLoginID(registrationId, oAuth2User.getAttributes().get(userNameAttributeName).toString())
-														,userNameAttributeName
-														,registrationId
+														,oAuth2User.getAttribute("name")
+														,oAuth2User.getAttribute("email")
 														,userNameAttributeName);
 			
 			saveSocialLoginInfo(socialLoginInfo);
@@ -96,12 +98,16 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		return new DefaultOAuth2User(
                Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")),
                attributes.getAttributes(),
-               attributes.getNameAttributeKey());
-        
+               attributes.getNameAttributeKey());       
 	}
 	
 	private Optional<SystemUser> findSystemUserByEmail(String email) {		
 		return this.userRepository.findBy(QSystemUser.systemUser.email.eq(email), q-> q.first());
+	}
+	
+	private Optional<SystemUser> findSystemUser(String userId) {
+		return null;
+		//return this.userRepository.findById(QSystemUser.systemUser.email.eq(email), q-> q.first());
 	}
 	
 	private Optional<SocialLogin> findSocialLoginInfo(SocialLoginID id) {

@@ -22,6 +22,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.like.core.security.oauth2.CustomAuthorizationRequestResolver;
 import com.like.core.security.oauth2.CustomOAuth2UserService;
 import com.like.core.security.oauth2.OAuth2AuthenticationSuccessHandler;
 
@@ -33,13 +34,16 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 
 	private final FindByIndexNameSessionRepository<S> sessionRepository;
 	private final CustomOAuth2UserService customOAuth2UserService;
+	private final CustomAuthorizationRequestResolver customAuthorizationRequestResolver;
 	private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;		
 	
 	WebSecurityConfigLocalTest(FindByIndexNameSessionRepository<S> sessionRepository
 							  ,CustomOAuth2UserService customOAuth2UserService
+							  ,CustomAuthorizationRequestResolver customAuthorizationRequestResolver
 							  ,OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler) {
 		this.sessionRepository = sessionRepository;
 		this.customOAuth2UserService = customOAuth2UserService;
+		this.customAuthorizationRequestResolver = customAuthorizationRequestResolver;
 		this.oAuth2AuthenticationSuccessHandler = oAuth2AuthenticationSuccessHandler;
 	}
 	
@@ -56,6 +60,7 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 						.anyRequest().authenticated())								
 			.oauth2Login(customConfigurer -> customConfigurer
 				.successHandler(oAuth2AuthenticationSuccessHandler)
+				.authorizationEndpoint(endPointConfig -> endPointConfig.authorizationRequestResolver(customAuthorizationRequestResolver))
 				.userInfoEndpoint(endPointConfig -> endPointConfig.userService(customOAuth2UserService))														
 			)
 			//.oauth2Login(Customizer.withDefaults())
@@ -66,7 +71,7 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 									.permitAll());
 			
 		return http.build();
-	}	
+	}		
 	
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
