@@ -1,10 +1,7 @@
 package com.like.core.security.oauth2;
 
 import java.util.Collections;
-import java.util.Enumeration;
 import java.util.Optional;
-
-import jakarta.servlet.http.HttpSession;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

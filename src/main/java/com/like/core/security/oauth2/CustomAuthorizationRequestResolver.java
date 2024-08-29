@@ -29,6 +29,7 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 		OAuth2AuthorizationRequest authorizationRequest = this.defaultAuthorizationRequestResolver.resolve(request);		
 		String companyCode = request.getParameter("companyCode");
 					
+		log.info("00000000000000000");
 		// companyCode를 CustomOAuth2UserService로 어떻게 전달할지 방법을 못찾음
 		
 		return authorizationRequest != null ? customAuthorizationRequest(authorizationRequest, companyCode) : null;

@@ -14,17 +14,21 @@ import com.p6spy.engine.spy.appender.MessageFormattingStrategy;
 
 public class P6spyPrettySqlFormatter implements MessageFormattingStrategy {
 
-	// 표기에 허용되지 않는 filter
-    private List<String> DENIED_FILTER = Arrays.asList(this.getClass().getSimpleName(), 
-    		                                           "com.like.system.core.p6spylog.P6spyPrettySqlFormatter" 
-    												  );
-    // 표기에 허용되는 filter
-    // com.like
+	// 전체 trace 중 표기할 내용
     private String ALLOW_FILTER = "com.like";
 	
+	// 전체 trace 중 제외할 내용
+    private List<String> DENIED_FILTER = Arrays.asList(this.getClass().getSimpleName() 
+    		                                          ,"com.like.system.core.p6spylog.P6spyPrettySqlFormatter" 
+    												  ,"com.like.core.p6spylog.P6spyCustomSlf4JLogger"	
+    												  );
+        	
     @Override
     public String formatMessage(int connectionId, String now, long elapsed, String category, String prepared, String sql, String url) {
     	    	    	
+    	// JDBC SPRING SESSION sql 로깅 제외
+    	if ( sql.contains("DELETE") && sql.contains("SPRING_SESSION")) return "";    		
+    	
     	sql = formatSql(category, sql);
     	Date currentDate = new Date();
 
@@ -57,8 +61,7 @@ public class P6spyPrettySqlFormatter implements MessageFormattingStrategy {
 
         for (StackTraceElement stackTraceElement : stackTrace) {
             String trace = stackTraceElement.toString();           
-            
-            // trace 항목을 보고 내게 맞는 것만 필터
+                        	            
             if(trace.startsWith(ALLOW_FILTER) && !filterDenied(trace)) {
                 callStack.push(trace);
             }
@@ -80,7 +83,7 @@ public class P6spyPrettySqlFormatter implements MessageFormattingStrategy {
 
 	private boolean filterDenied(String trace) {				
 		for (String filter : this.DENIED_FILTER) {							
-			if (trace.startsWith(filter)) 
+			if (trace.contains(filter)) 
 				return true;  
 		}
 		
