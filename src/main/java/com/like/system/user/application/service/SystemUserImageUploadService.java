@@ -22,7 +22,7 @@ public class SystemUserImageUploadService implements SystemUserImageUploadUseCas
 
 	@Override
 	public String saveUploadImagePath(String companyCode, String userId, File file) throws IOException {
-		SystemUser user = this.port.select(companyCode, userId);
+		SystemUser user = this.port.select(userId);
 		
 		if (user == null) return null;
 						

@@ -1,10 +1,10 @@
-package com.like.system.user.adapter.out.persistence;
+package com.like.system.user.adapter.out.persistence.db;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.system.user.adapter.out.persistence.jpa.repository.SystemUserRepository;
+import com.like.system.user.adapter.out.persistence.db.jpa.SystemUserRepository;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserId;
@@ -20,8 +20,8 @@ public class SystemUserCommandDbAdapter implements SystemUserCommandDbPort {
 	}
 	
 	@Override
-	public SystemUser select(String companyCode, String userId) {		
-		return this.repository.findById(new SystemUserId(companyCode, userId)).orElse(null);
+	public SystemUser select(String userId) {		
+		return this.repository.findById(new SystemUserId(userId)).orElse(null);
 	}
 	
 	@Override
@@ -30,14 +30,13 @@ public class SystemUserCommandDbAdapter implements SystemUserCommandDbPort {
 	}
 	
 	@Override
-	public void delete(String companyCode, String userId) {
-		this.repository.deleteById(new SystemUserId(companyCode, userId));		
+	public void delete(String userId) {
+		this.repository.deleteById(new SystemUserId(userId));		
 	}
 
 	@Override
-	public List<SystemUser> select(String companyCode, List<String> userIds) {
-		
-		return this.repository.findAllById(userIds.stream().map(e -> new SystemUserId(companyCode, e)).toList());
+	public List<SystemUser> select(List<String> userIds) {	
+		return this.repository.findAllById(userIds.stream().map(e -> new SystemUserId(e)).toList());
 	}
 				
 }

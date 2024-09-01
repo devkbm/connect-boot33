@@ -21,7 +21,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.like.core.jpa.domain.AbstractAuditEntity;
 import com.like.system.dept.domain.Dept;
-import com.like.system.role.adapter.out.persistence.jpa.entity.JpaRole;
 import com.like.system.user.domain.vo.AccountSpec;
 import com.like.system.user.domain.vo.SystemUserProfilePicture;
 import com.like.system.user.domain.vo.UserPassword;
@@ -74,7 +73,7 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	Dept dept;
 			
 	@OneToMany(mappedBy = "systemUser")
-	Set<SystemUserRole> roles = new LinkedHashSet<>();				
+	Set<SystemUserCompanyRole> roles = new LinkedHashSet<>();				
 		
 	@Builder
 	public SystemUser(String companyCode
@@ -85,7 +84,7 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 					 ,String mobileNum
 					 ,String email
 					 ,AccountSpec accountSpec) {		
-		this.id = new SystemUserId(companyCode, staffNo);
+		this.id = new SystemUserId(staffNo);
 		this.staffId = new StaffId(companyCode, staffNo);		
 		this.name = name;
 		this.password = password;
@@ -154,18 +153,19 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 		return this.password.matchPassword(password);
 	}	
 
-	public Set<SystemUserRole> getRoleList() {
+	public Set<SystemUserCompanyRole> getRoleList() {
 		return this.roles;		
 	}
 	
+	/*
 	public void addRole(JpaRole authority) {
 		if (this.roles == null) {
 			this.roles = new LinkedHashSet<>();
 		}
 		
-		this.roles.add(new SystemUserRole(this, authority));
+		//this.roles.add(new SystemUserCompanyRole(this, authority));
 	}								
-	
+	*/
 	public void changePassword(String password) {
 		if (this.password == null) {
 			this.password = new UserPassword();

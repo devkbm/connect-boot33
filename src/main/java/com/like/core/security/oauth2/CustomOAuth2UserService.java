@@ -12,7 +12,7 @@ import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import com.like.system.user.adapter.out.persistence.jpa.repository.SystemUserRepository;
+import com.like.system.user.adapter.out.persistence.db.jpa.SystemUserRepository;
 import com.like.system.user.domain.QSystemUser;
 import com.like.system.user.domain.SystemUser;
 

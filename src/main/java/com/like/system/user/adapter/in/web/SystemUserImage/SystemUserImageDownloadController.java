@@ -27,7 +27,7 @@ public class SystemUserImageDownloadController {
 	
 	@GetMapping("/api/system/user/image")
 	public void down(String companyCode, String userId, HttpServletResponse response) {
-		SystemUserSaveDTO dto = useCase.selectDTO(companyCode, userId);
+		SystemUserSaveDTO dto = useCase.selectDTO(userId);
 		
 		File file = new File(dto.imageBase64());
 		

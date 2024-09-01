@@ -4,33 +4,24 @@ import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@EqualsAndHashCode(of = {"companyCode","userId"})
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EqualsAndHashCode(of = {"userId"})
 @Embeddable
 public class SystemUserId implements Serializable {
 
 	private static final long serialVersionUID = -8544637739358675046L;
-
-	@Column(name="ORG_CD")
-	String companyCode;
 	
 	@Column(name="USER_ID")
-	String userId;
+	String userId;	
 	
-	protected SystemUserId() {}
-	
-	public SystemUserId(String companyCode, String userId) {
-		this.companyCode = companyCode;
+	public SystemUserId(String userId) {		
 		this.userId = userId;
-	}
-
-	public String getCompanyCode() {
-		return companyCode;
-	}
-
-	public String getUserId() {
-		return userId;
 	}
 		
 }

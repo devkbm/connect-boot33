@@ -23,7 +23,7 @@ public class SystemUserDeleteController {
 	@DeleteMapping("/api/system/user/{userId}")
 	public ResponseEntity<?> deleteUser(@RequestParam String companyCode, @PathVariable String userId) {
 										
-		useCase.delete(companyCode, userId);															
+		useCase.delete(userId);															
 								 					
 		return toList(null, MessageUtil.getDeleteMessage(1));
 	}		

@@ -13,10 +13,10 @@ public class SystemUserSelectService implements SystemUserSelectUseCase {
 	
 	SystemUserSelectService(SystemUserCommandDbPort dbPort) {
 		this.dbPort = dbPort;
-	}
-	
+	}	
+
 	@Override
-	public SystemUserSaveDTO selectDTO(String companyCode, String userId) {
-		return SystemUserSaveDTO.toDTO(this.dbPort.select(companyCode, userId));
+	public SystemUserSaveDTO selectDTO(String userId) {
+		return SystemUserSaveDTO.toDTO(this.dbPort.select(userId));
 	}
 }

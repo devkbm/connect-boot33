@@ -33,6 +33,8 @@ public class P6spyCustomSlf4JLogger extends FormattedLogger {
 		if (sql.isBlank()) return;
 		
 		// JDBC SPRING SESSION sql 로깅 제외
+		if ( sql.contains("SELECT") && sql.contains("SPRING_SESSION")) return;
+		if ( sql.contains("UPDATE") && sql.contains("SPRING_SESSION")) return;
     	if ( sql.contains("DELETE") && sql.contains("SPRING_SESSION")) return;
     	
 		final String msg = strategy.formatMessage(connectionId, now, elapsed, category.toString(), prepared, sql, url);

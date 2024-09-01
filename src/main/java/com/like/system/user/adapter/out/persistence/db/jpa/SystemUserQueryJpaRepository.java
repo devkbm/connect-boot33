@@ -1,4 +1,4 @@
-package com.like.system.user.adapter.out.persistence.jpa.repository;
+package com.like.system.user.adapter.out.persistence.db.jpa;
 
 import java.util.List;
 

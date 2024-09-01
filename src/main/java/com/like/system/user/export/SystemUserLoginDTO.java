@@ -20,7 +20,7 @@ public record SystemUserLoginDTO(
 		
 		return SystemUserLoginDTO
 				.builder()
-				.companyCode(entity.getId().getCompanyCode())
+				.companyCode("001")
 				.staffNo(entity.getId().getUserId())
 				.authorities(entity.getAuthorities())
 				.build();

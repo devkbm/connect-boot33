@@ -14,11 +14,11 @@ public class SystemUserDeleteService implements SystemUserDeleteUseCase {
 	
 	SystemUserDeleteService(SystemUserCommandDbPort port) {
 		this.port = port;
-	}
-	
+	}	
+
 	@Override
-	public void delete(String companyCode, String userId) {
-		this.port.delete(companyCode, userId);		
+	public void delete(String userId) {
+		this.port.delete(userId);		
 	}
 
 }

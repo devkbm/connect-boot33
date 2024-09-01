@@ -1,4 +1,4 @@
-package com.like.system.user.adapter.out.persistence.jpa.repository;
+package com.like.system.user.adapter.out.persistence.db.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.ListQuerydslPredicateExecutor;
