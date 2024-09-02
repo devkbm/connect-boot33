@@ -7,9 +7,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -19,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Getter
 @Entity
-@Table(name = "comusercompany")
+@Table(name = "COMUSERCOMPANY")
 public class SystemUserCompany extends AbstractAuditEntity {
 
 	@EmbeddedId
@@ -37,6 +40,11 @@ public class SystemUserCompany extends AbstractAuditEntity {
 	
 	@Column(name="USE_YN")
 	Boolean useYn;
+	
+	@MapsId("userId") 
+	@ManyToOne(fetch = FetchType.LAZY)	
+	@JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
+	SystemUser systemUser;
 	
 	public SystemUserCompany(String userId
 			                ,String companyCode

@@ -39,8 +39,7 @@ public class SystemUserCompanyRole extends AbstractAuditEntity implements Grante
 	}
 
 	public String getCompanyCode() {
-		//return this.id.getUserId().getCompanyCode();
-		return null;
+		return this.id.getCompanyCode();		
 	}
 
 	public String getUserId() {

@@ -5,8 +5,10 @@ import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
 public class SystemUserCompanyRoleId implements Serializable {
@@ -26,13 +28,4 @@ public class SystemUserCompanyRoleId implements Serializable {
 		this.companyCode = companyCode;
 		this.roleCode = roleCode;
 	}
-
-	public SystemUserId getUserId() {
-		return userId;
-	}
-	
-	public String getRoleCode() {
-		return roleCode;
-	}
-	
 }

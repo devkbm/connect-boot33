@@ -74,7 +74,10 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 			
 	@OneToMany(mappedBy = "systemUser")
 	Set<SystemUserCompanyRole> roles = new LinkedHashSet<>();				
-		
+	
+	@OneToMany(mappedBy = "systemUser")
+	Set<SystemUserCompany> company = new LinkedHashSet<>();
+	
 	@Builder
 	public SystemUser(String companyCode
 					 ,String staffNo					 
