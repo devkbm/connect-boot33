@@ -50,7 +50,7 @@ public class WorkCalendarSaveService implements WorkCalendarSaveUseCase {
 		if (dto.memberList() != null) {
 			WorkCalendar workCalendar = entity;			
 			
-			List<WorkCalendarMember> memberList = userSelectUseCase.findUsers(dto.companyCode(), dto.memberList())
+			List<WorkCalendarMember> memberList = userSelectUseCase.findUsers(dto.memberList(), dto.companyCode())
 																   .stream()
 																   .map(e -> new WorkCalendarMember(workCalendar, e.userId()))
 																   .toList();

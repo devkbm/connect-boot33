@@ -22,16 +22,16 @@ public record SystemUserProfileDTO(
 
 	public static SystemUserProfileDTO toDTO(SystemUser entity, SystemUserProfileSessionDTO session) {
 		
-		Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
+		//Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
 						
 		return SystemUserProfileDTO
 				.builder()
-				.companyCode(entity.getStaffId().getCompanyCode())
+				.companyCode("001")
 			    .userId(entity.getId().getUserId())
- 			    .staffNo(entity.getStaffId().getStaffNo())
+ 			    //.staffNo(entity.getStaffId().getStaffNo())
 			    .staffName(entity.getName())												   
-			    .deptCode(dept.map(r -> r.getId().getDeptCode()).orElse(""))
-			    .deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
+			    //.deptCode(dept.map(r -> r.getId().getDeptCode()).orElse(""))
+			    //.deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
 			    .mobileNum(entity.getMobileNum())
  			    .email(entity.getEmail())
  			    .session(session)

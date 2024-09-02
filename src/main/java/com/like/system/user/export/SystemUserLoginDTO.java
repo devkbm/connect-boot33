@@ -4,8 +4,6 @@ import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import com.like.system.user.domain.SystemUser;
-
 import lombok.Builder;
 
 @Builder
@@ -14,15 +12,4 @@ public record SystemUserLoginDTO(
 		String staffNo,		
 		Collection<? extends GrantedAuthority> authorities
 		) {
-
-	public static SystemUserLoginDTO toDTO(SystemUser entity) {
-		if (entity == null) return null;
-		
-		return SystemUserLoginDTO
-				.builder()
-				.companyCode("001")
-				.staffNo(entity.getId().getUserId())
-				.authorities(entity.getAuthorities())
-				.build();
-	}
 }

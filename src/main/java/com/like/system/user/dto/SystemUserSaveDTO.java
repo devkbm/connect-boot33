@@ -41,7 +41,7 @@ public record SystemUserSaveDTO(
 									  .name(this.name)		
 									  .companyCode(this.companyCode)
 									  .staffNo(this.staffNo)
-									  .dept(dept)				
+									  //.dept(dept)				
 									  .mobileNum(this.mobileNum)
 									  .email(this.email)					  
 									  .accountSpec(new AccountSpec(true, true, true, true))										  										  			 
@@ -71,15 +71,15 @@ public record SystemUserSaveDTO(
 		
 		if (entity == null) return null;
 		
-		Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
+		//Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
 		
 		SystemUserSaveDTO dto = SystemUserSaveDTO.builder()								
-										   .companyCode(entity.getStaffId().getCompanyCode())
+										   //.companyCode(entity.getStaffId().getCompanyCode())
 										   .userId(entity.getId().getUserId())
-										   .staffNo(entity.getStaffId().getStaffNo())
+										   //.staffNo(entity.getStaffId().getStaffNo())
 										   .name(entity.getName())												   
-										   .deptCode(dept.map(r -> r.getId().getDeptCode()).orElse(""))
-										   .deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
+										   //.deptCode(dept.map(r -> r.getId().getDeptCode()).orElse(""))
+										   //.deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
 										   .mobileNum(entity.getMobileNum())
 										   .email(entity.getEmail())
 										   .imageBase64(entity.getImage())

@@ -16,18 +16,19 @@ public class SystemUserDTOSelectService implements SystemUserDTOSelectUseCase {
 	}
 	
 	@Override
-	public SystemUserDTO findUser(String companyCode, String userId) {
-		return SystemUserDTO.toDTO(this.dbPort.select(userId));
+	public SystemUserDTO findUser(String userId, String companyCode) {
+		return SystemUserDTOMapper.toDTO(this.dbPort.select(userId));
 	}
 
+	
 	@Override
-	public List<SystemUserDTO> findUsers(String companyCode, List<String> userId) {
+	public List<SystemUserDTO> findUsers(List<String> userId, String companyCode) {
 		
 		return this.dbPort.select(userId)
 						  .stream()
-						  .map(e -> SystemUserDTO.toDTO(e))
+						  .map(e -> SystemUserDTOMapper.toDTO(e))
 						  .toList();
 						  
-	}
+	}	
 
 }

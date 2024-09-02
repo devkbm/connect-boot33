@@ -11,8 +11,8 @@ import org.hibernate.usertype.CompositeUserType;
 public class AuditorDetailsType implements CompositeUserType<AuditorDetails> {
 
 	public static class AuditorDetailsMapper {
-		String hostIp;
-		String loggedUser;				   	   
+		String loggedUser;
+		String hostIp;						   	  
 	}
 	
 	@Override

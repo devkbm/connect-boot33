@@ -3,7 +3,7 @@ package com.like.system.user.export;
 import java.util.List;
 
 public interface SystemUserDTOSelectUseCase {
-	SystemUserDTO findUser(String companyCode, String userId);	
+	SystemUserDTO findUser(String userId, String companyCode);	
 	
-	List<SystemUserDTO> findUsers(String companyCode, List<String> userId);
+	List<SystemUserDTO> findUsers(List<String> userId, String companyCode);
 }

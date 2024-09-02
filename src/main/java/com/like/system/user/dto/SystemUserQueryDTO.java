@@ -29,11 +29,13 @@ public record SystemUserQueryDTO(
 	}
 	
 	private BooleanExpression eqOrganizationCode(String companyCode) {
-		return qType.staffId.companyCode.eq(companyCode);
+		//return qType.staffId.companyCode.eq(companyCode);
+		return null;
 	}
 			
 	private BooleanExpression likeStaffNo(String staffNo) {
-		return hasText(staffNo) ? qType.staffId.staffNo.like("%"+staffNo+"%") : null;					
+		//return hasText(staffNo) ? qType.staffId.staffNo.like("%"+staffNo+"%") : null;
+		return null;
 	}
 	
 	private BooleanExpression likeUserName(String name) {
@@ -41,6 +43,7 @@ public record SystemUserQueryDTO(
 	}
 	
 	private BooleanExpression equalDeptCode(String deptCode) {
-		return hasText(deptCode) ? qType.dept.id.deptCode.eq(deptCode) : null;					
+		//return hasText(deptCode) ? qType.dept.id.deptCode.eq(deptCode) : null;
+		return null;
 	}
 }

@@ -2,10 +2,6 @@ package com.like.system.user.export;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
-
-import com.like.system.dept.domain.Dept;
-import com.like.system.user.domain.SystemUser;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
@@ -34,34 +30,5 @@ public record SystemUserDTO(
 		Boolean enabled,
 		List<String> roleList,
 		List<String> menuGroupList
-		) {
-	
-	public static SystemUserDTO toDTO(SystemUser entity) {					
-		
-		if (entity == null) return null;
-		
-		Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
-		
-		SystemUserDTO dto = SystemUserDTO.builder()								
-										   .companyCode(entity.getStaffId().getCompanyCode())
-										   .userId(entity.getId().getUserId())
-										   .staffNo(entity.getStaffId().getStaffNo())
-										   .name(entity.getName())												   
-										   .deptCode(dept.map(r -> r.getId().getDeptCode()).orElse(""))
-										   .deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
-										   .mobileNum(entity.getMobileNum())
-										   .email(entity.getEmail())
-										   .imageBase64(entity.getImage())
-										   .enabled(entity.isEnabled())	
-										   .accountNonExpired(entity.isAccountNonExpired())
-										   .accountNonLocked(entity.isAccountNonLocked())
-										   .credentialsNonExpired(entity.isCredentialsNonExpired())
-										   .roleList(entity.getRoleList()
-														   .stream()
-														   .map(auth -> auth.getAuthority())
-														   .toList())										   
-										   .build();
-		
-		return dto;
-	}
+		) {	
 }

@@ -27,9 +27,9 @@ public class AuthenticationTokenSelectService implements AuthenticationTokenSele
 	
 	@Override
 	public AuthenticationToken select(String companyCode, String userId, String sessionId, String ipAddress) {
-		SystemUserDTO user = userSelectUseCase.findUser(companyCode, userId);
+		SystemUserDTO user = userSelectUseCase.findUser(userId, companyCode);
 		
-		List<MenuGroupDTO> menuGroupList = menuGroupSelectUseCase.select(companyCode, user.staffNo());
+		List<MenuGroupDTO> menuGroupList = menuGroupSelectUseCase.select(companyCode, user.userId());
 		
 		return AuthenticationToken.of(user, menuGroupList, ipAddress, sessionId);
 	}

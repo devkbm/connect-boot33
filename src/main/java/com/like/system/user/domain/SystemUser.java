@@ -41,8 +41,8 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	@EmbeddedId
 	SystemUserId id;
 	
-	@Embedded
-	StaffId staffId;	
+	//@Embedded
+	//StaffId staffId;	
 	
 	@Column(name="USER_NAME")
 	String name;
@@ -62,6 +62,7 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	@Embedded
 	SystemUserProfilePicture image;
 	
+	/*
 	@Column(name="DEPT_CD")
 	String deptCode;
 	
@@ -71,7 +72,8 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 		@JoinColumn(name = "DEPT_CD", referencedColumnName = "DEPT_CD", insertable=false, updatable=false, foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
 	})	
 	Dept dept;
-			
+	*/
+	
 	@OneToMany(mappedBy = "systemUser")
 	Set<SystemUserCompanyRole> roles = new LinkedHashSet<>();				
 	
@@ -88,11 +90,11 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 					 ,String email
 					 ,AccountSpec accountSpec) {		
 		this.id = new SystemUserId(staffNo);
-		this.staffId = new StaffId(companyCode, staffNo);		
+		//this.staffId = new StaffId(companyCode, staffNo);		
 		this.name = name;
 		this.password = password;
-		this.dept = dept;
-		this.deptCode = dept == null ? null : dept.getId().getDeptCode();
+		//this.dept = dept;
+		//this.deptCode = dept == null ? null : dept.getId().getDeptCode();
 		this.mobileNum = mobileNum;
 		this.email = email;
 		this.accountSpec = accountSpec;									
@@ -105,12 +107,12 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 							,String mobileNum
 							,String email							 
 							,Dept dept					) {
-		this.staffId = new StaffId(companyCode, staffNo);
+		//this.staffId = new StaffId(companyCode, staffNo);
 		this.name = name;						
 		this.mobileNum = mobileNum;
 		this.email = email;		
-		this.dept = dept;
-		this.deptCode = dept == null ? null : dept.getId().getDeptCode();				
+		//this.dept = dept;
+		//this.deptCode = dept == null ? null : dept.getId().getDeptCode();				
 	}
 	
 	@Override	
