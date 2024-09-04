@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.like.core.message.MessageUtil;
 import com.like.core.util.SessionUtil;
 import com.like.core.web.util.WebRequestUtil;
+import com.like.system.user.application.port.in.SystemUserProfileSelectDTO;
+import com.like.system.user.application.port.in.SystemUserProfileSelectSessionDTO;
 import com.like.system.user.application.port.in.SystemUserProfileSelectUseCase;
-import com.like.system.user.dto.SystemUserProfileDTO;
-import com.like.system.user.dto.SystemUserProfileSessionDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -32,9 +32,9 @@ public class SystemUserProfileController {
 	@GetMapping("/api/system/user/my-profile")
 	public ResponseEntity<?> getUserProfile(HttpServletRequest request, @RequestParam String companyCode) throws FileNotFoundException, IOException {																		
 				
-		SystemUserProfileSessionDTO sessionDTO = new SystemUserProfileSessionDTO(WebRequestUtil.getIpAddress(request), new Date(request.getSession().getLastAccessedTime()));
+		SystemUserProfileSelectSessionDTO sessionDTO = new SystemUserProfileSelectSessionDTO(WebRequestUtil.getIpAddress(request), new Date(request.getSession().getLastAccessedTime()));
 		
-		SystemUserProfileDTO dto = useCase.select(companyCode, SessionUtil.getUserId(), sessionDTO);					
+		SystemUserProfileSelectDTO dto = useCase.select(companyCode, SessionUtil.getUserId(), sessionDTO);					
 						
 		/*
 		log.info("sessionId={}", session.getId());

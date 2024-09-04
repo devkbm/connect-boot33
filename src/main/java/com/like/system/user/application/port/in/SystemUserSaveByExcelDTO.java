@@ -1,4 +1,4 @@
-package com.like.system.user.dto;
+package com.like.system.user.application.port.in;
 
 import java.util.List;
 
@@ -28,10 +28,8 @@ public record SystemUserSaveByExcelDTO(
 	
 	public SystemUser newUser(Dept dept) {
 		SystemUser entity = SystemUser.builder()										  
-									  .name(this.name)		
-									  .companyCode(this.companyCode)
-									  .staffNo(this.staffNo)
-									  .dept(dept)				
+									  .name(this.name)											  
+									  .userId(this.staffNo)									  			
 									  .mobileNum(this.mobileNum)
 									  .email(this.email)					  
 									  .accountSpec(new AccountSpec(true, true, true, true))										  										  			 

@@ -1,6 +1,6 @@
-package com.like.system.user.dto;
+package com.like.system.user.application.port.in;
 
-public record PasswordChangeRequestDTO(
+public record SystemUserPasswordChangeDTO(
 		String companyCode,
 		String userId,
 		String beforePassword,

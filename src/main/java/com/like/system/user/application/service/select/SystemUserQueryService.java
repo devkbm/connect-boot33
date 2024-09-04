@@ -1,14 +1,14 @@
-package com.like.system.user.application.service;
+package com.like.system.user.application.service.select;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.like.system.user.application.port.in.SystemUserQueryDTO;
 import com.like.system.user.application.port.in.SystemUserQueryUseCase;
+import com.like.system.user.application.port.in.SystemUserSelectDTO;
 import com.like.system.user.application.port.out.SystemUserQueryDbPort;
-import com.like.system.user.dto.SystemUserQueryDTO;
-import com.like.system.user.dto.SystemUserSaveDTO;
 
 @Transactional(readOnly = true)
 @Service
@@ -21,10 +21,10 @@ public class SystemUserQueryService implements SystemUserQueryUseCase {
 	}
 	
 	@Override
-	public List<SystemUserSaveDTO> selectList(SystemUserQueryDTO dto) {
+	public List<SystemUserSelectDTO> selectList(SystemUserQueryDTO dto) {
 		return this.dbPort.selectList(dto)
 						  .stream()
-						  .map(e -> SystemUserSaveDTO.toDTO(e))
+						  .map(e -> SystemUserSelectDTOMapper.toDTO(e))
 						  .toList();
 	}
 

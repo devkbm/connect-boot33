@@ -1,7 +1,5 @@
 package com.like.system.user.application.port.in;
 
-import com.like.system.user.dto.SystemUserSaveDTO;
-
 public interface SystemUserSelectUseCase {
-	SystemUserSaveDTO selectDTO(String userId);	
+	SystemUserSelectDTO selectDTO(String userId);	
 }

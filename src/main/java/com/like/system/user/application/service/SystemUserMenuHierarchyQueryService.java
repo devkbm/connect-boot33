@@ -13,11 +13,11 @@ import com.like.system.user.domain.SystemUser;
 @Service
 public class SystemUserMenuHierarchyQueryService implements SystemUserMenuHierarchyQueryUseCase {
 	
-	MenuHierarchyByRolesSelectUseCase menuHierarchySelectUseCase;
 	SystemUserCommandDbPort dbPort;
+	MenuHierarchyByRolesSelectUseCase menuHierarchySelectUseCase;	
 	
-	SystemUserMenuHierarchyQueryService(SystemUserCommandDbPort dbPort,
-			MenuHierarchyByRolesSelectUseCase menuHierarchySelectUseCase) {
+	SystemUserMenuHierarchyQueryService(SystemUserCommandDbPort dbPort
+									   ,MenuHierarchyByRolesSelectUseCase menuHierarchySelectUseCase) {
 		this.dbPort = dbPort;
 		this.menuHierarchySelectUseCase = menuHierarchySelectUseCase;		
 	}

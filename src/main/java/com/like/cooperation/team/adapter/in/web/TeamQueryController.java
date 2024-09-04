@@ -15,8 +15,8 @@ import com.like.cooperation.team.domain.Team;
 import com.like.cooperation.team.domain.TeamMember;
 import com.like.cooperation.team.dto.TeamQueryDTO;
 import com.like.core.message.MessageUtil;
-import com.like.system.user.dto.SystemUserQueryDTO;
-import com.like.system.user.dto.SystemUserSaveDTO;
+import com.like.system.user.application.port.in.SystemUserQueryDTO;
+import com.like.system.user.application.port.in.SystemUserSaveDTO;
 
 @RestController
 public class TeamQueryController {
@@ -46,7 +46,8 @@ public class TeamQueryController {
 	@GetMapping("/api/grw/team/allmember")
 	public ResponseEntity<?> getAllMemberList(SystemUserQueryDTO condition) {
 				
-		List<SystemUserSaveDTO> list = service.selectAllMemberList(condition);						 				
+		//List<SystemUserSaveDTO> list = service.selectAllMemberList(condition);						 				
+		List<?> list = null;
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}

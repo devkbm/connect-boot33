@@ -15,7 +15,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.like.core.jpa.domain.AbstractAuditEntity;
-import com.like.system.dept.domain.Dept;
 import com.like.system.user.domain.vo.AccountSpec;
 import com.like.system.user.domain.vo.SystemUserProfilePicture;
 import com.like.system.user.domain.vo.UserPassword;
@@ -34,10 +33,7 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	private static final long serialVersionUID = -4328973281359262612L;
 	
 	@EmbeddedId
-	SystemUserId id;
-	
-	//@Embedded
-	//StaffId staffId;	
+	SystemUserId id;	
 	
 	@Column(name="USER_NAME")
 	String name;
@@ -55,19 +51,7 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	String email;
 				
 	@Embedded
-	SystemUserProfilePicture image;
-	
-	/*
-	@Column(name="DEPT_CD")
-	String deptCode;
-	
-	@OneToOne(optional = true)
-	@JoinColumns({
-		@JoinColumn(name="ORG_CD", referencedColumnName = "ORG_CD", insertable=false, updatable=false, foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT)),
-		@JoinColumn(name = "DEPT_CD", referencedColumnName = "DEPT_CD", insertable=false, updatable=false, foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
-	})	
-	Dept dept;
-	*/
+	SystemUserProfilePicture image;	
 	
 	@OneToMany(mappedBy = "systemUser")
 	Set<SystemUserCompanyRole> roles = new LinkedHashSet<>();				
@@ -76,38 +60,27 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	Set<SystemUserCompany> company = new LinkedHashSet<>();
 	
 	@Builder
-	public SystemUser(String companyCode
-					 ,String staffNo					 
+	public SystemUser(String userId					 
 					 ,String name					 
-					 ,UserPassword password
-					 ,Dept dept
+					 ,UserPassword password					 
 					 ,String mobileNum
 					 ,String email
 					 ,AccountSpec accountSpec) {		
-		this.id = new SystemUserId(staffNo);
-		//this.staffId = new StaffId(companyCode, staffNo);		
+		this.id = new SystemUserId(userId);	
 		this.name = name;
-		this.password = password;
-		//this.dept = dept;
-		//this.deptCode = dept == null ? null : dept.getId().getDeptCode();
+		this.password = password;		
 		this.mobileNum = mobileNum;
 		this.email = email;
 		this.accountSpec = accountSpec;									
 	}	
 	
 	@Builder(builderMethodName = "modifyBuilder", buildMethodName = "modify")
-	public void modifyEntity(String companyCode
-							,String staffNo
-			 				,String name					 				
+	public void modifyEntity(String name					 				
 							,String mobileNum
-							,String email							 
-							,Dept dept					) {
-		//this.staffId = new StaffId(companyCode, staffNo);
+							,String email) {		
 		this.name = name;						
 		this.mobileNum = mobileNum;
-		this.email = email;		
-		//this.dept = dept;
-		//this.deptCode = dept == null ? null : dept.getId().getDeptCode();				
+		this.email = email;							
 	}
 	
 	@Override	

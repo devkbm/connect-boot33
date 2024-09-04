@@ -1,10 +1,10 @@
-package com.like.system.user.application.service;
+package com.like.system.user.application.service.select;
 
 import org.springframework.stereotype.Service;
 
+import com.like.system.user.application.port.in.SystemUserSelectDTO;
 import com.like.system.user.application.port.in.SystemUserSelectUseCase;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
-import com.like.system.user.dto.SystemUserSaveDTO;
 
 @Service
 public class SystemUserSelectService implements SystemUserSelectUseCase {
@@ -16,7 +16,7 @@ public class SystemUserSelectService implements SystemUserSelectUseCase {
 	}	
 
 	@Override
-	public SystemUserSaveDTO selectDTO(String userId) {
-		return SystemUserSaveDTO.toDTO(this.dbPort.select(userId));
+	public SystemUserSelectDTO selectDTO(String userId) {
+		return SystemUserSelectDTOMapper.toDTO(this.dbPort.select(userId));
 	}
 }

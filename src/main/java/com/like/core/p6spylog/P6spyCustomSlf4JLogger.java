@@ -34,6 +34,7 @@ public class P6spyCustomSlf4JLogger extends FormattedLogger {
 		
 		// JDBC SPRING SESSION sql 로깅 제외
 		if ( sql.contains("SELECT") && sql.contains("SPRING_SESSION")) return;
+		if ( sql.contains("INSERT") && sql.contains("SPRING_SESSION")) return;
 		if ( sql.contains("UPDATE") && sql.contains("SPRING_SESSION")) return;
     	if ( sql.contains("DELETE") && sql.contains("SPRING_SESSION")) return;
     	

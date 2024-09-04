@@ -19,8 +19,8 @@ public class AuthenticationTokenSelectService implements AuthenticationTokenSele
 	SystemUserDTOSelectUseCase userSelectUseCase;
 	MenuGroupByUserSelectUseCase menuGroupSelectUseCase;
 	
-	AuthenticationTokenSelectService(SystemUserDTOSelectUseCase userSelectUseCase, 
-									 MenuGroupByUserSelectUseCase menuGroupSelectUseCase) {
+	AuthenticationTokenSelectService(SystemUserDTOSelectUseCase userSelectUseCase
+			 						,MenuGroupByUserSelectUseCase menuGroupSelectUseCase) {
 		this.userSelectUseCase = userSelectUseCase;
 		this.menuGroupSelectUseCase = menuGroupSelectUseCase;
 	}

@@ -10,8 +10,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.like.system.file.adapter.out.file.FileConverterUtil;
+import com.like.system.user.application.port.in.SystemUserSelectDTO;
 import com.like.system.user.application.port.in.SystemUserSelectUseCase;
-import com.like.system.user.dto.SystemUserSaveDTO;
 
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -27,7 +27,7 @@ public class SystemUserImageDownloadController {
 	
 	@GetMapping("/api/system/user/image")
 	public void down(String companyCode, String userId, HttpServletResponse response) {
-		SystemUserSaveDTO dto = useCase.selectDTO(userId);
+		SystemUserSelectDTO dto = useCase.selectDTO(userId);
 		
 		File file = new File(dto.imageBase64());
 		

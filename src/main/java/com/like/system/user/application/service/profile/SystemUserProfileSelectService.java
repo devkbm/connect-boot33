@@ -1,12 +1,12 @@
-package com.like.system.user.application.service;
+package com.like.system.user.application.service.profile;
 
 import org.springframework.stereotype.Service;
 
+import com.like.system.user.application.port.in.SystemUserProfileSelectDTO;
+import com.like.system.user.application.port.in.SystemUserProfileSelectSessionDTO;
 import com.like.system.user.application.port.in.SystemUserProfileSelectUseCase;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
 import com.like.system.user.domain.SystemUser;
-import com.like.system.user.dto.SystemUserProfileDTO;
-import com.like.system.user.dto.SystemUserProfileSessionDTO;
 
 @Service
 public class SystemUserProfileSelectService implements SystemUserProfileSelectUseCase {
@@ -18,11 +18,11 @@ public class SystemUserProfileSelectService implements SystemUserProfileSelectUs
 	}
 	
 	@Override
-	public SystemUserProfileDTO select(String companyCode, String userId, SystemUserProfileSessionDTO dto) {
+	public SystemUserProfileSelectDTO select(String companyCode, String userId, SystemUserProfileSelectSessionDTO dto) {
 		
 		SystemUser entity = dbPort.select(userId);
 								
-		return SystemUserProfileDTO.toDTO(entity, dto);
+		return SystemUserProfileSelectDTOMapper.toDTO(entity, dto);
 	}
 
 }

@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
+import com.like.system.user.application.port.in.SystemUserQueryDTO;
 import com.like.system.user.application.port.in.SystemUserQueryUseCase;
-import com.like.system.user.dto.SystemUserQueryDTO;
-import com.like.system.user.dto.SystemUserSaveDTO;
+import com.like.system.user.application.port.in.SystemUserSelectDTO;
 
 @RestController
 public class SystemUserQueryController {
@@ -27,7 +27,7 @@ public class SystemUserQueryController {
 	@GetMapping("/api/system/user")
 	public ResponseEntity<?> getUserList(SystemUserQueryDTO dto) throws FileNotFoundException, IOException {
 												
-		List<SystemUserSaveDTO> dtoList = useCase.selectList(dto);			
+		List<SystemUserSelectDTO> dtoList = useCase.selectList(dto);			
 		
 		return toList(dtoList, MessageUtil.getQueryMessage(dtoList.size()));
 	}

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
+import com.like.system.user.application.port.in.SystemUserSelectDTO;
 import com.like.system.user.application.port.in.SystemUserSelectUseCase;
-import com.like.system.user.dto.SystemUserSaveDTO;
 
 
 @RestController
@@ -29,7 +29,7 @@ public class SystemUserSelectController {
 	@GetMapping("/api/system/user/{userId}")
 	public ResponseEntity<?> getUser(@RequestParam String companyCode, @PathVariable String userId) throws FileNotFoundException, IOException {
 												
-		SystemUserSaveDTO dto = useCase.selectDTO(userId);					
+		SystemUserSelectDTO dto = useCase.selectDTO(userId);					
 		
 		return toOne(dto, MessageUtil.getQueryMessage(1));
 	}			

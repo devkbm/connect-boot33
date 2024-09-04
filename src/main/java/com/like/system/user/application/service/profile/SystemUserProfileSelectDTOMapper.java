@@ -1,30 +1,16 @@
-package com.like.system.user.dto;
+package com.like.system.user.application.service.profile;
 
-import java.util.Optional;
-
-import com.like.system.dept.domain.Dept;
+import com.like.system.user.application.port.in.SystemUserProfileSelectDTO;
+import com.like.system.user.application.port.in.SystemUserProfileSelectSessionDTO;
 import com.like.system.user.domain.SystemUser;
 
-import lombok.Builder;
+public class SystemUserProfileSelectDTOMapper {
 
-@Builder
-public record SystemUserProfileDTO(
-		String companyCode,
-		String userId,
-		String staffNo,
-		String staffName,
-		String deptCode,
-		String deptName,
-		String mobileNum,
-		String email,		
-		SystemUserProfileSessionDTO session
-		) {
-
-	public static SystemUserProfileDTO toDTO(SystemUser entity, SystemUserProfileSessionDTO session) {
+	public static SystemUserProfileSelectDTO toDTO(SystemUser entity, SystemUserProfileSelectSessionDTO session) {
 		
 		//Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
 						
-		return SystemUserProfileDTO
+		return SystemUserProfileSelectDTO
 				.builder()
 				.companyCode("001")
 			    .userId(entity.getId().getUserId())

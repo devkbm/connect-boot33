@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.like.system.user.application.port.in.SystemUserPasswordChangeDTO;
 import com.like.system.user.application.port.in.SystemUserPasswordChangeUseCase;
-import com.like.system.user.dto.PasswordChangeRequestDTO;
 
 @RestController
 public class SystemUserPasswordChangeController {		
@@ -20,7 +20,7 @@ public class SystemUserPasswordChangeController {
 	}
 	
 	@PostMapping("/api/system/user/{id}/changepassword")
-	public ResponseEntity<?> changePassword(@RequestBody PasswordChangeRequestDTO dto) {				
+	public ResponseEntity<?> changePassword(@RequestBody SystemUserPasswordChangeDTO dto) {				
 						
 		useCase.changePassword(dto);													
 								 					
