@@ -11,13 +11,9 @@ public class SystemUserSaveDTOMapper {
 		
 		//Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
 		
-		SystemUserSaveDTO dto = SystemUserSaveDTO.builder()								
-										   //.companyCode(entity.getStaffId().getCompanyCode())
-										   .userId(entity.getId().getUserId())
-										   //.staffNo(entity.getStaffId().getStaffNo())
-										   .name(entity.getName())												   
-										   //.deptCode(dept.map(r -> r.getId().getDeptCode()).orElse(""))
-										   //.deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
+		SystemUserSaveDTO dto = SystemUserSaveDTO.builder()																		   
+										   .userId(entity.getId().getUserId())										   
+										   .name(entity.getName())												   										   
 										   .mobileNum(entity.getMobileNum())
 										   .email(entity.getEmail())
 										   .imageBase64(entity.getImage())
@@ -25,6 +21,10 @@ public class SystemUserSaveDTOMapper {
 										   .accountNonExpired(entity.isAccountNonExpired())
 										   .accountNonLocked(entity.isAccountNonLocked())
 										   .credentialsNonExpired(entity.isCredentialsNonExpired())
+										   //.companyCode(entity.getStaffId().getCompanyCode())
+										   //.staffNo(entity.getStaffId().getStaffNo())
+										   //.deptCode(dept.map(r -> r.getId().getDeptCode()).orElse(""))
+										   //.deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
 										   .roleList(entity.getRoleList()
 														   .stream()
 														   .map(auth -> auth.getAuthority())

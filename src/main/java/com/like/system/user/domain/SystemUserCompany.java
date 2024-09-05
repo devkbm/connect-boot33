@@ -1,5 +1,7 @@
 package com.like.system.user.domain;
 
+import java.io.Serializable;
+
 import com.like.core.jpa.domain.AbstractAuditEntity;
 import com.like.system.dept.domain.Dept;
 
@@ -23,7 +25,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @Table(name = "COMUSERCOMPANY")
-public class SystemUserCompany extends AbstractAuditEntity {
+public class SystemUserCompany extends AbstractAuditEntity implements Serializable {
+	
+	private static final long serialVersionUID = -6550829721226294305L;
 
 	@EmbeddedId
 	SystemUserCompanyId id;				

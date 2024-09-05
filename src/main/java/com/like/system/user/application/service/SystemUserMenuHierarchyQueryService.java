@@ -26,7 +26,7 @@ public class SystemUserMenuHierarchyQueryService implements SystemUserMenuHierar
 	public List<MenuHierarchyNgZorroDTO> select(String companyCode, String userId, String menuGroupCode) {
 		SystemUser userDTO = dbPort.select(userId);
 
-		List<String> roleList = userDTO.getRoleList().stream().map(e -> e.getRoleCode()).toList();
+		List<String> roleList = userDTO.getRoleList(companyCode).stream().map(e -> e.getRoleCode()).toList();
 		
 		return this.menuHierarchySelectUseCase.select(companyCode, menuGroupCode, roleList);
 	}

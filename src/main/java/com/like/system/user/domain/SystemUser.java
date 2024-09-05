@@ -2,6 +2,8 @@ package com.like.system.user.domain;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -126,6 +128,14 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 		return this.password.matchPassword(password);
 	}	
 
+	public Optional<SystemUserCompany> getCompanyInfo(String companyCode) {
+		return this.getCompany().stream().filter(e -> e.id.companyCode.equals(companyCode)).findFirst();
+	}
+	
+	public List<SystemUserCompanyRole> getRoleList(String companyCode) {
+		return this.roles.stream().filter(e -> e.id.getCompanyCode().equals(companyCode)).toList();		
+	}
+	
 	public Set<SystemUserCompanyRole> getRoleList() {
 		return this.roles;		
 	}

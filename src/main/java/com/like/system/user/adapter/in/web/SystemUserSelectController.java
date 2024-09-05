@@ -29,7 +29,7 @@ public class SystemUserSelectController {
 	@GetMapping("/api/system/user/{userId}")
 	public ResponseEntity<?> getUser(@RequestParam String companyCode, @PathVariable String userId) throws FileNotFoundException, IOException {
 												
-		SystemUserSelectDTO dto = useCase.selectDTO(userId);					
+		SystemUserSelectDTO dto = useCase.selectDTO(userId, companyCode);					
 		
 		return toOne(dto, MessageUtil.getQueryMessage(1));
 	}			
