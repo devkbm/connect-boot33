@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.term.application.port.in.DataDomainSaveUseCase;
-import com.like.system.term.dto.DataDomainSaveDTO;
+import com.like.system.term.port.in.domain.DataDomainSaveDTO;
+import com.like.system.term.port.in.domain.DataDomainSaveUseCase;
 
 import jakarta.validation.Valid;
 

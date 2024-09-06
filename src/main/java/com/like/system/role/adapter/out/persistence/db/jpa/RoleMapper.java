@@ -2,7 +2,6 @@ package com.like.system.role.adapter.out.persistence.db.jpa;
 
 import static org.springframework.util.StringUtils.hasText;
 
-import com.like.system.role.adapter.out.persistence.jpa.entity.QJpaRole;
 import com.like.system.role.domain.Role;
 import com.like.system.role.port.in.RoleQueryDTO;
 import com.querydsl.core.BooleanBuilder;

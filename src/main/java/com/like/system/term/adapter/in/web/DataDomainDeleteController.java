@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.term.application.port.in.DataDomainDeleteUseCase;
+import com.like.system.term.port.in.domain.DataDomainDeleteUseCase;
 
 @RestController
 public class DataDomainDeleteController {

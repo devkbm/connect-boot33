@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import com.like.system.file.application.port.out.FileDownloadWebPort;
+import com.like.system.file.port.out.FileDownloadWebPort;
 
 import jakarta.servlet.http.HttpServletResponse;
 

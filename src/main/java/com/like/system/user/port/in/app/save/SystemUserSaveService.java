@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.like.system.dept.application.port.out.DeptCommandDbPort;
 import com.like.system.dept.domain.Dept;
+import com.like.system.dept.port.out.DeptCommandDbPort;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserCompany;
 import com.like.system.user.domain.SystemUserCompanyRole;

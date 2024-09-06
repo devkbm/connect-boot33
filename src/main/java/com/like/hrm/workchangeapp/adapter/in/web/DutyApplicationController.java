@@ -20,7 +20,7 @@ import com.like.hrm.workchangeapp.application.service.DutyApplicationCommandServ
 import com.like.hrm.workchangeapp.application.service.DutyApplicationQueryService;
 import com.like.hrm.workchangeapp.domain.WorkChangeApplication;
 import com.like.hrm.workchangeapp.dto.DutyApplicationDTO;
-import com.like.system.holiday.application.port.in.DateInfoSelectUseCase;
+import com.like.system.holiday.port.in.DateInfoSelectUseCase;
 
 @RestController
 public class DutyApplicationController {

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.menu.application.port.in.MenuDeleteUseCase;
+import com.like.system.menu.port.in.MenuDeleteUseCase;
 
 @RestController
 public class MenuDeleteController {

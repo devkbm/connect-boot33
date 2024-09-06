@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.like.system.file.adapter.out.file.FileConverterUtil;
-import com.like.system.file.application.port.in.FileServerDownloadUseCase;
-import com.like.system.file.dto.FileDTO;
+import com.like.system.file.port.in.FileDTO;
+import com.like.system.file.port.in.FileServerDownloadUseCase;
 
 import jakarta.servlet.http.HttpServletResponse;
 

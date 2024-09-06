@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.system.role.adapter.out.persistence.db.jpa.JpaRole;
+import com.like.system.role.adapter.out.persistence.db.jpa.QJpaRole;
 import com.like.system.role.adapter.out.persistence.db.jpa.RoleMapper;
-import com.like.system.role.adapter.out.persistence.jpa.entity.QJpaRole;
 import com.like.system.role.port.in.RoleQueryDTO;
 import com.like.system.role.port.out.RoleQueryDbPort;
 import com.querydsl.jpa.impl.JPAQueryFactory;

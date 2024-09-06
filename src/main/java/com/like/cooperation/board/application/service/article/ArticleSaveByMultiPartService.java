@@ -14,9 +14,9 @@ import com.like.cooperation.board.domain.AttachedFileConverter;
 import com.like.cooperation.board.domain.Board;
 import com.like.cooperation.board.dto.ArticleSaveMultipartDTO;
 import com.like.core.util.SessionUtil;
-import com.like.system.file.application.port.in.FileServerSelectUseCase;
-import com.like.system.file.application.port.in.FileServerUploadUseCase;
 import com.like.system.file.domain.FileInfo;
+import com.like.system.file.port.in.FileServerSelectUseCase;
+import com.like.system.file.port.in.FileServerUploadUseCase;
 
 @Transactional
 @Service
