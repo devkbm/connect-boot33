@@ -14,8 +14,8 @@ public class SystemUserLoginDTOSelectService implements SystemUserLoginDTOSelect
 	}
 	
 	@Override
-	public SystemUserLoginDTO get(String companyCode, String staffNo) {
-		return SystemUserLoginDTOMapper.toDTO(dbPort.select(staffNo));
+	public SystemUserLoginDTO get(String staffNo, String companyCode) {
+		return SystemUserLoginDTOMapper.toDTO(dbPort.select(staffNo), companyCode);
 	}
 
 }

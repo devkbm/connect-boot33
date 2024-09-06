@@ -1,7 +1,13 @@
 package com.like.system.user.port.in.app.save;
 
+import java.util.Optional;
+
+import com.like.system.dept.domain.Dept;
 import com.like.system.user.domain.SystemUser;
+import com.like.system.user.domain.SystemUserCompany;
 import com.like.system.user.port.in.SystemUserSaveDTO;
+
+import jakarta.persistence.EntityNotFoundException;
 
 public class SystemUserSaveDTOMapper {
 
@@ -9,7 +15,9 @@ public class SystemUserSaveDTOMapper {
 		
 		if (entity == null) return null;
 		
-		//Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
+		SystemUserCompany company = entity.getCompanyInfo(companyCode).orElseThrow(() -> new EntityNotFoundException("회사 정보가 없습니다."));
+		
+		Optional<Dept> dept = Optional.ofNullable(company.getDept());			
 		
 		SystemUserSaveDTO dto = SystemUserSaveDTO.builder()																		   
 										   .userId(entity.getId().getUserId())										   
@@ -21,10 +29,10 @@ public class SystemUserSaveDTOMapper {
 										   .accountNonExpired(entity.isAccountNonExpired())
 										   .accountNonLocked(entity.isAccountNonLocked())
 										   .credentialsNonExpired(entity.isCredentialsNonExpired())
-										   //.companyCode(entity.getStaffId().getCompanyCode())
-										   //.staffNo(entity.getStaffId().getStaffNo())
-										   //.deptCode(dept.map(r -> r.getId().getDeptCode()).orElse(""))
-										   //.deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
+										   .companyCode(company.getId().getCompanyCode())
+										   .staffNo(entity.getId().getUserId())
+										   .deptCode(dept.map(r -> r.getId().getDeptCode()).orElse(""))
+										   .deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
 										   .roleList(entity.getRoleList(companyCode)
 														   .stream()
 														   .map(auth -> auth.getAuthority())

@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.hrm.hrmcode.domain.QHrmCode;
-import com.like.hrm.staff.dto.QResponseStaffAppointmentRecord;
-import com.like.hrm.staff.dto.QResponseStaffCurrentAppointment;
-import com.like.hrm.staff.dto.QResponseStaffDutyResponsibility;
+import com.like.hrm.staff.port.in.QResponseStaffAppointmentRecord;
+import com.like.hrm.staff.port.in.QResponseStaffCurrentAppointment;
+import com.like.hrm.staff.port.in.QResponseStaffDutyResponsibility;
 import com.like.hrm.staff.port.in.ResponseStaffAppointmentRecord;
 import com.like.hrm.staff.port.in.ResponseStaffCurrentAppointment;
 import com.like.hrm.staff.port.in.ResponseStaffDutyResponsibility;
@@ -51,7 +51,7 @@ public class StaffQuery implements StaffQueryRepository {
 		QHrmCode payStepCode = new QHrmCode("payStepCode");
 		QHrmCode jobCode = new QHrmCode("jobCode");				
 		QHrmCode dutyResponsibilityCode = new QHrmCode("dutyResponsibilityCode");
-		
+				
 		return queryFactory.select(projectionAppointmentRecord(qStaff
 											  ,qAppointmentRecord
 											  ,blngDeptCode
@@ -95,7 +95,7 @@ public class StaffQuery implements StaffQueryRepository {
 						   		.and(qAppointmentRecord.info.dutyResponsibilityCode.eq(dutyResponsibilityCode.id.code)))
 						   .where(qStaff.id.companyCode.eq(companyCode)
 							 .and(qStaff.id.staffNo.eq(staffNo)))
-						   .fetch();
+						   .fetch();						   
 	}
 	
 	@Override
@@ -109,8 +109,8 @@ public class StaffQuery implements StaffQueryRepository {
 		QHrmCode occupationCode = new QHrmCode("occupationCode");
 		QHrmCode jobGradeCode = new QHrmCode("jobGradeCode");
 		QHrmCode payStepCode = new QHrmCode("payStepCode");
-		QHrmCode jobCode = new QHrmCode("jobCode");						
-		
+		QHrmCode jobCode = new QHrmCode("jobCode");			
+				
 		return queryFactory.select(projectionCurrentAppointment(qStaff
 											 ,blngDeptCode
 											 ,workDeptCode
@@ -147,13 +147,13 @@ public class StaffQuery implements StaffQueryRepository {
 				   		.and(qStaff.currentAppointment.jobCode.eq(jobCode.id.code)))				   
 				   	.where(qStaff.id.companyCode.eq(companyCode)
 					  .and(qStaff.id.staffNo.eq(staffNo)))
-				   	.fetchFirst();
+				   	.fetchFirst();				   	
 	}
 	
 	@Override
 	public List<ResponseStaffDutyResponsibility> getStaffDutyResponsibility(String companyCode, String staffNo) {
 		QHrmCode dutyResponsibilityCode = new QHrmCode("dutyResponsibilityCode");
-		
+				
 		return queryFactory.select(pro(qStaff, qStaffDuty, dutyResponsibilityCode))
 						   .from(qStaff)
 						   .join(qStaffDuty)
@@ -161,7 +161,7 @@ public class StaffQuery implements StaffQueryRepository {
 						   .leftJoin(dutyResponsibilityCode)
 					   	   		.on(dutyResponsibilityCode.id.typeId.eq("HR0007")
 					   	   		.and(qStaffDuty.dutyResponsibilityCode.eq(dutyResponsibilityCode.id.code)))
-						   .fetch();
+						   .fetch();		
 	}
 	
 	private QResponseStaffAppointmentRecord projectionAppointmentRecord(QStaff qStaff								

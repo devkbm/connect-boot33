@@ -23,7 +23,7 @@ public class MenuGroupByUserSelectService implements MenuGroupByUserSelectUseCas
 	}
 		
 	@Override
-	public List<MenuGroupDTO> select(String companyCode, String userId) {
+	public List<MenuGroupDTO> select(String userId, String companyCode) {
 		SystemUserDTO userDTO = userSelectUseCase.findUser(userId, companyCode);
 		
 		return this.dbPort.select(companyCode, userDTO.roleList())

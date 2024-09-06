@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.like.system.menurole.domain.MenuRoleHierarchy;
 import com.like.system.menurole.domain.MenuRoleHierarchyGenerator;
-import com.like.system.menurole.port.in.MenuRoleHierarchyNgZorro;
+import com.like.system.menurole.port.in.MenuRoleHierarchyDTOByNgZorro;
 import com.like.system.menurole.port.in.MenuRoleHierarchySelectUseCase;
 import com.like.system.menurole.port.out.MenuRoleHierarchySelectDbPort;
 
@@ -26,19 +26,19 @@ public class MenuRoleHierarchySelectService implements MenuRoleHierarchySelectUs
 		
 		List<MenuRoleHierarchy> list = generator.convertTreeNodes();
 
-		List<MenuRoleHierarchyNgZorro> copy_list = new ArrayList<>();
+		List<MenuRoleHierarchyDTOByNgZorro> copy_list = new ArrayList<>();
 		
 		copyTreeNode(list, copy_list);
 		
-		for ( MenuRoleHierarchyNgZorro dto : copy_list ) {
+		for ( MenuRoleHierarchyDTOByNgZorro dto : copy_list ) {
 			MenuRoleHierarchyNgZorroHalfChecker.setHalfChecked(dto);
 		}
 		
 		return copy_list;
 	}
 
-	private void copyTreeNode(List<MenuRoleHierarchy> original_list, List<MenuRoleHierarchyNgZorro> copy_list) {
-		MenuRoleHierarchyNgZorro newNode = null;
+	private void copyTreeNode(List<MenuRoleHierarchy> original_list, List<MenuRoleHierarchyDTOByNgZorro> copy_list) {
+		MenuRoleHierarchyDTOByNgZorro newNode = null;
 		
 		for (MenuRoleHierarchy node: original_list) {
 			newNode = convert(node);
@@ -47,8 +47,8 @@ public class MenuRoleHierarchySelectService implements MenuRoleHierarchySelectUs
 		}
 	}
 	
-	private void copyChildren(MenuRoleHierarchyNgZorro parent, MenuRoleHierarchy original) {
-		MenuRoleHierarchyNgZorro newNode = null;
+	private void copyChildren(MenuRoleHierarchyDTOByNgZorro parent, MenuRoleHierarchy original) {
+		MenuRoleHierarchyDTOByNgZorro newNode = null;
 		
 		if (original.getChildren() == null) return;
 		
@@ -61,8 +61,8 @@ public class MenuRoleHierarchySelectService implements MenuRoleHierarchySelectUs
 		}
 	}
 	
-	private MenuRoleHierarchyNgZorro convert(MenuRoleHierarchy dto) {
-		return MenuRoleHierarchyNgZorro.build(dto);
+	private MenuRoleHierarchyDTOByNgZorro convert(MenuRoleHierarchy dto) {
+		return MenuRoleHierarchyDTOByNgZorro.build(dto);
 	}
 
 }

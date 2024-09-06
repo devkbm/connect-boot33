@@ -2,19 +2,19 @@ package com.like.system.menurole.port.in.app;
 
 import org.springframework.util.StringUtils;
 
-import com.like.system.menurole.port.in.MenuRoleHierarchyNgZorro;
+import com.like.system.menurole.port.in.MenuRoleHierarchyDTOByNgZorro;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class MenuRoleHierarchyNgZorroHalfChecker {
 
-	public static void setHalfChecked(MenuRoleHierarchyNgZorro dto) {
+	public static void setHalfChecked(MenuRoleHierarchyDTOByNgZorro dto) {
 		
 		log.info("key : " + dto.key + " menuChildrenCount : "+ menuChildrenCount(dto) + " menuRoleChildrenCount : " + menuRoleChildrenCount(dto));
 		
 		if (dto.children != null) {
-			for ( MenuRoleHierarchyNgZorro child : dto.children ) {
+			for ( MenuRoleHierarchyDTOByNgZorro child : dto.children ) {
 				MenuRoleHierarchyNgZorroHalfChecker.setHalfChecked(child);											
 			}
 		}		
@@ -32,15 +32,15 @@ public class MenuRoleHierarchyNgZorroHalfChecker {
 		}
 	}
 	
-	private static int menuChildrenCount(MenuRoleHierarchyNgZorro dto) {
+	private static int menuChildrenCount(MenuRoleHierarchyDTOByNgZorro dto) {
 		return dto.children == null ? 0 : dto.children.size();
 	}
 	
-	private static long menuRoleChildrenCount(MenuRoleHierarchyNgZorro dto) {
+	private static long menuRoleChildrenCount(MenuRoleHierarchyDTOByNgZorro dto) {
 		return dto.children == null ? 0 :  dto.children.stream().filter(e -> StringUtils.hasText(e.getRoleCode())).count();
 	}
 	
-	private static boolean isChildrenHalfChecked(MenuRoleHierarchyNgZorro dto) {
+	private static boolean isChildrenHalfChecked(MenuRoleHierarchyDTOByNgZorro dto) {
 		return dto.children != null && dto.children.stream().filter(e -> e.halfChecked).count() > 0 ? true : false;
 	}
 }

@@ -57,11 +57,11 @@ public class SystemUserSaveService implements SystemUserSaveUseCase {
 				
 		this.dbPort.save(user);
 		
+		SystemUserCompany userCompany = new SystemUserCompany(user, dto.companyCode(), dto.deptCode(), true); 
+		this.userCompanyDbPort.save(userCompany);
+		
 		this.userRoleDbPort.delete(user.getRoleList(dto.companyCode()).stream().toList());					
-		this.userRoleDbPort.save(this.toSystemUserRole(dto, user));
-				
-		SystemUserCompany userCompany = new SystemUserCompany(dto.userId(), dto.companyCode(), dto.deptCode(), true); 
-		this.userCompanyDbPort.save(userCompany);		
+		this.userRoleDbPort.save(this.toSystemUserRole(dto, user));							
 	}	
 
 	@Override
@@ -91,7 +91,7 @@ public class SystemUserSaveService implements SystemUserSaveUseCase {
 		// String userId, String companyCode, String roleCode
 		return this.userRoleDbPort.select(dto.companyCode(), dto.roleList())
 								  .stream()
-								  .map(e -> new SystemUserCompanyRole(dto.userId(), dto.companyCode(), e.getRoleCode()))
+								  .map(e -> new SystemUserCompanyRole(user, dto.companyCode(), e.getRoleCode()))
 								  .toList();
 	}
 

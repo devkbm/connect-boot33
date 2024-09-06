@@ -2,5 +2,5 @@ package com.like.system.user.export;
 
 public interface SystemUserLoginDTOSelectUseCase {
 
-	SystemUserLoginDTO get(String companyCode, String staffNo);
+	SystemUserLoginDTO get(String staffNo, String companyCode);
 }

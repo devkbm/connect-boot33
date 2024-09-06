@@ -1,7 +1,13 @@
 package com.like.system.user.port.in.app.select;
 
+import java.util.Optional;
+
+import com.like.system.dept.domain.Dept;
 import com.like.system.user.domain.SystemUser;
+import com.like.system.user.domain.SystemUserCompany;
 import com.like.system.user.port.in.SystemUserSelectDTO;
+
+import jakarta.persistence.EntityNotFoundException;
 
 public class SystemUserSelectDTOMapper {
 
@@ -9,15 +15,13 @@ public class SystemUserSelectDTOMapper {
 		
 		if (entity == null) return null;
 		
-		//Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
+		SystemUserCompany company = entity.getCompanyInfo(companyCode).orElseThrow(() -> new EntityNotFoundException("회사 정보가 없습니다."));
 		
-		SystemUserSelectDTO dto = SystemUserSelectDTO.builder()								
-										   //.companyCode(entity.getStaffId().getCompanyCode())
-										   .userId(entity.getId().getUserId())
-										   //.staffNo(entity.getStaffId().getStaffNo())
-										   .name(entity.getName())												   
-										   //.deptCode(dept.map(r -> r.getId().getDeptCode()).orElse(""))
-										   //.deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
+		Optional<Dept> dept = Optional.ofNullable(company.getDept());			
+		
+		SystemUserSelectDTO dto = SystemUserSelectDTO.builder()																		   
+										   .userId(entity.getId().getUserId())										   
+										   .name(entity.getName())												   										   
 										   .mobileNum(entity.getMobileNum())
 										   .email(entity.getEmail())
 										   .imageBase64(entity.getImage())
@@ -25,6 +29,10 @@ public class SystemUserSelectDTOMapper {
 										   .accountNonExpired(entity.isAccountNonExpired())
 										   .accountNonLocked(entity.isAccountNonLocked())
 										   .credentialsNonExpired(entity.isCredentialsNonExpired())
+										   .companyCode(company.getId().getCompanyCode())
+										   .staffNo(entity.getId().getUserId())
+										   .deptCode(dept.map(r -> r.getId().getDeptCode()).orElse(""))
+										   .deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
 										   .roleList(entity.getRoleList(companyCode)
 														   .stream()
 														   .map(auth -> auth.getAuthority())

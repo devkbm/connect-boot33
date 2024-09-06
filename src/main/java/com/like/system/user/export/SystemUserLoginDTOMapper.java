@@ -4,12 +4,12 @@ import com.like.system.user.domain.SystemUser;
 
 public class SystemUserLoginDTOMapper {
 
-	public static SystemUserLoginDTO toDTO(SystemUser entity) {
+	public static SystemUserLoginDTO toDTO(SystemUser entity, String companyCode) {
 		if (entity == null) return null;
 		
 		return SystemUserLoginDTO
 				.builder()
-				.companyCode("001")
+				.companyCode(companyCode)
 				.staffNo(entity.getId().getUserId())
 				.authorities(entity.getAuthorities())
 				.build();

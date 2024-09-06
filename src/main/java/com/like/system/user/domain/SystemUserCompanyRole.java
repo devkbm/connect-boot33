@@ -24,13 +24,15 @@ public class SystemUserCompanyRole extends AbstractAuditEntity implements Grante
 	@EmbeddedId
 	SystemUserCompanyRoleId id;
 	
-	@MapsId("userId") 
+	
+	@MapsId("id") 
 	@ManyToOne(fetch = FetchType.LAZY)	
 	@JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
 	SystemUser systemUser;
-	
-	public SystemUserCompanyRole(String userId, String companyCode, String roleCode) {
-		this.id = new SystemUserCompanyRoleId(userId, companyCode, roleCode);		
+		
+	public SystemUserCompanyRole(SystemUser user, String companyCode, String roleCode) {
+		this.systemUser = user;
+		this.id = new SystemUserCompanyRoleId(user.getId().getUserId(), companyCode, roleCode);		
 	}
 	
 	@Override

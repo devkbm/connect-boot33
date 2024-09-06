@@ -13,7 +13,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 public class MessageSourceConfig {
 
 	@Bean
-	public LocaleResolver localResolver() {
+	LocaleResolver localResolver() {
 		//세션 기준
 		SessionLocaleResolver localeResolver = new SessionLocaleResolver();
 		
@@ -25,7 +25,7 @@ public class MessageSourceConfig {
 	}
 	
 	@Bean
-	public ReloadableResourceBundleMessageSource messageSource() {
+	ReloadableResourceBundleMessageSource messageSource() {
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
 		messageSource.setBasename("classpath:/message/messages");		
 		messageSource.setDefaultEncoding("UTF-8");

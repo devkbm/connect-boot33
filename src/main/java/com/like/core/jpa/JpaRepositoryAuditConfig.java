@@ -15,7 +15,7 @@ import com.like.core.jpa.domain.AuditorDetails;
 public class JpaRepositoryAuditConfig {
 	
 	@Bean
-	public AuditorAware<AuditorDetails> auditorProvider() {
+	AuditorAware<AuditorDetails> auditorProvider() {
 	    return new SpringSecurityAuditorAware(); // AuditorAware 의 구현체 객체 생성	    
 	}
 }

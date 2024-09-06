@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.like.system.hierarchycode.domain.HierarchyCodeSelectRepository;
 import com.like.system.hierarchycode.domain.QCode;
-import com.like.system.hierarchycode.dto.QCodeHierarchy;
+import com.like.system.hierarchycode.port.in.dto.QCodeHierarchy;
 import com.like.system.hierarchycode.port.in.dto.CodeHierarchy;
 import com.like.system.hierarchycode.port.in.dto.HierarchyCodeQueryDTO;
 import com.querydsl.core.BooleanBuilder;

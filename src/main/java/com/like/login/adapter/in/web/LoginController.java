@@ -56,9 +56,9 @@ public class LoginController {
 		// 로그인 요청정보 SpringSecurityUserService에서 사용하기 위해 THREAD_LOCAL에 저장
 		LoginRequestContext.set(dto);
 										
-		AuthenticationToken authToken = authTokenSelectUseCase.select(dto.companyCode(), dto.staffNo(), request.getSession().getId(), WebRequestUtil.getIpAddress(request));
+		AuthenticationToken authToken = authTokenSelectUseCase.select(dto.staffNo(), dto.companyCode(), request.getSession().getId(), WebRequestUtil.getIpAddress(request));
 				
-		SystemUserLoginDTO systemUser = userPort.get(dto.companyCode(), dto.staffNo());
+		SystemUserLoginDTO systemUser = userPort.get(dto.staffNo(), dto.companyCode());
 		UsernamePasswordAuthenticationToken securityToken = new UsernamePasswordAuthenticationToken(dto.staffNo(), dto.password(), systemUser.authorities());				
 		securityToken.setDetails(authToken);
 		

@@ -45,16 +45,17 @@ public class SystemUserCompany extends AbstractAuditEntity implements Serializab
 	@Column(name="USE_YN")
 	Boolean useYn;
 	
-	@MapsId("userId") 
+	@MapsId("id") 
 	@ManyToOne(fetch = FetchType.LAZY)	
 	@JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
 	SystemUser systemUser;
 	
-	public SystemUserCompany(String userId
+	public SystemUserCompany(SystemUser user
 			                ,String companyCode
 			                ,String deptCode
-			                ,Boolean useYn) {
-		this.id = new SystemUserCompanyId(companyCode, userId);
+			                ,Boolean useYn) {		
+		this.systemUser = user;
+		this.id = new SystemUserCompanyId(companyCode, user.getId().getUserId());
 		this.deptCode = deptCode;
 		this.useYn = useYn;		
 	}
