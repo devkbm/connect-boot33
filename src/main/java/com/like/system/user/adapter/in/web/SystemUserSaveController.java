@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.user.application.port.in.SystemUserSaveDTO;
-import com.like.system.user.application.port.in.SystemUserSaveUseCase;
+import com.like.system.user.port.in.SystemUserSaveDTO;
+import com.like.system.user.port.in.SystemUserSaveUseCase;
 
 @RestController
 public class SystemUserSaveController {		

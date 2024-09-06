@@ -135,11 +135,11 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	public List<SystemUserCompanyRole> getRoleList(String companyCode) {
 		return this.roles.stream().filter(e -> e.id.getCompanyCode().equals(companyCode)).toList();		
 	}
-	
+	/*
 	public Set<SystemUserCompanyRole> getRoleList() {
 		return this.roles;		
 	}
-	
+	*/
 	/*
 	public void addRole(JpaRole authority) {
 		if (this.roles == null) {

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.role.application.port.in.RoleSelectUseCase;
 import com.like.system.role.domain.Role;
+import com.like.system.role.port.in.RoleSelectUseCase;
 
 @RestController
 public class RoleSelectController {

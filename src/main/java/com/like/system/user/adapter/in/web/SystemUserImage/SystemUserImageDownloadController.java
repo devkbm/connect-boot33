@@ -10,8 +10,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.like.system.file.adapter.out.file.FileConverterUtil;
-import com.like.system.user.application.port.in.SystemUserSelectDTO;
-import com.like.system.user.application.port.in.SystemUserSelectUseCase;
+import com.like.system.user.port.in.SystemUserSelectDTO;
+import com.like.system.user.port.in.SystemUserSelectUseCase;
 
 import jakarta.servlet.http.HttpServletResponse;
 

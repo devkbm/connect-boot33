@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.user.application.port.out.SystemUserCommandDbPort;
+import com.like.system.user.port.out.SystemUserCommandDbPort;
 
 @Service
 public class SystemUserDTOSelectService implements SystemUserDTOSelectUseCase {
