@@ -1,7 +1,7 @@
 package com.like.hrm.workchangeapp.domain.inputlimit;
 
-import com.like.hrm.workchangeapp.adapter.out.persistence.jparepository.DutyApplicationQueryRepository;
 import com.like.hrm.workchangeapp.domain.WorkChangeApplication;
+import com.like.hrm.workchangeapp.adapter.out.db.jpa.DutyApplicationQueryRepository;
 import com.like.hrm.workchangeapp.domain.InputLimitable;
 
 /**

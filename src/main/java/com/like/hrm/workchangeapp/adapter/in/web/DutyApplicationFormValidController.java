@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.hrm.workchangeapp.adapter.out.persistence.jparepository.DutyApplicationRepository;
+import com.like.hrm.workchangeapp.adapter.out.db.jpa.DutyApplicationRepository;
 
 @RestController
 public class DutyApplicationFormValidController {

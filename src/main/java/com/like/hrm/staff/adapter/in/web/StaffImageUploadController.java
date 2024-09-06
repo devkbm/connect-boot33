@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.like.hrm.staff.adapter.out.file.StaffImageUploader;
-import com.like.hrm.staff.application.port.in.StaffImageUploadUseCase;
+import com.like.hrm.staff.port.in.StaffImageUploadUseCase;
 
 @Controller
 public class StaffImageUploadController {

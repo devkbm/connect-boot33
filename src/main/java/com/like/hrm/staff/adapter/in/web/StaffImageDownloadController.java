@@ -11,8 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.like.hrm.staff.application.port.in.StaffSelectUseCase;
-import com.like.hrm.staff.dto.ResponseStaff;
+import com.like.hrm.staff.port.in.ResponseStaff;
+import com.like.hrm.staff.port.in.StaffSelectUseCase;
 import com.like.system.file.adapter.out.file.FileConverterUtil;
 
 @Controller

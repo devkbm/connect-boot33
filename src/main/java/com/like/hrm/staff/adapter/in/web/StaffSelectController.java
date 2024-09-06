@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.staff.application.port.in.StaffSelectUseCase;
-import com.like.hrm.staff.dto.ResponseStaff;
+import com.like.hrm.staff.port.in.ResponseStaff;
+import com.like.hrm.staff.port.in.StaffSelectUseCase;
 
 @RestController
 public class StaffSelectController {
