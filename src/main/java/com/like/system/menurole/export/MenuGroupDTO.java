@@ -25,10 +25,12 @@ public record MenuGroupDTO(
 		if (entity == null) return null;
 		
 		return MenuGroupDTO.builder()
+							/*
 							.createdDt(entity.getCreatedDt())
 							.createdBy(entity.getCreatedBy() == null ? null : entity.getCreatedBy().getLoggedUser())
 							.modifiedDt(entity.getModifiedDt())
-							.modifiedBy(entity.getModifiedBy() == null ? null : entity.getModifiedBy().getLoggedUser())								
+							.modifiedBy(entity.getModifiedBy() == null ? null : entity.getModifiedBy().getLoggedUser())
+							*/								
 							.companyCode(entity.getId().getCompanyCode())
 							.menuGroupCode(entity.getId().getMenuGroupCode())
 							.menuGroupName(entity.getName())

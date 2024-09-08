@@ -9,6 +9,9 @@ import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequest
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.stereotype.Component;
 
+import com.like.login.adapter.in.web.LoginRequestContext;
+import com.like.login.adapter.in.web.LoginRequestDTO;
+
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
@@ -52,6 +55,8 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 				
 	    //additionalParameters.put("access_type", "offline");
 	    //additionalParameters.put("prompt", "consent");
+		
+		OAuth2LoginRequestThreadLocal.set(companyCode);
 
 	    return OAuth2AuthorizationRequest.from(authorizationRequest)
 	    								 .additionalParameters(additionalParameters)

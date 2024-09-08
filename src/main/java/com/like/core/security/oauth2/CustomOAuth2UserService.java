@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.like.system.user.adapter.out.db.jpa.SystemUserRepository;
 import com.like.system.user.domain.QSystemUser;
 import com.like.system.user.domain.SystemUser;
+import com.like.system.user.domain.SystemUserId;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,7 +36,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-							
+			
+		
 		OAuth2UserService delegate = new DefaultOAuth2UserService();
 		OAuth2User oAuth2User = delegate.loadUser(userRequest);			
 		
@@ -47,8 +49,9 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		
 		OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 		
-		// {sub=112050878942662954589, name=김병민, given_name=병민, family_name=김, picture=https://lh3.googleusercontent.com/a/ACg8ocIMTjbjyQTYA9qtpQisXrW2rh5DaP4Vh3lQiHL8o14qwrj_oA=s96-c, email=devkbm0417@gmail.com, email_verified=true}
 		
+		// {sub=112050878942662954589, name=김병민, given_name=병민, family_name=김, picture=https://lh3.googleusercontent.com/a/ACg8ocIMTjbjyQTYA9qtpQisXrW2rh5DaP4Vh3lQiHL8o14qwrj_oA=s96-c, email=devkbm0417@gmail.com, email_verified=true}
+		/*
 		log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		log.info(oAuth2User.getAttributes().get(userNameAttributeName).toString());
 		log.info(oAuth2User.getAttributes().toString());		
@@ -58,16 +61,9 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		log.info(attributes.getNameAttributeKey());
 		log.info(attributes.getAttributes().toString());
 		log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		
-		log.info("bbbbbbbbbbbbbbbbbbbb");
-		//log.info(userRequest.toString());
-		//log.info(userRequest.getAdditionalParameters().toString());			
-		
-		log.info("bbbbbbbbbbbbbbbbbbbb");
-		
-		//User user = saveOrUpdate(attributes);
-		//httpSession.setAttribute("user", user);	
-		
+			
+		*/				
+		 
 		// 1. 유저 키로 소셜 로그인 정보가 있는지 검사
 		SocialLogin socialLoginInfo = this.findSocialLoginInfo(new SocialLoginID(registrationId, oAuth2User.getAttributes().get(userNameAttributeName).toString()))
 										  .orElse(null);		
@@ -81,21 +77,29 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
  			 		         .orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
 			
 			socialLoginInfo = SocialLogin.newSocialLogin(new SocialLoginID(registrationId, oAuth2User.getAttributes().get(userNameAttributeName).toString())
+														,systemUser.getId().getUserId()									
 														,oAuth2User.getAttribute("name")
-														,oAuth2User.getAttribute("email")
-														,userNameAttributeName);
+														,oAuth2User.getAttribute("email")														
+														);
 			
 			saveSocialLoginInfo(socialLoginInfo);
 		} else {
-			// 
+			String companyCode = OAuth2LoginRequestThreadLocal.get();
+			
+			systemUser = findSystemUser(socialLoginInfo.getUserId())
+							.orElseThrow(() -> new RuntimeException("사용자가 없습니다."));
 		}
 		
 		// 4. 정보가 있으면 로그인 진행
 		
-		return new DefaultOAuth2User(
-               Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")),
-               attributes.getAttributes(),
-               attributes.getNameAttributeKey());       
+		OAuth2User oAuth2 = new SystemOauth2User(
+				   systemUser.getId().getUserId()
+	               ,Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"))
+	               ,attributes.getNameAttributeKey()
+	               ,attributes.getAttributes()
+	               );  
+		
+		return oAuth2;       
 	}
 	
 	private Optional<SystemUser> findSystemUserByEmail(String email) {		
@@ -103,8 +107,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	}
 	
 	private Optional<SystemUser> findSystemUser(String userId) {
-		return null;
-		//return this.userRepository.findById(QSystemUser.systemUser.email.eq(email), q-> q.first());
+		
+		return this.userRepository.findById(new SystemUserId(userId));
 	}
 	
 	private Optional<SocialLogin> findSocialLoginInfo(SocialLoginID id) {
@@ -113,14 +117,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	
 	private void saveSocialLoginInfo(SocialLogin entity) {
 		this.socialLoginRepository.save(entity);
-	}
-	
-	private SystemUser saveOrUpdate(OAuthAttributes attributes) {
-		SystemUser user = null;// userRepository.findById(attributes.getEmail()).orElse(null);
-	       
-		//userRepository.save(user);
-	       
-		return user; 
 	}
 
 }

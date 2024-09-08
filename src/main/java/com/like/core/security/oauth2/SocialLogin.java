@@ -40,17 +40,18 @@ public class SocialLogin {
 	
 	//LocalDateTime modifiedDt;
 		
-	public static SocialLogin newSocialLogin(SocialLoginID id
-									 ,String name
-									 ,String email
-									 ,String userId
-									 ) {
+	public static SocialLogin newSocialLogin(
+			SocialLoginID id
+			,String userId						 
+			,String name
+			,String email
+			) {
 		return SocialLogin
 				.builder()			
 				.id(id)
-				.name(name)
-				.email(email)
 				.userId(userId)
+				.name(name)
+				.email(email)				
 				.useYn(true)
 				.createdDt(LocalDateTime.now())
 				.build(); 
