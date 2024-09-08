@@ -1,27 +1,22 @@
 package com.like.core.security.oauth2;
 
-import java.util.Collections;
 import java.util.Optional;
 
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.user.adapter.out.db.jpa.SystemUserRepository;
 import com.like.system.user.domain.QSystemUser;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserId;
 
-import lombok.extern.slf4j.Slf4j;
-
 // http://localhost:8090/oauth2/authorization/google
-
-@Slf4j
+@Transactional
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User>{
 	
@@ -36,8 +31,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-			
-		
+					
 		OAuth2UserService delegate = new DefaultOAuth2UserService();
 		OAuth2User oAuth2User = delegate.loadUser(userRequest);			
 		
@@ -47,7 +41,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 												  .getUserInfoEndpoint()
 												  .getUserNameAttributeName();
 		
-		OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
+		OAuth2Attributes attributes = OAuth2Attributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 		
 		
 		// {sub=112050878942662954589, name=김병민, given_name=병민, family_name=김, picture=https://lh3.googleusercontent.com/a/ACg8ocIMTjbjyQTYA9qtpQisXrW2rh5DaP4Vh3lQiHL8o14qwrj_oA=s96-c, email=devkbm0417@gmail.com, email_verified=true}
@@ -68,6 +62,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		SocialLogin socialLoginInfo = this.findSocialLoginInfo(new SocialLoginID(registrationId, oAuth2User.getAttributes().get(userNameAttributeName).toString()))
 										  .orElse(null);		
 		
+		String companyCode = OAuth2LoginRequestThreadLocal.get();
 		SystemUser systemUser = null;
 		// 2. 로그인 정보가 없을 경우 사용자 정보에서 이메일이 동일한 사용자 검색하여
 		//    소셜 로그인 정보 저장
@@ -83,18 +78,14 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 														);
 			
 			saveSocialLoginInfo(socialLoginInfo);
-		} else {
-			String companyCode = OAuth2LoginRequestThreadLocal.get();
-			
+		} else {					
 			systemUser = findSystemUser(socialLoginInfo.getUserId())
-							.orElseThrow(() -> new RuntimeException("사용자가 없습니다."));
-		}
-		
-		// 4. 정보가 있으면 로그인 진행
-		
+							.orElseThrow(() -> new RuntimeException("사용자가 없습니다."));			
+		}			
+				
 		OAuth2User oAuth2 = new SystemOauth2User(
-				   systemUser.getId().getUserId()
-	               ,Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"))
+				   systemUser.getId().getUserId()	               
+				   ,systemUser.getRoleList(companyCode)
 	               ,attributes.getNameAttributeKey()
 	               ,attributes.getAttributes()
 	               );  

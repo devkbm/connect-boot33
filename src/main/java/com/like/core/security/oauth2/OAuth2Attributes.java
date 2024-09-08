@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class OAuthAttributes {
+public class OAuth2Attributes {
 
 	private Map<String, Object> attributes;
 	private String nameAttributeKey;
@@ -17,7 +17,7 @@ public class OAuthAttributes {
 	private String picture;
 
 	@Builder
-	public OAuthAttributes(Map<String, Object> attributes
+	public OAuth2Attributes(Map<String, Object> attributes
 						  ,String nameAttributeKey
 						  ,String name
 						  ,String email
@@ -29,15 +29,15 @@ public class OAuthAttributes {
 		this.picture = picture;
 	}
 
-	public static OAuthAttributes of(String registrationId
+	public static OAuth2Attributes of(String registrationId
 									,String userNameAttributeName
 									,Map<String, Object> attributes) {
 		return ofGoogle(userNameAttributeName, attributes);
 	}
 
-	private static OAuthAttributes ofGoogle(String userNameAttributeName
+	private static OAuth2Attributes ofGoogle(String userNameAttributeName
 										   ,Map<String, Object> attributes) {
-	       return OAuthAttributes.builder()
+	       return OAuth2Attributes.builder()
 	    		   .nameAttributeKey(userNameAttributeName)
 	    		   .name((String) attributes.get("name"))
 	               .email((String) attributes.get("email"))

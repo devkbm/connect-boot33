@@ -9,15 +9,10 @@ import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequest
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.stereotype.Component;
 
-import com.like.login.adapter.in.web.LoginRequestContext;
-import com.like.login.adapter.in.web.LoginRequestDTO;
-
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.extern.slf4j.Slf4j;
 
 // https://ordilov.github.io/posts/Spring%20Security%20OAuth2%20Client
 
-@Slf4j
 @Component
 public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRequestResolver {
 
@@ -30,10 +25,7 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 	@Override
 	public OAuth2AuthorizationRequest resolve(HttpServletRequest request) {
 		OAuth2AuthorizationRequest authorizationRequest = this.defaultAuthorizationRequestResolver.resolve(request);		
-		String companyCode = request.getParameter("companyCode");
-					
-		log.info("00000000000000000");
-		// companyCode를 CustomOAuth2UserService로 어떻게 전달할지 방법을 못찾음
+		String companyCode = request.getParameter("companyCode");						
 		
 		return authorizationRequest != null ? customAuthorizationRequest(authorizationRequest, companyCode) : null;
 	}	  
@@ -43,8 +35,7 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 	public OAuth2AuthorizationRequest resolve(HttpServletRequest request, String clientRegistrationId) {
 	    OAuth2AuthorizationRequest authorizationRequest = this.defaultAuthorizationRequestResolver.resolve(request, clientRegistrationId);
 	    String companyCode = request.getParameter("companyCode");
-	    
-	    
+	    	    
 	    return authorizationRequest != null ? customAuthorizationRequest(authorizationRequest, companyCode) : null;
 	}
 		  

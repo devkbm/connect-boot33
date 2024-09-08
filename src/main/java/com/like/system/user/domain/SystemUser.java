@@ -88,7 +88,7 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	@Override	
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return roles; //.stream().map(r -> r.getAuthority()).toList();
-	}	
+	}		
 		
 	@Override	
 	public String getUsername() {		
@@ -135,20 +135,7 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	public List<SystemUserCompanyRole> getRoleList(String companyCode) {
 		return this.roles.stream().filter(e -> e.id.getCompanyCode().equals(companyCode)).toList();		
 	}
-	/*
-	public Set<SystemUserCompanyRole> getRoleList() {
-		return this.roles;		
-	}
-	*/
-	/*
-	public void addRole(JpaRole authority) {
-		if (this.roles == null) {
-			this.roles = new LinkedHashSet<>();
-		}
-		
-		//this.roles.add(new SystemUserCompanyRole(this, authority));
-	}								
-	*/
+	
 	public void changePassword(String password) {
 		if (this.password == null) {
 			this.password = new UserPassword();
@@ -162,13 +149,7 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 		
 		return this.image.getImage();
 	}
-	/*
-	public String changeImage(ProfilePictureRepository profilePictureRepository, MultipartFile sourceFile) {
-		if (this.image == null) this.image = new SystemUserProfilePicture(profilePictureRepository);		
-		
-		return this.image.changeImage(profilePictureRepository, sourceFile);
-	}
-	*/
+	
 	public void setImage(String path) {
 		if (this.image == null) this.image = new SystemUserProfilePicture();
 		

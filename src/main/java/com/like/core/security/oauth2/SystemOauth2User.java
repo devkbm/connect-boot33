@@ -58,7 +58,8 @@ public class SystemOauth2User implements OAuth2User, Serializable {
 
 	@Override
 	public String getName() {
-		return this.getAttribute(this.nameAttributeKey).toString();
+		//return this.getAttribute(this.nameAttributeKey).toString();
+		return this.userId;
 	}
 	
 	public String getUserId() {

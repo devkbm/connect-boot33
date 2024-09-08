@@ -23,8 +23,7 @@ public class SystemUserCompanyRole extends AbstractAuditEntity implements Grante
 
 	@EmbeddedId
 	SystemUserCompanyRoleId id;
-	
-	
+		
 	@MapsId("id") 
 	@ManyToOne(fetch = FetchType.LAZY)	
 	@JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
