@@ -17,8 +17,8 @@ import java.io.Serializable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.util.Assert;
 
+import com.like.common.vo.LocalDatePeriod;
 import com.like.core.jpa.domain.AbstractAuditEntity;
-import com.like.core.jpa.vo.LocalDatePeriod;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

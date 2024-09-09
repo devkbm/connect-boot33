@@ -1,4 +1,4 @@
-package com.like.core.jpa.vo;
+package com.like.common.vo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

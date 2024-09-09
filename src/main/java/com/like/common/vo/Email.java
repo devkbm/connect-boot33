@@ -1,4 +1,4 @@
-package com.like.core.jpa.vo;
+package com.like.common.vo;
 
 import java.util.regex.Pattern;
 
@@ -23,8 +23,7 @@ public class Email {
 	private String address;	
 	
 	public Email(String address) {		
-		if (!Email.isValid(address))
-			throw new IllegalArgumentException("올바른 이메일 형식이 아닙니다. "+ address);
+		if (!Email.isValid(address)) throw new IllegalArgumentException("올바른 이메일 형식이 아닙니다. "+ address);
 		
 		this.address = address;
 	}

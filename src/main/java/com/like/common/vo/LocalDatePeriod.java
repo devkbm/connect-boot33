@@ -1,4 +1,4 @@
-package com.like.core.jpa.vo;
+package com.like.common.vo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -25,16 +25,15 @@ public class LocalDatePeriod implements Serializable {
 	@Column(name="TO_DT")
 	private LocalDate to;
 	
-	public LocalDatePeriod(LocalDate from
-				 	 ,LocalDate to) {
+	public LocalDatePeriod(LocalDate from, LocalDate to) {
 		this.from = from;
 		this.to = to;
 		
-		if (!isValid())
-			throw new IllegalArgumentException(
-					String.format("시작일시[%s]가 종료일시[%s]보다 클 수 없습니다."
-								 ,from.toString()
-								 ,to.toString()));
+		if (!isValid()) throw new IllegalArgumentException(
+				String.format("시작일시[%s]가 종료일시[%s]보다 클 수 없습니다."
+							 ,from.toString()
+							 ,to.toString())
+				);
 		
 	}
 	

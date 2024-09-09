@@ -2,7 +2,7 @@ package com.like.system.dept.domain;
 
 import java.util.List;
 
-import com.like.core.jpa.vo.LocalDatePeriod;
+import com.like.common.vo.LocalDatePeriod;
 
 import lombok.Getter;
 

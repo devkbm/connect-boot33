@@ -1,7 +1,7 @@
 package com.like.hrm.staff.domain.model;
 
-import com.like.core.jpa.vo.Address;
-import com.like.core.jpa.vo.PhoneNumber;
+import com.like.common.vo.Address;
+import com.like.common.vo.PhoneNumber;
 
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;

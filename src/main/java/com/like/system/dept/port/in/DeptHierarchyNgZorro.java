@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.like.core.jpa.vo.LocalDatePeriod;
+import com.like.common.vo.LocalDatePeriod;
 import com.like.system.dept.domain.DeptHierarchy;
 
 import lombok.AllArgsConstructor;

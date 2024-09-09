@@ -3,8 +3,8 @@ package com.like.hrm.staff.port.in.app;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.core.jpa.vo.Address;
-import com.like.core.jpa.vo.PhoneNumber;
+import com.like.common.vo.Address;
+import com.like.common.vo.PhoneNumber;
 import com.like.hrm.staff.adapter.out.db.jpa.StaffJpaRepository;
 import com.like.hrm.staff.domain.model.Staff;
 import com.like.hrm.staff.domain.model.StaffContact;

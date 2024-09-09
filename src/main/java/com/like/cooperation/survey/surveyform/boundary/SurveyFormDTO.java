@@ -9,12 +9,12 @@ import java.util.List;
 
 import jakarta.validation.constraints.NotEmpty;
 
+import com.like.common.vo.LocalDatePeriod;
 import com.like.cooperation.survey.surveyform.domain.QSurveyForm;
 import com.like.cooperation.survey.surveyform.domain.SurveyForm;
 import com.like.cooperation.survey.surveyform.domain.SurveyItem;
 import com.like.cooperation.survey.surveyform.domain.SurveyItemOption;
 import com.like.cooperation.survey.surveyform.domain.SurveyItemType;
-import com.like.core.jpa.vo.LocalDatePeriod;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 
