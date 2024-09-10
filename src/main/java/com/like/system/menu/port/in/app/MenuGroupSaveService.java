@@ -2,8 +2,8 @@ package com.like.system.menu.port.in.app;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.menu.port.in.MenuGroupSaveDTO;
 import com.like.system.menu.port.in.MenuGroupSaveUseCase;
+import com.like.system.menu.port.in.dto.MenuGroupSaveDTO;
 import com.like.system.menu.port.out.MenuGroupSaveDbPort;
 
 @Service

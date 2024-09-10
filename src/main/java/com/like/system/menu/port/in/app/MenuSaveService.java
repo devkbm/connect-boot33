@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 import com.like.system.menu.domain.Menu;
 import com.like.system.menu.domain.MenuGroup;
-import com.like.system.menu.port.in.MenuSaveDTO;
 import com.like.system.menu.port.in.MenuSaveUseCase;
+import com.like.system.menu.port.in.dto.MenuSaveDTO;
 import com.like.system.menu.port.out.MenuGroupSelectDbPort;
 import com.like.system.menu.port.out.MenuSaveDbPort;
 import com.like.system.menu.port.out.MenuSelectDbPort;

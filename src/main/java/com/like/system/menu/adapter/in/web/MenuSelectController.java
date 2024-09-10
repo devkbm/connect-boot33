@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.like.core.dto.HtmlSelectOptionRecord;
 import com.like.core.message.MessageUtil;
 import com.like.system.menu.domain.MenuType;
-import com.like.system.menu.port.in.MenuQueryDTO;
-import com.like.system.menu.port.in.MenuSaveDTO;
 import com.like.system.menu.port.in.MenuSelectUseCase;
+import com.like.system.menu.port.in.dto.MenuQueryDTO;
+import com.like.system.menu.port.in.dto.MenuSaveDTO;
 
 import jakarta.validation.Valid;
 

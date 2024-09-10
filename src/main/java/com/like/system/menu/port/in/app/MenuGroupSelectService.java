@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.menu.port.in.MenuGroupQueryDTO;
-import com.like.system.menu.port.in.MenuGroupSaveDTO;
 import com.like.system.menu.port.in.MenuGroupSelectUseCase;
+import com.like.system.menu.port.in.dto.MenuGroupQueryDTO;
+import com.like.system.menu.port.in.dto.MenuGroupSaveDTO;
 import com.like.system.menu.port.out.MenuGroupSelectDbPort;
 
 @Service

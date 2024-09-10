@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.like.system.menu.adapter.out.db.jpa.MenuGroupJpaRepository;
 import com.like.system.menu.domain.MenuGroup;
 import com.like.system.menu.domain.MenuGroupId;
-import com.like.system.menu.port.in.MenuGroupQueryDTO;
+import com.like.system.menu.port.in.dto.MenuGroupQueryDTO;
 import com.like.system.menu.port.out.MenuGroupDeleteDbPort;
 import com.like.system.menu.port.out.MenuGroupSaveDbPort;
 import com.like.system.menu.port.out.MenuGroupSelectDbPort;

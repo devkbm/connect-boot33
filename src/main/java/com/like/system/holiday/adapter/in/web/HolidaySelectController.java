@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.holiday.port.in.HolidaySaveDTO;
 import com.like.system.holiday.port.in.HolidaySelectUseCase;
+import com.like.system.holiday.port.in.dto.HolidaySaveDTO;
 
 @RestController
 public class HolidaySelectController {
@@ -27,11 +27,7 @@ public class HolidaySelectController {
 	@GetMapping("/api/system/holiday/{date}")
 	public ResponseEntity<?> getHoliday(@RequestParam String companyCode,
 			                            @PathVariable @DateTimeFormat(pattern="yyyyMMdd") LocalDate date) {
-		
-		/*
-		HolidayDTO.Form dto = HolidayDTO.Form.convert(holidayService.getHoliyday(companyCode,date)
-																	.orElse(new Holiday(new HolidayId(companyCode, date), "", "")));
-		*/
+				
 		HolidaySaveDTO dto = this.useCase.select(companyCode, date);
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));

@@ -1,4 +1,4 @@
-package com.like.system.menu.port.in;
+package com.like.system.menu.port.in.dto;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

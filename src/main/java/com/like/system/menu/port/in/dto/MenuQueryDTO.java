@@ -1,4 +1,4 @@
-package com.like.system.menu.port.in;
+package com.like.system.menu.port.in.dto;
 
 import static org.springframework.util.StringUtils.hasText;
 

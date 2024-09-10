@@ -8,7 +8,7 @@ import com.like.system.menu.adapter.out.db.jpa.MenuGroupJpaRepository;
 import com.like.system.menu.adapter.out.db.jpa.MenuJpaRepository;
 import com.like.system.menu.domain.Menu;
 import com.like.system.menu.domain.MenuId;
-import com.like.system.menu.port.in.MenuQueryDTO;
+import com.like.system.menu.port.in.dto.MenuQueryDTO;
 import com.like.system.menu.port.out.MenuDeleteDbPort;
 import com.like.system.menu.port.out.MenuSaveDbPort;
 import com.like.system.menu.port.out.MenuSelectDbPort;
