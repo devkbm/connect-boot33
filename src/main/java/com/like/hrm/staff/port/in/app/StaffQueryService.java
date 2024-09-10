@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.StaffQueryRepository;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.StaffQueryRepository;
 import com.like.hrm.staff.port.in.ResponseStaffAppointmentRecord;
 import com.like.hrm.staff.port.in.ResponseStaffCurrentAppointment;
 import com.like.hrm.staff.port.in.ResponseStaffDutyResponsibility;

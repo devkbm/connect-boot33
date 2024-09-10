@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.domain.model.Staff;
+import com.like.hrm.staff.domain.Staff;
 import com.like.hrm.staff.port.in.StaffImageUploadUseCase;
 import com.like.hrm.staff.port.out.StaffCommandDbPort;
 

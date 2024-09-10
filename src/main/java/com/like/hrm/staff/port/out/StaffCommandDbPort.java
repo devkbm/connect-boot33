@@ -2,7 +2,7 @@ package com.like.hrm.staff.port.out;
 
 import java.util.Optional;
 
-import com.like.hrm.staff.domain.model.Staff;
+import com.like.hrm.staff.domain.Staff;
 
 public interface StaffCommandDbPort {
 

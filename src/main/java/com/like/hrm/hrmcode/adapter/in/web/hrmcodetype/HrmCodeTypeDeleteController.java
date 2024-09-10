@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.hrmcode.application.port.in.hrmcodetype.HrmCodeTypeDeleteUseCase;
+import com.like.hrm.hrmcode.port.in.hrmcodetype.HrmCodeTypeDeleteUseCase;
 
 @RestController
 public class HrmCodeTypeDeleteController {

@@ -2,8 +2,8 @@ package com.like.hrm.staff.port.in.dutyresponsibility.app;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.dutyresponsibility.StaffDuty;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.dutyresponsibility.StaffDuty;
 import com.like.hrm.staff.port.in.dutyresponsibility.StaffDutyResponsibilityDTO;
 import com.like.hrm.staff.port.in.dutyresponsibility.StaffDutyResponsibilitySaveUseCase;
 import com.like.hrm.staff.port.out.StaffCommandDbPort;

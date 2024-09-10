@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.workcalendar.application.port.in.WorkCalendarEventQueryUseCase;
-import com.like.cooperation.workcalendar.dto.WorkCalendarEventQueryDTO;
-import com.like.cooperation.workcalendar.dto.WorkCalendarEventResponseDTO;
+import com.like.cooperation.workcalendar.port.in.WorkCalendarEventQueryUseCase;
+import com.like.cooperation.workcalendar.port.in.dto.WorkCalendarEventQueryDTO;
+import com.like.cooperation.workcalendar.port.in.dto.WorkCalendarEventResponseDTO;
 import com.like.core.message.MessageUtil;
 
 @RestController

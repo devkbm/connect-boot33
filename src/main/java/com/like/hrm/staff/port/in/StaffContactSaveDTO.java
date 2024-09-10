@@ -4,8 +4,8 @@ import java.util.Optional;
 
 import com.like.common.vo.Address;
 import com.like.common.vo.PhoneNumber;
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.StaffContact;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.StaffContact;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AccessLevel;

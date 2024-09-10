@@ -2,8 +2,8 @@ package com.like.hrm.staff.port.in.license.app;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.license.StaffLicense;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.license.StaffLicense;
 import com.like.hrm.staff.port.in.license.StaffLicenseSaveDTO;
 import com.like.hrm.staff.port.in.license.StaffLicenseSaveUseCase;
 import com.like.hrm.staff.port.out.StaffCommandDbPort;

@@ -6,9 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.like.common.vo.Address;
 import com.like.common.vo.PhoneNumber;
 import com.like.hrm.staff.adapter.out.db.jpa.StaffJpaRepository;
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.StaffContact;
-import com.like.hrm.staff.domain.model.StaffId;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.StaffContact;
+import com.like.hrm.staff.domain.StaffId;
 import com.like.hrm.staff.port.in.StaffContactSaveDTO;
 
 @Service

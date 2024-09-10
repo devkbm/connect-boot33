@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.hrm.hrmcode.application.port.in.hrmcode.HrmCodeSelectUseCase;
+import com.like.hrm.hrmcode.port.in.hrmcode.HrmCodeSelectUseCase;
 
 @RestController
 public class HrmCodeValidController {

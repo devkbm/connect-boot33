@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.hrm.staff.domain.model.StaffQueryRepository;
+import com.like.hrm.staff.domain.StaffQueryRepository;
 import com.like.hrm.staff.port.in.ResponseStaffDutyResponsibility;
 import com.like.hrm.staff.port.in.dutyresponsibility.StaffDutyResponsibilityQueryUseCase;
 

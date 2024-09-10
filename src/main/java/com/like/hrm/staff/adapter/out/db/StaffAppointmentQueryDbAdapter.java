@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.hrm.staff.adapter.out.db.jpa.StaffJpaRepository;
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.StaffId;
-import com.like.hrm.staff.domain.model.appointment.AppointmentRecord;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.StaffId;
+import com.like.hrm.staff.domain.appointment.AppointmentRecord;
 import com.like.hrm.staff.port.out.StaffAppointmentQueryDbPort;
 
 import jakarta.persistence.EntityNotFoundException;

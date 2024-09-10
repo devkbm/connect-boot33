@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.hrm.staff.domain.model.Staff;
+import com.like.hrm.staff.domain.Staff;
 import com.like.hrm.staff.port.in.family.StaffFamilyQueryUseCase;
 import com.like.hrm.staff.port.in.family.StaffFamilySaveDTO;
 import com.like.hrm.staff.port.out.StaffCommandDbPort;

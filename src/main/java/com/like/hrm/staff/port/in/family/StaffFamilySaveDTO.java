@@ -1,7 +1,7 @@
 package com.like.hrm.staff.port.in.family;
 
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.family.StaffFamily;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.family.StaffFamily;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AccessLevel;

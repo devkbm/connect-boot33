@@ -8,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.todo.application.port.in.TodoGroupQueryUseCase;
 import com.like.cooperation.todo.domain.TodoGroup;
+import com.like.cooperation.todo.port.in.TodoGroupQueryUseCase;
 import com.like.core.message.MessageUtil;
 import com.like.core.util.SessionUtil;
 

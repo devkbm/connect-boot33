@@ -10,8 +10,8 @@ import com.like.hrm.anualleave.domain.model.AnualLeave;
 import com.like.hrm.anualleave.domain.model.AnualLeaveId;
 import com.like.hrm.anualleave.domain.model.AnualLeaveRepository;
 import com.like.hrm.staff.adapter.out.db.jpa.StaffJpaRepository;
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.StaffId;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.StaffId;
 
 @Service
 @Transactional

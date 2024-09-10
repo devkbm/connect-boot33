@@ -2,9 +2,9 @@ package com.like.hrm.staff.port.in.app;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.StaffName;
-import com.like.hrm.staff.domain.model.StaffNoCreateStrategy;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.StaffName;
+import com.like.hrm.staff.domain.StaffNoCreateStrategy;
 import com.like.hrm.staff.port.in.StaffCreateDTO;
 import com.like.hrm.staff.port.in.StaffCreateUseCase;
 import com.like.hrm.staff.port.out.StaffCommandDbPort;

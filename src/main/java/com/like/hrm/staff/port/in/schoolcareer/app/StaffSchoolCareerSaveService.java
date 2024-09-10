@@ -2,8 +2,8 @@ package com.like.hrm.staff.port.in.schoolcareer.app;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.schoolcareer.StaffSchoolCareer;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.schoolcareer.StaffSchoolCareer;
 import com.like.hrm.staff.port.in.schoolcareer.StaffSchoolCareerSaveDTO;
 import com.like.hrm.staff.port.in.schoolcareer.StaffSchoolCareerSaveUseCase;
 import com.like.hrm.staff.port.out.StaffCommandDbPort;

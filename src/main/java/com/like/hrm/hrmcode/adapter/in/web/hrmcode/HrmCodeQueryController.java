@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.hrm.hrmcode.application.port.in.hrmcode.HrmCodeQueryUseCase;
-import com.like.hrm.hrmcode.dto.HrmCodeQueryDTO;
-import com.like.hrm.hrmcode.dto.HrmCodeSaveDTO;
+import com.like.hrm.hrmcode.port.in.hrmcode.HrmCodeQueryUseCase;
+import com.like.hrm.hrmcode.port.in.hrmcode.dto.HrmCodeQueryDTO;
+import com.like.hrm.hrmcode.port.in.hrmcode.dto.HrmCodeSaveDTO;
 import com.like.core.message.MessageUtil;
 
 @RestController

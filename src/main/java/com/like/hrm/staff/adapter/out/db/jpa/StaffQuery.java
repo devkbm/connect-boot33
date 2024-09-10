@@ -12,11 +12,11 @@ import com.like.hrm.staff.port.in.ResponseStaffAppointmentRecord;
 import com.like.hrm.staff.port.in.ResponseStaffCurrentAppointment;
 import com.like.hrm.staff.port.in.ResponseStaffDutyResponsibility;
 import com.like.hrm.staff.port.in.StaffQueryConditionDTO;
-import com.like.hrm.staff.domain.model.QStaff;
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.StaffQueryRepository;
-import com.like.hrm.staff.domain.model.appointment.QAppointmentRecord;
-import com.like.hrm.staff.domain.model.dutyresponsibility.QStaffDuty;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.StaffQueryRepository;
+import com.like.hrm.staff.domain.QStaff;
+import com.like.hrm.staff.domain.appointment.QAppointmentRecord;
+import com.like.hrm.staff.domain.dutyresponsibility.QStaffDuty;
 import com.like.system.dept.domain.QDept;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 

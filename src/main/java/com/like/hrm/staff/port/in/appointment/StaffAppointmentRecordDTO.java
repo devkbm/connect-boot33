@@ -3,9 +3,9 @@ package com.like.hrm.staff.port.in.appointment;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.appointment.AppointmentInformation;
-import com.like.hrm.staff.domain.model.appointment.AppointmentRecord;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.appointment.AppointmentInformation;
+import com.like.hrm.staff.domain.appointment.AppointmentRecord;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AccessLevel;

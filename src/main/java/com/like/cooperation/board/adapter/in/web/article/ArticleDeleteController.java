@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.like.cooperation.board.application.port.in.article.ArticleDeleteUseCase;
+import com.like.cooperation.board.port.in.article.ArticleDeleteUseCase;
 import com.like.cooperation.board.util.Base64Util;
 import com.like.core.message.MessageUtil;
 

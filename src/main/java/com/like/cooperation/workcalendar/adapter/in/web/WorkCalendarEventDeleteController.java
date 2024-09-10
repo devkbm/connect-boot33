@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.workcalendar.application.port.in.WorkCalendarEventDeleteUseCase;
+import com.like.cooperation.workcalendar.port.in.WorkCalendarEventDeleteUseCase;
 import com.like.core.message.MessageUtil;
 
 @RestController
@@ -20,7 +20,7 @@ public class WorkCalendarEventDeleteController {
 	}
 	
 	@DeleteMapping("/api/grw/workcalendarevent/{id}")
-	public ResponseEntity<?> deleteSchedule(@PathVariable(value="id") Long id) {
+	public ResponseEntity<?> deleteSchedule(@PathVariable Long id) {
 						
 		useCase.delete(id);							
 				

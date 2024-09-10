@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.team.application.port.in.TeamDeleteUseCase;
+import com.like.cooperation.team.port.in.TeamDeleteUseCase;
 import com.like.core.message.MessageUtil;
 
 @RestController

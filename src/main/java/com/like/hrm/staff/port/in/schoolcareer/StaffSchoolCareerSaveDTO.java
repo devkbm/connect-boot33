@@ -2,8 +2,8 @@ package com.like.hrm.staff.port.in.schoolcareer;
 
 import java.time.LocalDate;
 
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.schoolcareer.StaffSchoolCareer;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.schoolcareer.StaffSchoolCareer;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AccessLevel;

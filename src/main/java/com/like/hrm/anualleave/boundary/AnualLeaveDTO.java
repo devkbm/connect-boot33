@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import com.like.hrm.anualleave.domain.model.AnualLeave;
 import com.like.hrm.anualleave.domain.model.AnualLeaveId;
-import com.like.hrm.staff.domain.model.Staff;
+import com.like.hrm.staff.domain.Staff;
 
 public class AnualLeaveDTO {
 

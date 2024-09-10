@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 import com.like.common.vo.Address;
 import com.like.common.vo.PhoneNumber;
-import com.like.hrm.staff.domain.model.Staff;
-import com.like.hrm.staff.domain.model.StaffContact;
+import com.like.hrm.staff.domain.Staff;
+import com.like.hrm.staff.domain.StaffContact;
 import com.like.hrm.staff.port.in.StaffContactSaveDTO;
 import com.like.hrm.staff.port.in.StaffContractSaveUseCase;
 import com.like.hrm.staff.port.out.StaffCommandDbPort;

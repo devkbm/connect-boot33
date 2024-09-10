@@ -2,7 +2,7 @@ package com.like.hrm.staff.port.in;
 
 import java.time.LocalDate;
 
-import com.like.hrm.staff.domain.model.Staff;
+import com.like.hrm.staff.domain.Staff;
 
 public record ResponseStaff(			
 		String companyCode,

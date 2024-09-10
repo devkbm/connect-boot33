@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.like.cooperation.board.application.port.in.article.ArticleSaveByMultiPartUseCase;
-import com.like.cooperation.board.dto.ArticleSaveMultipartDTO;
+import com.like.cooperation.board.port.in.article.ArticleSaveByMultiPartUseCase;
+import com.like.cooperation.board.port.in.article.dto.ArticleSaveMultipartDTO;
 import com.like.core.message.MessageUtil;
 
 @Controller
