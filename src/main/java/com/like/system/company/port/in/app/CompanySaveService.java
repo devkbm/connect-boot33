@@ -7,6 +7,7 @@ import com.like.system.company.domain.CompanyInfo;
 import com.like.system.company.port.in.CompanySaveUseCase;
 import com.like.system.company.port.in.dto.CompanyInfoSaveDTO;
 import com.like.system.company.port.in.dto.CompanyInfoSaveDTOMapper;
+import com.like.system.company.port.in.dto.CompanyInfoSaveDTOMapstruct;
 import com.like.system.company.port.out.CompanyCommandDbPort;
 
 @Transactional
@@ -21,7 +22,8 @@ public class CompanySaveService implements CompanySaveUseCase {
 	
 	@Override
 	public void save(CompanyInfoSaveDTO dto) {
-		CompanyInfo entity = CompanyInfoSaveDTOMapper.toEntity(dto);
+		//CompanyInfo entity = CompanyInfoSaveDTOMapper.toEntity(dto);
+		CompanyInfo entity = CompanyInfoSaveDTOMapstruct.INSTANCE.toEntity(dto);
 		
 		this.dbPort.save(entity);
 	}

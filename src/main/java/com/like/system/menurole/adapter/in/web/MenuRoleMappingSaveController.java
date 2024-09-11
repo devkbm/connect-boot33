@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.menurole.port.in.MenuRoleMappingSaveDTO;
 import com.like.system.menurole.port.in.MenuRoleMappingSaveUseCase;
+import com.like.system.menurole.port.in.dto.MenuRoleMappingSaveDTO;
 
 import jakarta.validation.Valid;
 

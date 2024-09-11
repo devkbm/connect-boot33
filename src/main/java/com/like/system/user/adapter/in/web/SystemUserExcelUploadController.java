@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.user.port.in.SystemUserSaveByExcelDTO;
 import com.like.system.user.port.in.SystemUserSaveUseCase;
 import com.like.system.user.port.in.app.save.SystemUserSaveByExcelDTOMapper;
+import com.like.system.user.port.in.dto.SystemUserSaveByExcelDTO;
 
 @Controller
 public class SystemUserExcelUploadController {

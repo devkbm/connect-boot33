@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.system.dept.port.in.DeptHierarchySelectUseCase;
-import com.like.system.dept.port.in.DeptQueryDTO;
+import com.like.system.dept.port.in.dto.DeptQueryDTO;
 
 import jakarta.validation.Valid;
 

@@ -1,4 +1,4 @@
-package com.like.system.menurole.port.in;
+package com.like.system.menurole.port.in.dto;
 
 import java.time.LocalDateTime;
 

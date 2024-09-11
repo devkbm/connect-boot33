@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.dept.port.in.DeptSaveDTO;
 import com.like.system.dept.port.in.DeptSelectUseCase;
+import com.like.system.dept.port.in.dto.DeptSaveDTO;
 
 @RestController
 public class DeptSelectController {

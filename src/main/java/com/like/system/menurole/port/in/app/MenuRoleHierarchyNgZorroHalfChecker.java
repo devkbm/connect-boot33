@@ -2,7 +2,7 @@ package com.like.system.menurole.port.in.app;
 
 import org.springframework.util.StringUtils;
 
-import com.like.system.menurole.port.in.MenuRoleHierarchyDTOByNgZorro;
+import com.like.system.menurole.port.in.dto.MenuRoleHierarchyDTOByNgZorro;
 
 import lombok.extern.slf4j.Slf4j;
 

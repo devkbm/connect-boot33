@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
 import com.like.system.term.port.in.word.WordQueryUseCase;
-import com.like.system.term.port.in.word.WordSaveDTO;
+import com.like.system.term.port.in.word.dto.WordSaveDTO;
 
 @RestController
 public class WordQueryController {

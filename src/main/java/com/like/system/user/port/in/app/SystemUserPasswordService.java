@@ -6,9 +6,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.vo.UserPassword;
-import com.like.system.user.port.in.SystemUserPasswordChangeDTO;
 import com.like.system.user.port.in.SystemUserPasswordChangeUseCase;
 import com.like.system.user.port.in.SystemUserPasswordInitUseCase;
+import com.like.system.user.port.in.dto.SystemUserPasswordChangeDTO;
 import com.like.system.user.port.out.SystemUserCommandDbPort;
 
 @Transactional

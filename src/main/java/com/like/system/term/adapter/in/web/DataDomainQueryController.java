@@ -14,7 +14,7 @@ import com.like.core.dto.HtmlSelectOptionable;
 import com.like.core.message.MessageUtil;
 import com.like.system.term.domain.Database;
 import com.like.system.term.port.in.domain.DataDomainQueryUseCase;
-import com.like.system.term.port.in.domain.DataDomainSaveDTO;
+import com.like.system.term.port.in.domain.dto.DataDomainSaveDTO;
 
 @RestController
 public class DataDomainQueryController {

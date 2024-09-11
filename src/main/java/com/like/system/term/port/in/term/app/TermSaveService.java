@@ -9,8 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.like.system.term.domain.DataDomainDictionary;
 import com.like.system.term.domain.TermDictionary;
 import com.like.system.term.domain.WordDictionary;
-import com.like.system.term.port.in.term.TermSaveDTO;
 import com.like.system.term.port.in.term.TermSaveUseCase;
+import com.like.system.term.port.in.term.dto.TermSaveDTO;
+import com.like.system.term.port.in.term.dto.TermSaveDTOMapper;
 import com.like.system.term.port.out.DataDomainCommandDbPort;
 import com.like.system.term.port.out.TermCommandDbPort;
 import com.like.system.term.port.out.WordCommandDbPort;
@@ -38,7 +39,7 @@ public class TermSaveService implements TermSaveUseCase {
 		if (entity == null) {
 			entity = this.createEntity(dto);									
 		} else {						  				
-			dto.modifyEntity(entity, this.getDataDomainDictionary(dto));
+			TermSaveDTOMapper.modifyEntity(dto, entity, this.getDataDomainDictionary(dto));
 		}
 		
 		this.dbPort.save(entity);
@@ -50,9 +51,9 @@ public class TermSaveService implements TermSaveUseCase {
 		DataDomainDictionary dataDomain = this.getDataDomainDictionary(dto);
 				
 		if (dto.term().size() == 1) {				
-			entity = dto.newEntity(this.getWordDictionary(dto.term().get(0)), dataDomain);
+			entity = TermSaveDTOMapper.newEntity(dto, this.getWordDictionary(dto.term().get(0)), dataDomain);
 		} else if (dto.term().size() > 1) {				
-			entity = dto.newEntity(this.getWordDictionary(dto.term()), dataDomain);
+			entity = TermSaveDTOMapper.newEntity(dto, this.getWordDictionary(dto.term()), dataDomain);
 		}
 		
 		return entity;

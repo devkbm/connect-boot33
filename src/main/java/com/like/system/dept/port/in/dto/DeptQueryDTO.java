@@ -1,4 +1,4 @@
-package com.like.system.dept.port.in;
+package com.like.system.dept.port.in.dto;
 
 import static org.springframework.util.StringUtils.hasText;
 

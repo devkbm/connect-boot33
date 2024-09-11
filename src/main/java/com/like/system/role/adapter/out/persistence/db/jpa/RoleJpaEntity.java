@@ -14,12 +14,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Entity
 @Table(name = "comrole")
-public class JpaRole extends AbstractAuditEntity implements Serializable {
+public class RoleJpaEntity extends AbstractAuditEntity implements Serializable {
 	
 	private static final long serialVersionUID = 2010711918583959763L;
 
 	@EmbeddedId
-	JpaRoleId id;
+	RoleJpaEntityId id;
 	
 	@Column(name="ROLE_NM")
 	String roleName;
@@ -30,8 +30,8 @@ public class JpaRole extends AbstractAuditEntity implements Serializable {
 	@Column(name="MENU_GROUP_CD")
 	String menuGroupCode;
 	
-	public JpaRole(String companyCode, String roleCode, String roleName, String description, String menuGroupCode) {		
-		this.id = new JpaRoleId(companyCode, roleCode);
+	public RoleJpaEntity(String companyCode, String roleCode, String roleName, String description, String menuGroupCode) {		
+		this.id = new RoleJpaEntityId(companyCode, roleCode);
 		this.roleName = roleName;
 		this.description = description;
 		this.menuGroupCode = menuGroupCode;

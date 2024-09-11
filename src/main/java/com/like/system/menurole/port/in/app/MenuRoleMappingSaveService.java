@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.menurole.port.in.MenuRoleMappingSaveDTO;
 import com.like.system.menurole.port.in.MenuRoleMappingSaveUseCase;
+import com.like.system.menurole.port.in.dto.MenuRoleMappingSaveDTO;
+import com.like.system.menurole.port.in.dto.MenuRoleMappingSaveDTOMapper;
 import com.like.system.menurole.port.out.MenuRoleMappingSaveDbPort;
 
 @Transactional

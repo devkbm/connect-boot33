@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.like.system.menurole.domain.MenuRoleHierarchy;
 import com.like.system.menurole.domain.MenuRoleHierarchyGenerator;
-import com.like.system.menurole.port.in.MenuRoleHierarchyDTOByNgZorro;
 import com.like.system.menurole.port.in.MenuRoleHierarchySelectUseCase;
+import com.like.system.menurole.port.in.dto.MenuRoleHierarchyDTOByNgZorro;
 import com.like.system.menurole.port.out.MenuRoleHierarchySelectDbPort;
 
 @Service

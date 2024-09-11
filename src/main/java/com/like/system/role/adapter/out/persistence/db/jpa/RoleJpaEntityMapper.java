@@ -3,20 +3,20 @@ package com.like.system.role.adapter.out.persistence.db.jpa;
 import static org.springframework.util.StringUtils.hasText;
 
 import com.like.system.role.domain.Role;
-import com.like.system.role.port.in.RoleQueryDTO;
+import com.like.system.role.port.in.dto.RoleQueryDTO;
 import com.querydsl.core.BooleanBuilder;
 
-public class RoleMapper {
+public class RoleJpaEntityMapper {
 
-	public static JpaRole toJpaEntity(Role entity) {
-		return new JpaRole(entity.getCompanyCode()
+	public static RoleJpaEntity toJpaEntity(Role entity) {
+		return new RoleJpaEntity(entity.getCompanyCode()
 						  ,entity.getRoleCode()
 						  ,entity.getRoleName()
 						  ,entity.getDescription()
 						  ,entity.getMenuGroupCode());
 	}
 	
-	public static Role toEntity(JpaRole jpaEntity) {
+	public static Role toEntity(RoleJpaEntity jpaEntity) {
 		if (jpaEntity == null) return null; 
 		
 		return new Role(jpaEntity.getCompanyCode()

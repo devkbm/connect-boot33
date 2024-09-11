@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.like.system.menu.port.in.MenuGroupSelectUseCase;
 import com.like.system.menu.port.in.dto.MenuGroupQueryDTO;
 import com.like.system.menu.port.in.dto.MenuGroupSaveDTO;
+import com.like.system.menu.port.in.dto.MenuGroupSaveDTOMapper;
 import com.like.system.menu.port.out.MenuGroupSelectDbPort;
 
 @Service
@@ -20,14 +21,14 @@ public class MenuGroupSelectService implements MenuGroupSelectUseCase {
 	
 	@Override
 	public MenuGroupSaveDTO select(String companyCode, String menuGroupCode) {
-		return MenuGroupSaveDTO.toDTO(this.port.select(companyCode, menuGroupCode));
+		return MenuGroupSaveDTOMapper.toDTO(this.port.select(companyCode, menuGroupCode));
 	}
 
 	@Override
 	public List<MenuGroupSaveDTO> selectList(MenuGroupQueryDTO dto) {
 		return this.port.selectList(dto)
 						.stream()
-						.map(e -> MenuGroupSaveDTO.toDTO(e))
+						.map(e -> MenuGroupSaveDTOMapper.toDTO(e))
 						.toList();
 	}
 

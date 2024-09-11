@@ -8,6 +8,7 @@ import com.like.system.company.domain.CompanyInfoId;
 import com.like.system.company.port.in.CompanySelectUseCase;
 import com.like.system.company.port.in.dto.CompanyInfoSaveDTO;
 import com.like.system.company.port.in.dto.CompanyInfoSaveDTOMapper;
+import com.like.system.company.port.in.dto.CompanyInfoSaveDTOMapstruct;
 import com.like.system.company.port.out.CompanyCommandDbPort;
 
 @Transactional
@@ -24,7 +25,8 @@ public class CompanySelectService implements CompanySelectUseCase {
 	public CompanyInfoSaveDTO select(String companyCode) {
 		CompanyInfo entity = this.dbPort.select(new CompanyInfoId(companyCode)).orElse(null);
 		
-		return CompanyInfoSaveDTOMapper.toDTO(entity);
+		//return entity == null ? null : CompanyInfoSaveDTOMapper.toDTO(entity);
+		return entity == null ? null : CompanyInfoSaveDTOMapstruct.INSTANCE.toDTO(entity);
 	}
 
 }

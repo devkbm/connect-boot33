@@ -15,7 +15,8 @@ public class CompanyInfoSaveDTOMapper {
 				);
 	}
 	
-	public static CompanyInfoSaveDTO toDTO(CompanyInfo entity) {
+	public static CompanyInfoSaveDTO toDTO(CompanyInfo entity) {		
+		
 		return CompanyInfoSaveDTO
 				.builder()
 				.companyCode(entity.getId().getCompanyCode())

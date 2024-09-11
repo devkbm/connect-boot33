@@ -6,6 +6,7 @@ import com.like.system.menu.domain.Menu;
 import com.like.system.menu.domain.MenuGroup;
 import com.like.system.menu.port.in.MenuSaveUseCase;
 import com.like.system.menu.port.in.dto.MenuSaveDTO;
+import com.like.system.menu.port.in.dto.MenuSaveDTOMapper;
 import com.like.system.menu.port.out.MenuGroupSelectDbPort;
 import com.like.system.menu.port.out.MenuSaveDbPort;
 import com.like.system.menu.port.out.MenuSelectDbPort;
@@ -30,7 +31,7 @@ public class MenuSaveService implements MenuSaveUseCase {
 		MenuGroup menuGroup = this.menuGroupDbPort.select(dto.companyCode(), dto.menuGroupCode());
 		Menu parent =  this.menuSelectDbPort.select(dto.companyCode(), dto.menuGroupCode(), dto.parentMenuCode());
 		
-		this.dbPort.save(dto.newMenu(menuGroup, parent));		
+		this.dbPort.save(MenuSaveDTOMapper.toEntity(dto, menuGroup, parent));		
 	}
 
 }

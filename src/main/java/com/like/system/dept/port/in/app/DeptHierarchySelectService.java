@@ -10,7 +10,7 @@ import com.like.system.dept.domain.DeptHierarchy;
 import com.like.system.dept.domain.DeptHierarchyGenerator;
 import com.like.system.dept.port.in.DeptHierarchyNgZorro;
 import com.like.system.dept.port.in.DeptHierarchySelectUseCase;
-import com.like.system.dept.port.in.DeptQueryDTO;
+import com.like.system.dept.port.in.dto.DeptQueryDTO;
 import com.like.system.dept.port.out.DeptHierarchySelectDbPort;
 
 @Transactional(readOnly = true)

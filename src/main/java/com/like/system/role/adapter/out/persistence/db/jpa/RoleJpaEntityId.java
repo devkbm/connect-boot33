@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(of = {"companyCode", "roleCode"})
 @Embeddable
-public class JpaRoleId implements Serializable {
+public class RoleJpaEntityId implements Serializable {
 		
 	private static final long serialVersionUID = 6334573408608466739L;
 
@@ -18,9 +18,9 @@ public class JpaRoleId implements Serializable {
 	@Column(name="ROLE_CD")
 	String roleCode;
 
-	protected JpaRoleId() {}
+	protected RoleJpaEntityId() {}
 	
-	public JpaRoleId(String companyCode, String roleCode) {
+	public RoleJpaEntityId(String companyCode, String roleCode) {
 		this.companyCode = companyCode;
 		this.roleCode = roleCode;
 	}

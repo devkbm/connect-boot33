@@ -40,7 +40,7 @@ public class CompanyInfo extends AbstractAuditEntity {
 	// 설립일
 	@Column(name="ESTA_DT")
 	LocalDate establishmentDate;
-
+	
 	public CompanyInfo(String id
 					  ,String companyName
 					  ,String businessRegistrationNumber

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.like.system.menu.port.in.MenuGroupSaveUseCase;
 import com.like.system.menu.port.in.dto.MenuGroupSaveDTO;
+import com.like.system.menu.port.in.dto.MenuGroupSaveDTOMapper;
 import com.like.system.menu.port.out.MenuGroupSaveDbPort;
 
 @Service
@@ -17,7 +18,7 @@ public class MenuGroupSaveService implements MenuGroupSaveUseCase {
 	
 	@Override
 	public void save(MenuGroupSaveDTO dto) {
-		this.port.save(dto.newMenuGroup());		
+		this.port.save(MenuGroupSaveDTOMapper.newMenuGroup(dto));		
 	}
 
 }

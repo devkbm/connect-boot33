@@ -1,8 +1,8 @@
 package com.like.system.user.port.in.app.profile;
 
 import com.like.system.user.domain.SystemUser;
-import com.like.system.user.port.in.SystemUserProfileSelectDTO;
-import com.like.system.user.port.in.SystemUserProfileSelectSessionDTO;
+import com.like.system.user.port.in.dto.SystemUserProfileSelectDTO;
+import com.like.system.user.port.in.dto.SystemUserProfileSelectSessionDTO;
 
 public class SystemUserProfileSelectDTOMapper {
 

@@ -10,7 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.like.system.user.port.in.SystemUserSaveByExcelDTO;
+import com.like.system.user.port.in.dto.SystemUserSaveByExcelDTO;
 
 public class SystemUserSaveByExcelDTOMapper {
 

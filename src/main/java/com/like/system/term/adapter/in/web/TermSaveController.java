@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.term.port.in.term.TermSaveDTO;
 import com.like.system.term.port.in.term.TermSaveUseCase;
+import com.like.system.term.port.in.term.dto.TermSaveDTO;
 
 import jakarta.validation.Valid;
 

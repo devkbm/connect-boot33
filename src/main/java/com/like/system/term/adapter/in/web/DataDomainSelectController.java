@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.term.port.in.domain.DataDomainSaveDTO;
 import com.like.system.term.port.in.domain.DataDomainSelectUseCase;
+import com.like.system.term.port.in.domain.dto.DataDomainSaveDTO;
 
 @RestController
 public class DataDomainSelectController {

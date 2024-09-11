@@ -1,8 +1,7 @@
-package com.like.system.menurole.port.in.app;
+package com.like.system.menurole.port.in.dto;
 
 import com.like.system.menurole.domain.MenuRoleMapping;
 import com.like.system.menurole.domain.MenuRoleMappingId;
-import com.like.system.menurole.port.in.MenuRoleMappingSaveDTO;
 
 public class MenuRoleMappingSaveDTOMapper {
 

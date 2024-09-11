@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.like.system.term.domain.QTermDictionary;
 import com.like.system.term.domain.TermDictionary;
-import com.like.system.term.port.in.term.TermQueryDTO;
+import com.like.system.term.port.in.term.dto.TermQueryDTO;
 import com.like.system.term.port.out.TermQueryDbPort;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 

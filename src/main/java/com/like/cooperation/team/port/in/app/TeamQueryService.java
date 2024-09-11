@@ -12,9 +12,9 @@ import com.like.cooperation.team.port.in.dto.TeamQueryDTO;
 import com.like.cooperation.team.port.out.TeamQueryRepository;
 import com.like.system.user.export.SystemUserDTO;
 import com.like.system.user.export.SystemUserDTOSelectUseCase;
-import com.like.system.user.port.in.SystemUserQueryDTO;
 import com.like.system.user.port.in.SystemUserQueryUseCase;
-import com.like.system.user.port.in.SystemUserSaveDTO;
+import com.like.system.user.port.in.dto.SystemUserQueryDTO;
+import com.like.system.user.port.in.dto.SystemUserSaveDTO;
 
 @Transactional(readOnly=true)
 @Service

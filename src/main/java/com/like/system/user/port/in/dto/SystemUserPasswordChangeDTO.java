@@ -1,4 +1,4 @@
-package com.like.system.user.port.in;
+package com.like.system.user.port.in.dto;
 
 public record SystemUserPasswordChangeDTO(
 		String companyCode,

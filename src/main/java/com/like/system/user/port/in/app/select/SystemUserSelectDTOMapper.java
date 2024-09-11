@@ -5,7 +5,7 @@ import java.util.Optional;
 import com.like.system.dept.domain.Dept;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserCompany;
-import com.like.system.user.port.in.SystemUserSelectDTO;
+import com.like.system.user.port.in.dto.SystemUserSelectDTO;
 
 import jakarta.persistence.EntityNotFoundException;
 

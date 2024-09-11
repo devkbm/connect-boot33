@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.role.adapter.out.persistence.db.jpa.JpaRole;
-import com.like.system.role.port.in.RoleQueryDTO;
+import com.like.system.role.adapter.out.persistence.db.jpa.RoleJpaEntity;
 import com.like.system.role.port.in.RoleQueryUseCase;
+import com.like.system.role.port.in.dto.RoleQueryDTO;
 
 @RestController
 public class RoleQueryController {
@@ -25,7 +25,7 @@ public class RoleQueryController {
 	@GetMapping("/api/system/role")
 	public ResponseEntity<?> getAuthorityList(RoleQueryDTO dto) {				
 		
-		List<JpaRole> authorityList = service.getAuthorityList(dto);								 							
+		List<RoleJpaEntity> authorityList = service.getAuthorityList(dto);								 							
 		
 		return toList(authorityList, MessageUtil.getQueryMessage(authorityList.size()));
 	}

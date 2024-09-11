@@ -12,9 +12,9 @@ import com.like.core.dto.HtmlSelectOptionRecord;
 import com.like.core.dto.HtmlSelectOptionable;
 import com.like.core.message.MessageUtil;
 import com.like.system.term.domain.SystemType;
-import com.like.system.term.port.in.term.TermQueryDTO;
 import com.like.system.term.port.in.term.TermQueryUseCase;
-import com.like.system.term.port.in.term.TermSaveDTO;
+import com.like.system.term.port.in.term.dto.TermQueryDTO;
+import com.like.system.term.port.in.term.dto.TermSaveDTO;
 
 @RestController
 public class TermQueryController {

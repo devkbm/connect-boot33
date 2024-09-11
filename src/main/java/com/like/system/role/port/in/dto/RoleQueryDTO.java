@@ -1,4 +1,4 @@
-package com.like.system.role.port.in;
+package com.like.system.role.port.in.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

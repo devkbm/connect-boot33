@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.system.role.adapter.out.persistence.db.jpa.JpaRole;
+import com.like.system.role.adapter.out.persistence.db.jpa.RoleJpaEntity;
 import com.like.system.role.adapter.out.persistence.db.jpa.QJpaRole;
-import com.like.system.role.adapter.out.persistence.db.jpa.RoleMapper;
-import com.like.system.role.port.in.RoleQueryDTO;
+import com.like.system.role.adapter.out.persistence.db.jpa.RoleJpaEntityMapper;
+import com.like.system.role.port.in.dto.RoleQueryDTO;
 import com.like.system.role.port.out.RoleQueryDbPort;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -22,10 +22,10 @@ public class RoleQueryDbAdpater implements RoleQueryDbPort {
 	}
 	
 	@Override
-	public List<JpaRole> getRoleList(RoleQueryDTO dto) {		
+	public List<RoleJpaEntity> getRoleList(RoleQueryDTO dto) {		
 		return queryFactory
 				.selectFrom(qEntity)
-				.where(RoleMapper.toPredicate(dto))
+				.where(RoleJpaEntityMapper.toPredicate(dto))
 				.fetch();
 		
 	}
