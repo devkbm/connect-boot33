@@ -2,7 +2,7 @@ package com.like.system.systemcode.adapter.out.persistence.jpa.entity;
 
 import com.like.system.systemcode.domain.BizCodeType;
 import com.like.system.systemcode.domain.BizTypeEnum;
-import com.like.system.systemcode.dto.BizCodeTypeSaveDTO;
+import com.like.system.systemcode.port.in.dto.BizCodeTypeSaveDTO;
 
 public class JpaBizCodeTypeMapper {
 

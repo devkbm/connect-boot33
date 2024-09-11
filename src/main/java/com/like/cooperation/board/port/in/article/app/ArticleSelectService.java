@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.like.cooperation.board.domain.Article;
 import com.like.cooperation.board.port.in.article.ArticleSelectUseCase;
 import com.like.cooperation.board.port.in.article.dto.ArticleResponseDTO;
+import com.like.cooperation.board.port.in.article.dto.ArticleResponseDTOMapper;
 import com.like.cooperation.board.port.out.ArticleCommandDbPort;
 import com.like.cooperation.board.port.out.ArticleUserHitCountDbPort;
 import com.like.system.file.export.FileInfoDTO;
@@ -37,7 +38,7 @@ public class ArticleSelectService implements ArticleSelectUseCase {
 			fileList = fileSelectUseCase.select(entity.getFileIds());
 		}
 		
-		return ArticleResponseDTO.toDTO(this.dbPort.select(id).orElse(null), fileList);
+		return ArticleResponseDTOMapper.toDTO(this.dbPort.select(id).orElse(null), fileList);
 	}
 
 	@Override

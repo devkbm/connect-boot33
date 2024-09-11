@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.webresource.port.in.WebResourceSaveDTO;
 import com.like.system.webresource.port.in.WebResourceSelectUseCase;
+import com.like.system.webresource.port.in.dto.WebResourceSaveDTO;
 
 @RestController
 public class WebResourceFormValidController {

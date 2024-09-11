@@ -9,6 +9,7 @@ import com.like.cooperation.board.adapter.out.db.jpa.ArticleJpaRepository;
 import com.like.cooperation.board.adapter.out.db.mybatis.BoardMapper;
 import com.like.cooperation.board.port.in.article.dto.ArticleQueryDTO;
 import com.like.cooperation.board.port.in.article.dto.ArticleResponseDTO;
+import com.like.cooperation.board.port.in.article.dto.ArticleResponseDTOMapper;
 import com.like.cooperation.board.port.out.ArticleQueryByListDbPort;
 import com.like.system.file.export.FileInfoDTOSelectUseCase;
 
@@ -32,7 +33,7 @@ public class ArticleQueryDbAdapter implements ArticleQueryByListDbPort {
 		
 		return this.repository.findAll(dto.getBooleanBuilder(), Sort.by(Sort.Direction.DESC, "articleId"))
 							  .stream()
-							  .map(e -> ArticleResponseDTO.toDTO(e, fileSelectUseCse.select(e.getFileIds())))
+							  .map(e -> ArticleResponseDTOMapper.toDTO(e, fileSelectUseCse.select(e.getFileIds())))
 							  .toList();
 	}
 

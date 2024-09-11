@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.like.system.user.port.in.SystemUserQueryUseCase;
 import com.like.system.user.port.in.dto.SystemUserQueryDTO;
 import com.like.system.user.port.in.dto.SystemUserSelectDTO;
+import com.like.system.user.port.in.dto.SystemUserSelectDTOMapper;
 import com.like.system.user.port.out.SystemUserQueryDbPort;
 
 @Transactional(readOnly = true)

@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.webresource.adapter.out.db.jpa.WebResourceJpaRepository;
 import com.like.system.webresource.domain.WebResource;
-import com.like.system.webresource.port.in.WebResourceQueryDTO;
+import com.like.system.webresource.port.in.dto.WebResourceQueryDTO;
 import com.like.system.webresource.port.out.WebResourceQueryDbPort;
 
 @Repository

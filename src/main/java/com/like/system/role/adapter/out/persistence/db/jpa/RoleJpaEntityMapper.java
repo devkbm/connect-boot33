@@ -28,7 +28,7 @@ public class RoleJpaEntityMapper {
 	
 	public static BooleanBuilder toPredicate(RoleQueryDTO dto) {
 		BooleanBuilder builder = new BooleanBuilder();
-		QJpaRole qType = QJpaRole.jpaRole;
+		QRoleJpaEntity qType = QRoleJpaEntity.roleJpaEntity;
 			
 		builder.and(qType.id.companyCode.eq(dto.companyCode()));
 		

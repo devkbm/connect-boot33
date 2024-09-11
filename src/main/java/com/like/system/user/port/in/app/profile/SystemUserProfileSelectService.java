@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.port.in.SystemUserProfileSelectUseCase;
 import com.like.system.user.port.in.dto.SystemUserProfileSelectDTO;
+import com.like.system.user.port.in.dto.SystemUserProfileSelectDTOMapper;
 import com.like.system.user.port.in.dto.SystemUserProfileSelectSessionDTO;
 import com.like.system.user.port.out.SystemUserCommandDbPort;
 

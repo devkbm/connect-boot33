@@ -10,6 +10,7 @@ import com.like.cooperation.board.port.in.board.dto.BoardHierarchy;
 import com.like.cooperation.board.port.in.board.dto.QBoardHierarchy;
 import com.like.cooperation.board.port.in.board.dto.BoardQueryDTO;
 import com.like.cooperation.board.port.in.board.dto.BoardSaveDTO;
+import com.like.cooperation.board.port.in.board.dto.BoardSaveDTOMapper;
 import com.like.cooperation.board.port.out.BoardQueryDbPort;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -31,7 +32,7 @@ public class BoardQueryDbAdapter implements BoardQueryDbPort {
 									   .fetch(); 
 		
 		return list.stream()
-					.map(e -> BoardSaveDTO.toDTO(e))
+					.map(e -> BoardSaveDTOMapper.toDTO(e))
 					.toList();
 				
 	}

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.systemcode.application.service.BizCodeQueryService;
-import com.like.system.systemcode.dto.BizCodeDTO;
+import com.like.system.systemcode.port.in.app.BizCodeQueryService;
+import com.like.system.systemcode.port.in.dto.BizCodeDTO;
 
 @RestController
 public class BizCodeQueryController {

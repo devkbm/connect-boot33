@@ -9,12 +9,12 @@ import com.like.system.systemcode.adapter.out.persistence.jpa.entity.JpaBizCodeT
 import com.like.system.systemcode.adapter.out.persistence.jpa.entity.JpaBizCodeTypeId;
 import com.like.system.systemcode.adapter.out.persistence.jpa.entity.JpaBizCodeTypeMapper;
 import com.like.system.systemcode.adapter.out.persistence.jpa.repository.BizCodeTypeJpaRepository;
-import com.like.system.systemcode.application.port.out.BizCodeTypeDeletePort;
-import com.like.system.systemcode.application.port.out.BizCodeTypeSavePort;
-import com.like.system.systemcode.application.port.out.BizCodeTypeSelectAllPort;
-import com.like.system.systemcode.application.port.out.BizCodeTypeSelectPort;
 import com.like.system.systemcode.domain.BizCodeType;
-import com.like.system.systemcode.dto.BizCodeTypeSaveDTO;
+import com.like.system.systemcode.port.in.dto.BizCodeTypeSaveDTO;
+import com.like.system.systemcode.port.out.BizCodeTypeDeletePort;
+import com.like.system.systemcode.port.out.BizCodeTypeSavePort;
+import com.like.system.systemcode.port.out.BizCodeTypeSelectAllPort;
+import com.like.system.systemcode.port.out.BizCodeTypeSelectPort;
 
 @Repository
 @Transactional

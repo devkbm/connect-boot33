@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.system.role.adapter.out.persistence.db.jpa.RoleJpaEntity;
-import com.like.system.role.adapter.out.persistence.db.jpa.QJpaRole;
+import com.like.system.role.adapter.out.persistence.db.jpa.QRoleJpaEntity;
 import com.like.system.role.adapter.out.persistence.db.jpa.RoleJpaEntityMapper;
 import com.like.system.role.port.in.dto.RoleQueryDTO;
 import com.like.system.role.port.out.RoleQueryDbPort;
@@ -15,7 +15,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 public class RoleQueryDbAdpater implements RoleQueryDbPort {
 
 	private JPAQueryFactory queryFactory;
-	private final QJpaRole qEntity = QJpaRole.jpaRole;	
+	private final QRoleJpaEntity qEntity = QRoleJpaEntity.roleJpaEntity;	
 	
 	public RoleQueryDbAdpater(JPAQueryFactory queryFactory) {
 		this.queryFactory = queryFactory;		

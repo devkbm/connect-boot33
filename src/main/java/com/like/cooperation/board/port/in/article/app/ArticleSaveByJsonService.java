@@ -13,6 +13,7 @@ import com.like.cooperation.board.domain.AttachedFileConverter;
 import com.like.cooperation.board.domain.Board;
 import com.like.cooperation.board.port.in.article.ArticleSaveByJsonUseCase;
 import com.like.cooperation.board.port.in.article.dto.ArticleSaveDTO;
+import com.like.cooperation.board.port.in.article.dto.ArticleSaveDTOMapper;
 import com.like.cooperation.board.port.out.ArticleCommandDbPort;
 import com.like.cooperation.board.port.out.BoardCommandDbPort;
 import com.like.cooperation.board.util.Base64Util;
@@ -51,9 +52,9 @@ public class ArticleSaveByJsonService implements ArticleSaveByJsonUseCase {
 		}			
 		
 		if (entity == null) {
-			entity = dto.newArticle(board); 
+			entity = ArticleSaveDTOMapper.newArticle(dto, board); 
 		} else {
-			dto.modifyArticle(entity);
+			ArticleSaveDTOMapper.modifyArticle(dto, entity);
 		}
 		
 		if (dto.attachFile() != null) {
