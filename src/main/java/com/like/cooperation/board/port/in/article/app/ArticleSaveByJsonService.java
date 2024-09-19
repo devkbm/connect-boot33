@@ -45,12 +45,8 @@ public class ArticleSaveByJsonService implements ArticleSaveByJsonUseCase {
 		Board board = boardDbPort.select(Base64Util.fromBase64Decode(dto.boardId()))
 								 .orElseThrow(() -> new IllegalArgumentException("존재 하지 않은 게시판입니다."));		
 						
-		Article entity = null;
-		
-		if (StringUtils.hasText(dto.articleId())) {
-			entity = this.dbPort.select(Base64Util.fromBase64Decode(dto.articleId())).orElse(null); 
-		}			
-		
+		Article entity = StringUtils.hasText(dto.articleId()) == true ? this.findArticle(dto.articleId()) : null; 
+								
 		if (entity == null) {
 			entity = ArticleSaveDTOMapper.newArticle(dto, board); 
 		} else {
@@ -70,6 +66,10 @@ public class ArticleSaveByJsonService implements ArticleSaveByJsonUseCase {
 		}
 		
 		this.dbPort.save(entity);		
+	}
+	
+	private Article findArticle(String articleId) {
+		return this.dbPort.select(Base64Util.fromBase64Decode(articleId)).orElse(null);
 	}
 
 }
