@@ -12,7 +12,7 @@ import com.like.system.dept.port.out.DeptCommandDbPort;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserCompany;
 import com.like.system.user.domain.SystemUserCompanyRole;
-import com.like.system.user.domain.vo.UserPassword;
+import com.like.system.user.domain.SystemUserPassword;
 import com.like.system.user.port.in.SystemUserSaveUseCase;
 import com.like.system.user.port.in.dto.SystemUserSaveByExcelDTO;
 import com.like.system.user.port.in.dto.SystemUserSaveDTO;
@@ -34,13 +34,12 @@ public class SystemUserSaveService implements SystemUserSaveUseCase {
 						 ,SystemUserRoleCommandDbPort userRoleDbPort
 						 ,SystemUserCompanyCommandDbPort userCompanyDbPort 
 						 ,DeptCommandDbPort deptDbPort
-						 ,PasswordEncoder passwordEncoder
-						  ) {
+						 ,PasswordEncoder passwordEncoder) {
 		this.dbPort = dbPort;		
 		this.userRoleDbPort = userRoleDbPort;
 		this.userCompanyDbPort = userCompanyDbPort;
 		this.deptDbPort = deptDbPort;
-		this.passwordEncoder = passwordEncoder;
+		this.passwordEncoder = passwordEncoder;		
 	}
 	
 	@Override
@@ -50,7 +49,7 @@ public class SystemUserSaveService implements SystemUserSaveUseCase {
 		
 		if (user == null) {
 			user = dto.newUser(dept);
-			user.changePassword(passwordEncoder.encode(UserPassword.getInitPassword()));
+			user.setPassword(passwordEncoder, SystemUserPassword.getInitPassword());
 		} else {
 			dto.modifyUser(user, dept);
 		}							
@@ -73,7 +72,7 @@ public class SystemUserSaveService implements SystemUserSaveUseCase {
 			
 			if (user == null) {
 				user = dto.newUser(dept);
-				user.changePassword(passwordEncoder.encode(UserPassword.getInitPassword()));
+				user.setPassword(passwordEncoder, SystemUserPassword.getInitPassword());
 			} else {
 				//dto.modifyUser(user, dept);
 			}							

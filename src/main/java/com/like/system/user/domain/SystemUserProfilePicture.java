@@ -1,4 +1,4 @@
-package com.like.system.user.domain.vo;
+package com.like.system.user.domain;
 
 import java.io.Serializable;
 
@@ -8,8 +8,8 @@ import jakarta.persistence.Embeddable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @Getter
+@NoArgsConstructor
 @Embeddable
 public class SystemUserProfilePicture implements Serializable {
 	

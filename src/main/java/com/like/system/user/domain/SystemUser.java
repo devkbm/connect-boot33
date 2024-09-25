@@ -1,6 +1,5 @@
 package com.like.system.user.domain;
 
-import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
@@ -13,13 +12,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.like.core.jpa.domain.AbstractAuditEntity;
-import com.like.system.user.domain.vo.AccountSpec;
-import com.like.system.user.domain.vo.SystemUserProfilePicture;
-import com.like.system.user.domain.vo.UserPassword;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -30,9 +25,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @Table(name = "comuser")
-public class SystemUser extends AbstractAuditEntity implements UserDetails {	
-	
-	private static final long serialVersionUID = -4328973281359262612L;
+public class SystemUser extends AbstractAuditEntity {		
 	
 	@EmbeddedId
 	SystemUserId id;	
@@ -41,10 +34,10 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	String name;
 			
 	@Embedded
-	UserPassword password;
+	SystemUserPassword password;
 		
 	@Embedded
-	AccountSpec accountSpec;	
+	SystemUserAccountAttribute accountSpec;	
 	
 	@Column(name="MOBILE_NUM")
 	String mobileNum;
@@ -64,17 +57,17 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	@Builder
 	public SystemUser(String userId					 
 					 ,String name					 
-					 ,UserPassword password					 
+					 ,SystemUserPassword password					 
 					 ,String mobileNum
 					 ,String email
-					 ,AccountSpec accountSpec) {		
+					 ,SystemUserAccountAttribute accountSpec) {		
 		this.id = new SystemUserId(userId);	
 		this.name = name;
 		this.password = password;		
 		this.mobileNum = mobileNum;
 		this.email = email;
-		this.accountSpec = accountSpec;									
-	}	
+		this.accountSpec = accountSpec;					
+	}
 	
 	@Builder(builderMethodName = "modifyBuilder", buildMethodName = "modify")
 	public void modifyEntity(String name					 				
@@ -83,51 +76,12 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 		this.name = name;						
 		this.mobileNum = mobileNum;
 		this.email = email;							
-	}
-	
-	@Override	
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return roles; //.stream().map(r -> r.getAuthority()).toList();
-	}		
-		
-	@Override	
-	public String getUsername() {		
-		return id.getUserId();
-	}
-
-	@Override		
+	}			
+			
 	public String getPassword() {
 		return password.getPassword();
 	}		
-
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-		//return accountSpec.getIsAccountNonExpired();
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-		//return accountSpec.getIsAccountNonLocked();
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-		//return accountSpec.getIsCredentialsNonExpired();
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return true;
-		//return accountSpec.getIsEnabled();
-	}			
 	
-	public boolean isVaild(String password) {
-		return this.password.matchPassword(password);
-	}	
-
 	public Optional<SystemUserCompany> getCompanyInfo(String companyCode) {
 		return this.getCompany().stream().filter(e -> e.id.companyCode.equals(companyCode)).findFirst();
 	}
@@ -136,13 +90,17 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 		return this.roles.stream().filter(e -> e.id.getCompanyCode().equals(companyCode)).toList();		
 	}
 	
-	public void changePassword(String password) {
-		if (this.password == null) {
-			this.password = new UserPassword();
-		} 
+	public void setPassword(PasswordEncoder encoder, String password) {
+		if (this.password == null) this.password = new SystemUserPassword();		
 						
-		this.password.change(password);
-	}	
+		this.password.set(encoder, password);
+	}
+	
+	public void changePassword(PasswordEncoder encoder, String beforePassword, String afterPassword) {
+		if (this.password == null) this.password = new SystemUserPassword();		
+						
+		this.password.change(encoder, beforePassword, afterPassword);
+	}
 	
 	public String getImage() {
 		if (this.image == null) return null;
@@ -154,8 +112,6 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 		if (this.image == null) this.image = new SystemUserProfilePicture();
 		
 		this.image.setImagePath(path);
-	}
-	
-
+	}	
 	
 }

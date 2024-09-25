@@ -23,10 +23,7 @@ public record SystemUserDTO(
 		String deptName,
 		String mobileNum,
 		String email,
-		String imageBase64,
-		Boolean accountNonExpired,
-		Boolean accountNonLocked,
-		Boolean credentialsNonExpired,
+		String imageBase64,		
 		Boolean enabled,
 		List<String> roleList,
 		List<String> menuGroupList

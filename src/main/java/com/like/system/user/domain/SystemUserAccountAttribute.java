@@ -1,4 +1,4 @@
-package com.like.system.user.domain.vo;
+package com.like.system.user.domain;
 
 import java.io.Serializable;
 
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Embeddable
-public class AccountSpec implements Serializable {
+public class SystemUserAccountAttribute implements Serializable {
 		
 	private static final long serialVersionUID = 5321100631628293509L;
 
@@ -40,10 +40,11 @@ public class AccountSpec implements Serializable {
 	@Column(name="ENABLED_YN")
 	Boolean isEnabled = true;
 	
-	public AccountSpec(Boolean isAccountNonExpired
-					  ,Boolean isAccountNonLocked
-					  ,Boolean isCredentialsNonExpired
-					  ,Boolean isEnabled) {
+	public SystemUserAccountAttribute(
+			 Boolean isAccountNonExpired
+			,Boolean isAccountNonLocked
+			,Boolean isCredentialsNonExpired
+			,Boolean isEnabled) {
 		
 		this.isAccountNonExpired = isAccountNonExpired;
 		this.isAccountNonLocked = isAccountNonLocked;

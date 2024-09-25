@@ -11,7 +11,7 @@ public class SystemUserLoginDTOMapper {
 				.builder()
 				.companyCode(companyCode)
 				.staffNo(entity.getId().getUserId())
-				.authorities(entity.getAuthorities())
+				.authorities(entity.getRoleList(companyCode))
 				.build();
 	}
 }

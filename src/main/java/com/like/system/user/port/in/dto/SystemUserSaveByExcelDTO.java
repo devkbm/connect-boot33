@@ -3,8 +3,8 @@ package com.like.system.user.port.in.dto;
 import java.util.List;
 
 import com.like.system.dept.domain.Dept;
+import com.like.system.user.domain.SystemUserAccountAttribute;
 import com.like.system.user.domain.SystemUser;
-import com.like.system.user.domain.vo.AccountSpec;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
@@ -32,7 +32,7 @@ public record SystemUserSaveByExcelDTO(
 									  .userId(this.staffNo)									  			
 									  .mobileNum(this.mobileNum)
 									  .email(this.email)					  
-									  .accountSpec(new AccountSpec(true, true, true, true))										  										  			 
+									  .accountSpec(new SystemUserAccountAttribute(true, true, true, true))										  										  			 
 									  .build();
 		
 		entity.setAppUrl(clientAppUrl);
