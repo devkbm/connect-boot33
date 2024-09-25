@@ -1,5 +1,6 @@
 package com.like.system.user.domain;
 
+import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
@@ -25,8 +26,13 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @Table(name = "comuser")
-public class SystemUser extends AbstractAuditEntity {		
+public class SystemUser extends AbstractAuditEntity implements Serializable {		
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@EmbeddedId
 	SystemUserId id;	
 	
