@@ -20,10 +20,10 @@ public record WorkCalendarEventResponseDTO(
 		String color,
 		//@DateTimeFormat(pattern="E MMM dd yyyy HH:mm:ss 'GMT'Z")
 		//@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-		@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS", timezone = "Asia/Seoul")
 		LocalDateTime start,
 		//@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-		@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS", timezone = "Asia/Seoul")
 		LocalDateTime end,
 		Boolean allDay
 		) {

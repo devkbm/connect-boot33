@@ -23,11 +23,13 @@ public record WorkCalendarEventSaveDTO(
 		Long id,					
 		@NotEmpty
 		String text,						
-		@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")			
+		@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
+		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS", timezone = "Asia/Seoul")			
 		LocalDateTime start,			
-		@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+		//@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+		//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+		@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
+		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS", timezone = "Asia/Seoul")
 		LocalDateTime end,			
 		Boolean allDay,			
 		@NotNull
