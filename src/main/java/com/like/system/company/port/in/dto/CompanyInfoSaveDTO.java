@@ -6,7 +6,8 @@ import lombok.Builder;
 
 @Builder
 public record CompanyInfoSaveDTO(
-		String companyCode
+		String clientAppUrl
+		,String companyCode
 		,String companyName
 		,String businessRegistrationNumber
 		,String coporationNumber

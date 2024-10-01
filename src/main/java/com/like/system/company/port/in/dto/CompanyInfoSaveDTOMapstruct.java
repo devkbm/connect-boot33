@@ -17,5 +17,6 @@ public interface CompanyInfoSaveDTOMapstruct {
 	
 	
 	@Mapping(target = "companyCode", source = "id.companyCode")
+	@Mapping(target = "clientAppUrl", ignore = true)
 	CompanyInfoSaveDTO toDTO(CompanyInfo entity);
 }
