@@ -46,6 +46,7 @@ public class MenuHierarchyByRolesSelectDbAdapter implements MenuHierarchyByRoles
 				.where(qMenu.id.menuGroupId.companyCode.eq(companyCode)
 					  ,qMenu.id.menuGroupId.menuGroupCode.eq(menuGroupCode)
 					  )
+				.orderBy(qMenu.sequence.asc())
 				.fetch();
 		
 	}
