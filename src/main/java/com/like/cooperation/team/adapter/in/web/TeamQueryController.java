@@ -49,7 +49,7 @@ public class TeamQueryController {
 		//List<SystemUserSaveDTO> list = service.selectAllMemberList(condition);						 				
 		List<?> list = null;
 		
-		return toList(list, MessageUtil.getQueryMessage(list.size()));
+		return toList(list, MessageUtil.getQueryMessage(0));
 	}
 	
 }

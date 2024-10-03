@@ -8,87 +8,48 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-import com.like.core.web.response.ResponseObject;
-import com.like.core.web.response.ResponseObjectList;
-import com.like.core.web.response.ResponseObjectMap;
+import com.like.core.web.response.ApiResponseObject;
+import com.like.core.web.response.ApiResponseList;
+import com.like.core.web.response.ApiResponseMap;
 
 public abstract class ResponseEntityUtil {		
 			
-	/**
-	 * ResponseEntity 객체를 반환한다.
-	 * @param data			결과 payload 데이터
-	 * @param size			data의 사이즈
-	 * @param success		성공 여부
-	 * @param message		결과 메세지
-	 * @param httpStatus	Http 응답 코드
-	 * @return Rest 요청 결과 
-	 */
-	public static ResponseEntity<ResponseObjectList> toList(List<?> data, int size, String message, HttpStatus httpStatus) {
-									
-		ResponseObjectList obj = new ResponseObjectList(data, size, message);			      
+	public static ResponseEntity<ApiResponseList> toList(List<?> data, String message, HttpStatus httpStatus) {
+		
+		ApiResponseList obj = new ApiResponseList(data, message);			      
 	    
-	    return new ResponseEntity<ResponseObjectList>(obj, getResponseHeaders(), httpStatus);	    	    	    	    	
+	    return new ResponseEntity<ApiResponseList>(obj, getResponseHeaders(), httpStatus);	    	    	    	    	
 	}
 	
-	public static ResponseEntity<ResponseObjectList> toList(List<?> data, String message, HttpStatus httpStatus) {
+	public static ResponseEntity<ApiResponseList> toList(List<?> data, String message) {
 		
-		ResponseObjectList obj = new ResponseObjectList(data, data == null ? 0 : data.size(), message);			      
+		ApiResponseList obj = new ApiResponseList(data, message);			      
 	    
-	    return new ResponseEntity<ResponseObjectList>(obj, getResponseHeaders(), httpStatus);	    	    	    	    	
+	    return new ResponseEntity<ApiResponseList>(obj, getResponseHeaders(), HttpStatus.OK);	    	    	    	    	
+	}
+			
+	public static<T> ResponseEntity<ApiResponseObject<T>> toOne(T data, String message, HttpStatus httpStatus) {
+		ApiResponseObject<T> obj = new ApiResponseObject<T>(data, message);
+		
+		return new ResponseEntity<ApiResponseObject<T>>(obj, getResponseHeaders(), httpStatus);
 	}
 	
-	public static ResponseEntity<ResponseObjectList> toList(List<?> data, String message) {
+	public static<T> ResponseEntity<ApiResponseObject<T>> toOne(T data, String message) {
+		ApiResponseObject<T> obj = new ApiResponseObject<T>(data, message);
 		
-		ResponseObjectList obj = new ResponseObjectList(data, data == null ? 0 : data.size(), message);			      
-	    
-	    return new ResponseEntity<ResponseObjectList>(obj, getResponseHeaders(), HttpStatus.OK);	    	    	    	    	
+		return new ResponseEntity<ApiResponseObject<T>>(obj, getResponseHeaders(), HttpStatus.OK);
+	}
+		
+	public static<K, V> ResponseEntity<ApiResponseMap<K, V>> toMap(Map<K, V> data, String message, HttpStatus httpStatus) {
+		ApiResponseMap<K, V> obj = new ApiResponseMap<K, V>(data, message);
+		
+		return new ResponseEntity<ApiResponseMap<K, V>>(obj, getResponseHeaders(), httpStatus);
 	}
 	
-	/**
-	 * ResponseEntity 객체를 반환한다.
-	 * @param data			결과 payload 데이터
-	 * @param size			data의 사이즈
-	 * @param success		성공 여부
-	 * @param message		결과 메세지
-	 * @param httpStatus	Http 응답 코드
-	 * @return Rest 요청 결과 
-	 */	
-	public static <T> ResponseEntity<ResponseObject<T>> toOne(T data, int size, String message, HttpStatus httpStatus) {
+	public static<K, V> ResponseEntity<ApiResponseMap<K, V>> toMap(Map<K, V> data, String message) {
+		ApiResponseMap<K, V> obj = new ApiResponseMap<K, V>(data, message);
 		
-		ResponseObject<T> obj = new ResponseObject<T>(data, size, message);		
-					    	    
-	    return new ResponseEntity<ResponseObject<T>>(obj, getResponseHeaders(), httpStatus);	    	    	    	    	
-	}
-		
-	public static<T> ResponseEntity<ResponseObject<T>> toOne(T data, String message, HttpStatus httpStatus) {
-		ResponseObject<T> obj = new ResponseObject<T>(data, data == null ? 0 : 1, message);
-		
-		return new ResponseEntity<ResponseObject<T>>(obj, getResponseHeaders(), httpStatus);
-	}
-	
-	public static<T> ResponseEntity<ResponseObject<T>> toOne(T data, String message) {
-		ResponseObject<T> obj = new ResponseObject<T>(data, data == null ? 0 : 1, message);
-		
-		return new ResponseEntity<ResponseObject<T>>(obj, getResponseHeaders(), HttpStatus.OK);
-	}
-	
-	public static <K, V> ResponseEntity<ResponseObjectMap<K, V>> toMap(Map<K, V> data, int size, String message, HttpStatus httpStatus) {
-		
-		ResponseObjectMap<K, V> obj = new ResponseObjectMap<K, V>(data, size, message);		
-					    	    
-	    return new ResponseEntity<ResponseObjectMap<K, V>>(obj, getResponseHeaders(), httpStatus);	    	    	    	    	
-	}
-		
-	public static<K, V> ResponseEntity<ResponseObjectMap<K, V>> toMap(Map<K, V> data, String message, HttpStatus httpStatus) {
-		ResponseObjectMap<K, V> obj = new ResponseObjectMap<K, V>(data, data == null ? 0 : 1, message);
-		
-		return new ResponseEntity<ResponseObjectMap<K, V>>(obj, getResponseHeaders(), httpStatus);
-	}
-	
-	public static<K, V> ResponseEntity<ResponseObjectMap<K, V>> toMap(Map<K, V> data, String message) {
-		ResponseObjectMap<K, V> obj = new ResponseObjectMap<K, V>(data, data == null ? 0 : 1, message);
-		
-		return new ResponseEntity<ResponseObjectMap<K, V>>(obj, getResponseHeaders(), HttpStatus.OK);
+		return new ResponseEntity<ApiResponseMap<K, V>>(obj, getResponseHeaders(), HttpStatus.OK);
 	}
 	
 	private static HttpHeaders getResponseHeaders() {
