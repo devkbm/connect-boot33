@@ -1,4 +1,4 @@
-package com.like.core.dto;
+package com.like.common.dto;
 
 import java.util.Arrays;
 import java.util.List;

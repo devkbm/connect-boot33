@@ -1,4 +1,4 @@
-package com.like.core.dto;
+package com.like.common.dto;
 
 import java.io.Serializable;
 

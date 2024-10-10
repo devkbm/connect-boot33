@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.core.dto.HtmlSelectOptionRecord;
+import com.like.common.dto.HtmlSelectOptionRecord;
 import com.like.core.message.MessageUtil;
 import com.like.system.hierarchycode.domain.Code;
 import com.like.system.hierarchycode.domain.SystemType;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.core.dto.HtmlSelectOptionRecord;
+import com.like.common.dto.HtmlSelectOptionRecord;
 import com.like.core.message.MessageUtil;
 import com.like.system.menu.domain.MenuType;
 import com.like.system.menu.port.in.MenuSelectUseCase;

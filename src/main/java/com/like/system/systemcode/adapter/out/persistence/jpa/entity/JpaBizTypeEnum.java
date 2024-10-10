@@ -1,7 +1,7 @@
 package com.like.system.systemcode.adapter.out.persistence.jpa.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.like.core.dto.HtmlSelectOptionable;
+import com.like.common.dto.HtmlSelectOptionable;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum JpaBizTypeEnum implements HtmlSelectOptionable {

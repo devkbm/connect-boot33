@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.core.dto.HtmlSelectOptionRecord;
-import com.like.core.dto.HtmlSelectOptionable;
+import com.like.common.dto.HtmlSelectOptionRecord;
+import com.like.common.dto.HtmlSelectOptionable;
 import com.like.core.message.MessageUtil;
 import com.like.system.term.domain.Database;
 import com.like.system.term.port.in.domain.DataDomainQueryUseCase;

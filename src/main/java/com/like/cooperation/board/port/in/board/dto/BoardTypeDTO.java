@@ -1,7 +1,7 @@
 package com.like.cooperation.board.port.in.board.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.like.core.dto.HtmlSelectOptionable;
+import com.like.common.dto.HtmlSelectOptionable;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum BoardTypeDTO implements HtmlSelectOptionable {
