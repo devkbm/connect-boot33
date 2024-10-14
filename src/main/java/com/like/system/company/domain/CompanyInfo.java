@@ -2,6 +2,8 @@ package com.like.system.company.domain;
 
 import java.time.LocalDate;
 
+import org.hibernate.envers.Audited;
+
 import com.like.core.jpa.domain.AbstractAuditEntity;
 
 import jakarta.persistence.Column;
@@ -15,6 +17,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Getter
+@Audited
 @Entity
 @Table(name = "COMCOMPANY")
 public class CompanyInfo extends AbstractAuditEntity {

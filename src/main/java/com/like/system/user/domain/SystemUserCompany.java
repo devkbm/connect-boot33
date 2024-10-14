@@ -2,6 +2,8 @@ package com.like.system.user.domain;
 
 import java.io.Serializable;
 
+import org.hibernate.envers.Audited;
+
 import com.like.core.jpa.domain.AbstractAuditEntity;
 import com.like.system.dept.domain.Dept;
 
@@ -23,6 +25,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Getter
+@Audited
 @Entity
 @Table(name = "COMUSERCOMPANY")
 public class SystemUserCompany extends AbstractAuditEntity implements Serializable {

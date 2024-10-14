@@ -1,5 +1,6 @@
 package com.like.system.user.domain;
 
+import org.hibernate.envers.Audited;
 import org.springframework.security.core.GrantedAuthority;
 
 import com.like.core.jpa.domain.AbstractAuditEntity;
@@ -15,6 +16,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
+@Audited
 @Entity
 @Table(name = "COMUSERROLE")
 public class SystemUserCompanyRole extends AbstractAuditEntity implements GrantedAuthority {

@@ -13,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import org.hibernate.envers.Audited;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.like.core.jpa.domain.AbstractAuditEntity;
@@ -24,6 +25,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Getter
+@Audited
 @Entity
 @Table(name = "comuser")
 public class SystemUser extends AbstractAuditEntity implements Serializable {		

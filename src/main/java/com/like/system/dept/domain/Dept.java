@@ -14,6 +14,7 @@ import jakarta.persistence.Table;
 
 import java.io.Serializable;
 
+import org.hibernate.envers.Audited;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.util.Assert;
 
@@ -30,6 +31,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(builderMethodName = "internalBuilder")
 @Getter
+@Audited
 @Entity
 @Table(name = "comdept")
 @EntityListeners(AuditingEntityListener.class)

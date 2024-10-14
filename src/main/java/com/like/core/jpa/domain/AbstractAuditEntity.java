@@ -2,6 +2,7 @@ package com.like.core.jpa.domain;
 
 import org.hibernate.annotations.CompositeType;
 import org.hibernate.annotations.CompositeTypeRegistration;
+import org.hibernate.envers.Audited;
 //import org.hibernate.annotations.TypeDef;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -33,6 +34,7 @@ import lombok.Getter;
     defaultForType = AuditorDetails.class)
 */
 @CompositeTypeRegistration( embeddableClass = AuditorDetails.class, userType = AuditorDetailsType.class )
+@Audited
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AbstractAuditEntity {
