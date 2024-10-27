@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.system.role.adapter.out.persistence.db.jpa.RoleJpaEntity;
-import com.like.system.role.adapter.out.persistence.db.jpa.RoleJpaEntityId;
-import com.like.system.role.adapter.out.persistence.db.jpa.RoleJpaRepository;
+import com.like.system.menu_role.adapter.out.db.role.jpa.RoleJpaEntity;
+import com.like.system.menu_role.adapter.out.db.role.jpa.RoleJpaEntityId;
+import com.like.system.menu_role.adapter.out.db.role.jpa.RoleJpaRepository;
 import com.like.system.user.adapter.out.db.jpa.SystemUserRoleRepository;
 import com.like.system.user.domain.SystemUserCompanyRole;
 import com.like.system.user.port.out.SystemUserRoleCommandDbPort;

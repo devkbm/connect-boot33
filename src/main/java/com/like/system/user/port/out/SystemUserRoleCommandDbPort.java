@@ -2,7 +2,7 @@ package com.like.system.user.port.out;
 
 import java.util.List;
 
-import com.like.system.role.adapter.out.persistence.db.jpa.RoleJpaEntity;
+import com.like.system.menu_role.adapter.out.db.role.jpa.RoleJpaEntity;
 import com.like.system.user.domain.SystemUserCompanyRole;
 
 public interface SystemUserRoleCommandDbPort {

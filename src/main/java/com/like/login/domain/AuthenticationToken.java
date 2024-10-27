@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.like.system.menurole.export.MenuGroupDTO;
+import com.like.system.menu_role.export.MenuGroupDTO;
 import com.like.system.user.export.SystemUserDTO;
 
 import lombok.Builder;

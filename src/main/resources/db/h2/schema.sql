@@ -240,6 +240,8 @@ CREATE TABLE COMMENU (
   	MENU_TYPE			  	VARCHAR(10)			NOT NULL	,
 	P_MENU_CD			    VARCHAR(50)			NULL		,	
   	APP_URL				    VARCHAR(50)			NULL		,
+  	APP_ICON_TYPE			VARCHAR(50)			NULL		,
+  	APP_ICON				VARCHAR(500)		NULL		,
   	SEQ					    INT				  	NULL		,
 	LVL					    INT				  	NULL		,
 	constraint pk_commenu		primary key(MENU_GROUP_CD, MENU_CD, ORG_CD)
