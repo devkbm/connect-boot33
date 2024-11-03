@@ -40,6 +40,8 @@ public class MenuHierarchyNgZorroDTO {
 	
 	String url;
 	
+	String appIconType;
+	
 	String icon;
 	
 	public static MenuHierarchyNgZorroDTO build(MenuHierarchy dto) {
@@ -51,6 +53,7 @@ public class MenuHierarchyNgZorroDTO {
 		rec.sequence = dto.getSequence();
 		rec.level = dto.getLevel();
 		rec.url = dto.getAppUrl();
+		rec.appIconType = dto.getAppIconType();
 		rec.icon = dto.getAppIcon();
 		
 		rec.key = dto.getMenuCode();
