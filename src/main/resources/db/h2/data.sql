@@ -58,74 +58,74 @@ INSERT INTO commenu
 VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '10','시스템기초정보', NULL, NULL, 1, 0, 'SUBMENU');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '11','회사등록', '10', 'system/company', 1, 1, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '11','회사등록', '10', 'company', 1, 1, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '12','부서코드등록', '10', 'system/dept', 2, 1, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '12','부서코드등록', '10', 'dept', 2, 1, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '13','공휴일등록', '10', 'system/holiday', 3, 1, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '13','공휴일등록', '10', 'holiday', 3, 1, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '14','리소스등록', '10', 'system/webresource', 4, 1, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '14','리소스등록', '10', 'webresource', 4, 1, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
 VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '20','사용자/메뉴/롤 관리', NULL, NULL, 2, 0, 'SUBMENU');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '21','사용자등록', '20', 'system/user', 1, 1, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '21','사용자등록', '20', 'user', 1, 1, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '22','롤등록', '20', 'system/role', 2, 1, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '22','롤등록', '20', 'role', 2, 1, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '23','메뉴등록', '20', 'system/menu', 6, 1, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '23','메뉴등록', '20', 'menu', 6, 1, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '24','메뉴롤등록', '20', 'system/menu-role', 6, 1, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '24','메뉴롤등록', '20', 'menu-role', 6, 1, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
 VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '30','코드관리', NULL, NULL, 3, 0, 'SUBMENU');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '31','코드등록', '30', 'system/bizcode', 1, 1, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '31','코드등록', '30', 'bizcode', 1, 1, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '32','계층코드등록', '30', 'system/commoncode', 2, 1, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '32','계층코드등록', '30', 'commoncode', 2, 1, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
 VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '40','용어관리', NULL, NULL, 4, 0, 'SUBMENU');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '41','용어등록', '40', 'system/term', 9, 1, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'COM', '001', '41','용어등록', '40', 'term', 9, 1, 'ITEM');
 
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
 VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '10','게시판', NULL, NULL, 1, 0, 'SUBMENU');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '11','게시판등록(관리자)', '10', 'grw/boardm', 1, 0, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '11','게시판등록(관리자)', '10', 'boardm', 1, 0, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '12','게시판', '10', 'grw/board', 2, 0, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '12','게시판', '10', 'board', 2, 0, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
 VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '20','CALENDAR', NULL, NULL, 2, 0, 'SUBMENU');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '21','CALENDAR', '20', 'grw/workcalendar', 1, 0, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '21','CALENDAR', '20', 'workcalendar', 1, 0, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
 VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '30','팀관리', NULL, NULL, 3, 0, 'SUBMENU');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '31','팀등록', '30', 'grw/team', 1, 0, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '31','팀등록', '30', 'team', 1, 0, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
 VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '40','할일관리', NULL, NULL, 4, 0, 'SUBMENU');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '41','TODO', '40', 'grw/todo', 1, 0, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'GRP', '001', '41','TODO', '40', 'todo', 1, 0, 'ITEM');
 
 
 INSERT INTO commenu
@@ -133,19 +133,19 @@ INSERT INTO commenu
 VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'HRM', '001', '10','코드관리', NULL, NULL, 1, 0, 'SUBMENU');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'HRM', '001', '11','HRM코드관리', '10', 'hrm/hrmtype', 1, 0, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'HRM', '001', '11','HRM코드관리', '10', 'hrmtype', 1, 0, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
 VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'HRM', '001', '20','인사정보관리', NULL, NULL, 2, 0, 'SUBMENU');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'HRM', '001', '21','인사기본관리', '20', 'hrm/staff', 2, 0, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'HRM', '001', '21','인사기본관리', '20', 'staff', 2, 0, 'ITEM');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
 VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'HRM', '001', '30','근태', NULL, NULL, 2, 0, 'SUBMENU');
 INSERT INTO commenu
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, MENU_GROUP_CD, ORG_CD, MENU_CD, MENU_NM, P_MENU_CD, APP_URL, SEQ, LVL, MENU_TYPE)
-VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'HRM', '001', '31','근무변동신청', '30', 'hrm/dutyapplication', 2, 0, 'ITEM');
+VALUES('2022-01-01', 'admin', '2022-01-01', 'admin', 'HRM', '001', '31','근무변동신청', '30', 'dutyapplication', 2, 0, 'ITEM');
 
 INSERT INTO COMMENUROLE
 (CREATED_DT, CREATED_USER_ID, MODIFIED_DT, MODIFIED_USER_ID, ORG_CD, MENU_GROUP_CD, MENU_CD, ROLE_CD)

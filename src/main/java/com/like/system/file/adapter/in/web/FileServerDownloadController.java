@@ -29,14 +29,14 @@ public class FileServerDownloadController {
 										   ,@PathVariable String id) throws Exception {														
 		FileDTO fileDTO = useCase.getDownloadFile(id);		
 		
+		setResponse(response, fileDTO.size(), fileDTO.fileName(), "application/octet-stream");
+		
 		try (OutputStream os = response.getOutputStream()) {			
 			FileConverterUtil.fileToStream(fileDTO.file(), os);			
 		} catch (IOException e1) {		
 			e1.printStackTrace();
 		}
-		
-		setResponse(response, fileDTO.size(), fileDTO.fileName(), "application/octet-stream");
-		
+						
 		return response;
 	}
 	

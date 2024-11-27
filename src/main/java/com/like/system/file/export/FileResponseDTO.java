@@ -6,6 +6,8 @@ import com.like.system.file.domain.FileInfo;
 public record FileResponseDTO(
 		String uid,
 		String name,
+		Long size,
+		String contentType,
 		String status,
 		String response,
 		String url
@@ -17,6 +19,8 @@ public record FileResponseDTO(
 		
 		return new FileResponseDTO(entity.getId().toString()
 								  ,entity.getFileName()
+								  ,entity.getSize()
+								  ,entity.getContentType()
 								  ,"done"
 								  ,"success"
 								  ,FileServerRepository.fileDownLoadUrl+entity.getId().toString());
@@ -27,7 +31,9 @@ public record FileResponseDTO(
 		// url 예시 - http://localhost:8090/common/file/"+info.getPkFile()
 		
 		return new FileResponseDTO(info.fildId()
-								  ,info.fileName()
+								  ,info.fileName()								  
+								  ,info.size()
+								  ,info.contentType()
 								  ,"done"
 								  ,"success"
 								  ,FileServerRepository.fileDownLoadUrl+info.fildId());
